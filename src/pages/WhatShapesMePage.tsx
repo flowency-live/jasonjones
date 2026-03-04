@@ -6,6 +6,34 @@ import { Mail, Linkedin, Instagram, MessageCircle, ArrowLeft } from "lucide-reac
 // Books, Music, Drummers - the influences behind the work
 // ============================================================================
 
+// CSS for sliding underline animation with gradient fade (matching HomePage)
+const navStyles = `
+  .nav-link-shapes {
+    position: relative;
+  }
+  .nav-link-shapes::after {
+    content: '';
+    position: absolute;
+    left: 24px;
+    bottom: 6px;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  .nav-link-shapes:hover::after {
+    width: calc(100% - 48px);
+  }
+  .nav-link-shapes.active::after {
+    width: 20px;
+    background: linear-gradient(90deg, #c2410c 0%, #1e2936 100%);
+  }
+  .nav-link-shapes.active:hover::after {
+    width: calc(100% - 48px);
+    background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
+  }
+`;
+
 const professionalBooks = [
   { title: "Flow Engineering", author: "Pereira & Davis", cover: "/assets/images/books/flow-engineering.jpg", description: "The question every exec asks me: 'how do I get results faster?' This book answers it practically, clearly and without the usual fluff. Essential reading for anyone serious about delivery." },
   { title: "The Principles of Product Development Flow", author: "Donald Reinertsen", cover: "/assets/images/books/principles-product-dev-flow.jpg", description: "Not for the faint-hearted. Reinertsen's economic framework for flow changed how I think about prioritisation, WIP and the true cost of delay. Dense, rigorous, transformative." },
@@ -48,37 +76,88 @@ export default function WhatShapesMePage() {
 
       {/* ================================================================ */}
       {/* LEFT SIDEBAR NAV - Desktop */}
+      {/* Matching HomePage theme with gradient background and animated underlines */}
       {/* ================================================================ */}
-      <aside className="fixed left-0 top-0 h-full w-52 z-50 bg-[#0a0a0a] border-r border-white/10 hidden lg:flex flex-col">
-        <Link to="/" className="p-6 border-b border-white/10">
-          <span className="text-lg font-bold"><span className="text-[#c2410c]">jason</span>jones</span>
+      <style>{navStyles}</style>
+
+      <aside className="fixed left-0 top-0 h-full w-72 z-50 hidden lg:flex flex-col"
+        style={{
+          background: 'linear-gradient(180deg, #1e2936 0%, #243242 50%, #1e2936 100%)',
+          boxShadow: '4px 0 30px rgba(0,0,0,0.3)',
+        }}
+      >
+        {/* Logo / Name */}
+        <Link to="/" className="px-8 py-8">
+          <h1 className="text-2xl font-bold tracking-tight">
+            <span className="text-[#c2410c]">Jason</span>
+            <span className="text-white ml-1">Jones</span>
+          </h1>
+          <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#c2410c] to-transparent" />
         </Link>
 
-        <nav className="flex-1 py-4 overflow-y-auto">
-          <Link to="/" className="w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent flex items-center gap-2">
-            <ArrowLeft size={12} /> back to about
+        {/* Navigation */}
+        <nav className="flex-1 px-4 py-2 overflow-y-auto">
+          <Link to="/" className="nav-link-shapes flex items-center gap-2 px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
+            <ArrowLeft size={14} /> Back to Home
           </Link>
-          <div className="my-4 border-t border-white/10" />
-          <a href="#hero" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-[#c2410c] border-l-2 border-[#c2410c] bg-white/5">what shapes me</a>
-          <a href="#books-pro" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">books - professional</a>
-          <a href="#books-personal" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">books - personal</a>
-          <a href="#drummers" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">the drummers</a>
-          <a href="#albums" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">albums</a>
+
+          <div className="my-4 mx-4 border-t border-[#3d4d5f]/40" />
+
+          <a href="#hero" className="nav-link-shapes active block px-4 py-3 text-[13px] font-semibold tracking-wide text-[#c2410c] transition-all duration-200">
+            What Shapes Me
+          </a>
+          <a href="#books-pro" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
+            Books - Professional
+          </a>
+          <a href="#books-personal" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
+            Books - Personal
+          </a>
+          <a href="#drummers" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
+            The Drummers
+          </a>
+          <a href="#albums" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
+            Albums
+          </a>
         </nav>
 
-        <div className="p-6 border-t border-white/10 space-y-2">
-          <a href="mailto:jason@flowency.co.uk" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <Mail size={12} /> Email
-          </a>
-          <a href="https://www.linkedin.com/in/jjonesuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <Linkedin size={12} /> LinkedIn
-          </a>
-          <a href="https://www.instagram.com/jayjonesy73" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <Instagram size={12} /> Instagram
-          </a>
-          <a href="https://wa.me/447758240770" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <MessageCircle size={12} /> WhatsApp
-          </a>
+        {/* Social Links - Bold & Bright (matching HomePage) */}
+        <div className="px-6 py-6 border-t border-[#3d4d5f]/40">
+          <div className="grid grid-cols-2 gap-3">
+            <a
+              href="mailto:jason@flowency.co.uk"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#c2410c]/10 border border-[#c2410c]/30 hover:bg-[#c2410c]/25 hover:border-[#c2410c]/50 transition-all duration-200 group"
+            >
+              <Mail size={18} className="text-[#c2410c]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Email</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jjonesuk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/30 hover:bg-[#0077b5]/25 hover:border-[#0077b5]/50 transition-all duration-200 group"
+            >
+              <Linkedin size={18} className="text-[#0077b5]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">LinkedIn</span>
+            </a>
+            <a
+              href="https://www.instagram.com/jayjonesy73"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#E4405F]/10 border border-[#E4405F]/30 hover:bg-[#E4405F]/25 hover:border-[#E4405F]/50 transition-all duration-200 group"
+            >
+              <Instagram size={18} className="text-[#E4405F]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Instagram</span>
+            </a>
+            <a
+              href="https://wa.me/447758240770"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/25 hover:border-[#25D366]/50 transition-all duration-200 group"
+            >
+              <MessageCircle size={18} className="text-[#25D366]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">WhatsApp</span>
+            </a>
+          </div>
         </div>
       </aside>
 
@@ -90,7 +169,7 @@ export default function WhatShapesMePage() {
       {/* ================================================================ */}
       {/* MAIN CONTENT */}
       {/* ================================================================ */}
-      <main className="lg:ml-52">
+      <main className="lg:ml-72">
 
         {/* ============================================================ */}
         {/* HERO */}

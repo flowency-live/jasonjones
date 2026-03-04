@@ -183,7 +183,7 @@ export default function HomePage() {
           bottom: 8px;
           height: 2px;
           width: 0;
-          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
           transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-link:hover::after {
@@ -191,11 +191,11 @@ export default function HomePage() {
         }
         .nav-link.active::after {
           width: 24px;
-          background: linear-gradient(90deg, #c2410c 0%, #7a8a9a 100%);
+          background: linear-gradient(90deg, #c2410c 0%, #1e2936 100%);
         }
         .nav-link.active:hover::after {
           width: calc(100% - 32px);
-          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
         }
         .dropdown-child {
           position: relative;
@@ -207,7 +207,7 @@ export default function HomePage() {
           bottom: 8px;
           height: 2px;
           width: 0;
-          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
           transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .dropdown-child:hover::after {
@@ -215,11 +215,11 @@ export default function HomePage() {
         }
         .dropdown-child.active::after {
           width: 24px;
-          background: linear-gradient(90deg, #c2410c 0%, #7a8a9a 100%);
+          background: linear-gradient(90deg, #c2410c 0%, #1e2936 100%);
         }
         .dropdown-child.active:hover::after {
           width: calc(100% - 32px);
-          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
         }
         /* Dropdown hover behavior */
         .nav-dropdown-wrapper {
