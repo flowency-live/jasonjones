@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { Mail, Linkedin, Instagram, MessageCircle, Menu, X } from "lucide-react";
+import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink } from "lucide-react";
 import { PhotoGallery, CaptionedPhotoGallery } from "@/components/PhotoGallery";
 import type { GalleryImage, CaptionedImage } from "@/components/PhotoGallery";
 
@@ -9,15 +9,56 @@ import type { GalleryImage, CaptionedImage } from "@/components/PhotoGallery";
 // Full page with all sections from content brief
 // ============================================================================
 
+// Navigation structure with dropdowns
+type NavItem = {
+  id: string;
+  label: string;
+  type: 'section' | 'page' | 'dropdown';
+  href?: string;
+  external?: boolean;
+  children?: NavItem[];
+};
+
+const NAV_STRUCTURE: NavItem[] = [
+  { id: "home", label: "Home", type: "section" },
+  { id: "WhoIAm", label: "Introduction", type: "section" },
+  { id: "FlowOrigin", label: "Flow Origins", type: "section" },
+  {
+    id: "what-i-do",
+    label: "What I Do",
+    type: "dropdown",
+    children: [
+      { id: "AcceleratedDelivery", label: "Accelerated Delivery", type: "section" },
+      { id: "Alignment", label: "Value & Flow Alignment", type: "section" },
+      { id: "TeamCoaching", label: "Team Performance Coaching", type: "section" },
+      { id: "Governance", label: "Governance & Guardrails", type: "section" },
+    ]
+  },
+  { id: "WhatIDontDo", label: "What I Don't Do", type: "section" },
+  {
+    id: "doing-now",
+    label: "What I'm Doing Now",
+    type: "dropdown",
+    children: [
+      { id: "flowency-link", label: "Flowency", type: "page", href: "https://www.flowency.co.uk", external: true },
+      { id: "opstack-link", label: "OpStack", type: "page", href: "https://www.opstack.uk", external: true },
+    ]
+  },
+  { id: "what-inspires", label: "What Inspires Me", type: "page", href: "/what-shapes-me" },
+  { id: "Highlights", label: "Highlights", type: "section" },
+  { id: "GigList", label: "The Gig List", type: "section" },
+  { id: "SayHello", label: "Say Hello", type: "section" },
+];
+
+// Legacy flat nav for scroll tracking
 const NAV_ITEMS = [
   { id: "home", label: "home" },
-  { id: "WhoIAm", label: "who I am" },
+  { id: "WhoIAm", label: "introduction" },
   { id: "FlowOrigin", label: "flow origins" },
-  { id: "AcceleratedDelivery", label: "getting shit done" },
-  { id: "InnovationAI", label: "AI with control" },
+  { id: "AcceleratedDelivery", label: "accelerated delivery" },
   { id: "Alignment", label: "alignment" },
-  { id: "Flowency", label: "flowency" },
-  { id: "VibeCoding", label: "vibe coding" },
+  { id: "TeamCoaching", label: "team coaching" },
+  { id: "Governance", label: "governance" },
   { id: "WhatIDontDo", label: "what I don't do" },
   { id: "Highlights", label: "highlights" },
   { id: "GigList", label: "the gig list" },
@@ -74,7 +115,12 @@ export default function HomePage() {
   const [activeSection, setActiveSection] = useState("home");
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [gigListVisible, setGigListVisible] = useState(false);
+  const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
   const gigListRef = useRef<HTMLDivElement>(null);
+
+  const toggleDropdown = (id: string) => {
+    setOpenDropdowns(prev => ({ ...prev, [id]: !prev[id] }));
+  };
 
   useEffect(() => {
     const handleScroll = () => {
@@ -121,73 +167,244 @@ export default function HomePage() {
 
       {/* ================================================================ */}
       {/* LEFT SIDEBAR NAV - Desktop */}
+      {/* Refined editorial design - wider, bolder, cleaner */}
       {/* ================================================================ */}
-      <aside className="fixed left-0 top-0 h-full w-52 z-50 bg-[#0a0a0a] border-r border-white/10 hidden lg:flex flex-col">
-        <Link to="/" className="p-6 border-b border-white/10">
-          <span className="text-lg font-bold"><span className="text-[#c2410c]">jason</span>jones</span>
+      <aside className="fixed left-0 top-0 h-full w-72 z-50 hidden lg:flex flex-col"
+        style={{
+          background: 'linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%)',
+          boxShadow: '4px 0 24px rgba(0,0,0,0.5)',
+        }}
+      >
+        {/* Logo / Name */}
+        <Link to="/" className="px-8 py-8">
+          <h1 className="text-2xl font-bold tracking-tight">
+            <span className="text-[#c2410c]">Jason</span>
+            <span className="text-white ml-1">Jones</span>
+          </h1>
+          <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#c2410c] to-transparent" />
         </Link>
 
-        <nav className="flex-1 py-4 overflow-y-auto">
-          {NAV_ITEMS.map((item) => (
-            <button
-              key={item.id}
-              onClick={() => scrollTo(item.id)}
-              className={`w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider transition-colors ${
-                activeSection === item.id
-                  ? "text-[#c2410c] border-l-2 border-[#c2410c] bg-white/5"
-                  : "text-white/40 hover:text-white/70 border-l-2 border-transparent"
-              }`}
-            >
-              {item.label}
-            </button>
+        {/* Navigation */}
+        <nav className="flex-1 px-4 py-2 overflow-y-auto">
+          {NAV_STRUCTURE.map((item) => (
+            <div key={item.id}>
+              {item.type === 'dropdown' ? (
+                <>
+                  {/* Dropdown trigger */}
+                  <button
+                    onClick={() => toggleDropdown(item.id)}
+                    className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-medium tracking-wide transition-all duration-200 rounded-lg group
+                      ${openDropdowns[item.id] ? 'text-[#c2410c] bg-white/5' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+                  >
+                    <span>{item.label}</span>
+                    <ChevronDown
+                      size={14}
+                      className={`transition-transform duration-300 ${openDropdowns[item.id] ? 'rotate-180 text-[#c2410c]' : 'text-white/30 group-hover:text-white/50'}`}
+                    />
+                  </button>
+                  {/* Dropdown children */}
+                  <div
+                    className={`overflow-hidden transition-all duration-300 ease-out ${openDropdowns[item.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
+                  >
+                    <div className="ml-4 pl-4 border-l border-white/10 py-1">
+                      {item.children?.map((child) => (
+                        child.external ? (
+                          <a
+                            key={child.id}
+                            href={child.href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 px-3 py-2.5 text-[12px] text-white/50 hover:text-[#c2410c] transition-colors rounded-md hover:bg-white/5"
+                          >
+                            <span>{child.label}</span>
+                            <ExternalLink size={10} className="opacity-50" />
+                          </a>
+                        ) : (
+                          <button
+                            key={child.id}
+                            onClick={() => scrollTo(child.id)}
+                            className={`w-full text-left px-3 py-2.5 text-[12px] transition-colors rounded-md
+                              ${activeSection === child.id
+                                ? 'text-[#c2410c] bg-[#c2410c]/10'
+                                : 'text-white/50 hover:text-white hover:bg-white/5'}`}
+                          >
+                            {child.label}
+                          </button>
+                        )
+                      ))}
+                    </div>
+                  </div>
+                </>
+              ) : item.type === 'page' ? (
+                <Link
+                  to={item.href || '/'}
+                  className="block px-4 py-3 text-[13px] font-medium tracking-wide text-white/60 hover:text-white hover:bg-white/5 transition-all duration-200 rounded-lg"
+                >
+                  {item.label}
+                </Link>
+              ) : (
+                <button
+                  onClick={() => scrollTo(item.id)}
+                  className={`w-full text-left px-4 py-3 text-[13px] font-medium tracking-wide transition-all duration-200 rounded-lg
+                    ${activeSection === item.id
+                      ? 'text-[#c2410c] bg-[#c2410c]/10 shadow-[inset_3px_0_0_#c2410c]'
+                      : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+                >
+                  {item.label}
+                </button>
+              )}
+            </div>
           ))}
-          <div className="my-2 mx-6 border-t border-white/10" />
-          <Link
-            to="/what-shapes-me"
-            className="w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent block"
-          >
-            what shapes me
-          </Link>
         </nav>
 
-        <div className="p-6 border-t border-white/10 space-y-2">
-          <a href="mailto:jason@flowency.co.uk" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <Mail size={12} /> Email
-          </a>
-          <a href="https://www.linkedin.com/in/jjonesuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <Linkedin size={12} /> LinkedIn
-          </a>
-          <a href="https://www.instagram.com/jayjonesy73" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <Instagram size={12} /> Instagram
-          </a>
-          <a href="https://wa.me/447758240770" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
-            <MessageCircle size={12} /> WhatsApp
-          </a>
+        {/* Social Links - Bold & Clean */}
+        <div className="px-6 py-6 border-t border-white/10">
+          <div className="grid grid-cols-2 gap-2">
+            <a
+              href="mailto:jason@flowency.co.uk"
+              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#c2410c]/20 transition-all duration-200 group"
+            >
+              <Mail size={16} className="text-[#c2410c]" />
+              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">Email</span>
+            </a>
+            <a
+              href="https://www.linkedin.com/in/jjonesuk"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#0077b5]/20 transition-all duration-200 group"
+            >
+              <Linkedin size={16} className="text-[#0077b5]" />
+              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">LinkedIn</span>
+            </a>
+            <a
+              href="https://www.instagram.com/jayjonesy73"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#E4405F]/20 transition-all duration-200 group"
+            >
+              <Instagram size={16} className="text-[#E4405F]" />
+              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">Instagram</span>
+            </a>
+            <a
+              href="https://wa.me/447758240770"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#25D366]/20 transition-all duration-200 group"
+            >
+              <MessageCircle size={16} className="text-[#25D366]" />
+              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">WhatsApp</span>
+            </a>
+          </div>
         </div>
       </aside>
 
       {/* Mobile menu button */}
-      <button onClick={() => setMobileMenuOpen(!mobileMenuOpen)} className="lg:hidden fixed top-4 left-4 z-[100] p-2 text-white">
-        {mobileMenuOpen ? <X size={24} /> : <Menu size={24} />}
+      <button
+        onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        className="lg:hidden fixed top-4 left-4 z-[100] p-3 bg-[#0a0a0a]/90 backdrop-blur-sm rounded-lg border border-white/10 text-white"
+      >
+        {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-[#0a0a0a] flex flex-col justify-center items-center">
-          <nav className="space-y-4 text-center">
-            {NAV_ITEMS.map((item) => (
-              <button key={item.id} onClick={() => scrollTo(item.id)} className={`block text-lg ${activeSection === item.id ? "text-[#c2410c]" : "text-white/60"}`}>
-                {item.label}
-              </button>
-            ))}
-          </nav>
+        <div className="lg:hidden fixed inset-0 z-50 bg-[#0a0a0a] overflow-y-auto">
+          <div className="min-h-full flex flex-col pt-20 pb-8 px-6">
+            {/* Mobile Logo */}
+            <div className="mb-8">
+              <h1 className="text-2xl font-bold">
+                <span className="text-[#c2410c]">Jason</span>
+                <span className="text-white ml-1">Jones</span>
+              </h1>
+            </div>
+
+            {/* Mobile Nav */}
+            <nav className="flex-1 space-y-1">
+              {NAV_STRUCTURE.map((item) => (
+                <div key={item.id}>
+                  {item.type === 'dropdown' ? (
+                    <>
+                      <button
+                        onClick={() => toggleDropdown(item.id)}
+                        className="w-full flex items-center justify-between px-4 py-3 text-[15px] font-medium text-white/70"
+                      >
+                        <span>{item.label}</span>
+                        <ChevronDown size={16} className={`transition-transform ${openDropdowns[item.id] ? 'rotate-180' : ''}`} />
+                      </button>
+                      {openDropdowns[item.id] && (
+                        <div className="ml-4 pl-4 border-l border-white/10 space-y-1">
+                          {item.children?.map((child) => (
+                            child.external ? (
+                              <a
+                                key={child.id}
+                                href={child.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="flex items-center gap-2 px-4 py-2.5 text-[14px] text-white/50"
+                              >
+                                {child.label}
+                                <ExternalLink size={12} />
+                              </a>
+                            ) : (
+                              <button
+                                key={child.id}
+                                onClick={() => scrollTo(child.id)}
+                                className={`w-full text-left px-4 py-2.5 text-[14px] ${activeSection === child.id ? 'text-[#c2410c]' : 'text-white/50'}`}
+                              >
+                                {child.label}
+                              </button>
+                            )
+                          ))}
+                        </div>
+                      )}
+                    </>
+                  ) : item.type === 'page' ? (
+                    <Link
+                      to={item.href || '/'}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-4 py-3 text-[15px] font-medium text-white/70"
+                    >
+                      {item.label}
+                    </Link>
+                  ) : (
+                    <button
+                      onClick={() => scrollTo(item.id)}
+                      className={`w-full text-left px-4 py-3 text-[15px] font-medium ${activeSection === item.id ? 'text-[#c2410c]' : 'text-white/70'}`}
+                    >
+                      {item.label}
+                    </button>
+                  )}
+                </div>
+              ))}
+            </nav>
+
+            {/* Mobile Social Links */}
+            <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 gap-3">
+              <a href="mailto:jason@flowency.co.uk" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+                <Mail size={18} className="text-[#c2410c]" />
+                <span className="text-[13px] text-white/70">Email</span>
+              </a>
+              <a href="https://www.linkedin.com/in/jjonesuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+                <Linkedin size={18} className="text-[#0077b5]" />
+                <span className="text-[13px] text-white/70">LinkedIn</span>
+              </a>
+              <a href="https://www.instagram.com/jayjonesy73" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+                <Instagram size={18} className="text-[#E4405F]" />
+                <span className="text-[13px] text-white/70">Instagram</span>
+              </a>
+              <a href="https://wa.me/447758240770" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+                <MessageCircle size={18} className="text-[#25D366]" />
+                <span className="text-[13px] text-white/70">WhatsApp</span>
+              </a>
+            </div>
+          </div>
         </div>
       )}
 
       {/* ================================================================ */}
       {/* MAIN CONTENT */}
       {/* ================================================================ */}
-      <main className="lg:ml-52">
+      <main className="lg:ml-72">
 
         {/* ============================================================ */}
         {/* HERO */}
