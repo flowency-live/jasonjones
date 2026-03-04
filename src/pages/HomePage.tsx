@@ -163,16 +163,64 @@ export default function HomePage() {
   };
 
   return (
-    <div className="min-h-screen bg-[#0a0a0a] text-white font-['Montserrat',sans-serif]">
+    <div className="min-h-screen bg-[#1e2936] text-[#f8f7f5] font-['Montserrat',sans-serif]">
 
       {/* ================================================================ */}
       {/* LEFT SIDEBAR NAV - Desktop */}
-      {/* Refined editorial design - wider, bolder, cleaner */}
+      {/* Bold, clean, bright - sliding line hover animations */}
+      {/* Slate blue theme with orange accents */}
       {/* ================================================================ */}
+
+      {/* CSS for sliding underline animation */}
+      <style>{`
+        .nav-link {
+          position: relative;
+        }
+        .nav-link::after {
+          content: '';
+          position: absolute;
+          left: 16px;
+          bottom: 8px;
+          height: 2px;
+          width: 0;
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 100%);
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .nav-link:hover::after {
+          width: calc(100% - 32px);
+        }
+        .nav-link.active::after {
+          width: 24px;
+          background: #c2410c;
+        }
+        .nav-link.active:hover::after {
+          width: calc(100% - 32px);
+        }
+        .dropdown-child {
+          position: relative;
+        }
+        .dropdown-child::after {
+          content: '';
+          position: absolute;
+          left: 12px;
+          bottom: 6px;
+          height: 1.5px;
+          width: 0;
+          background: #c2410c;
+          transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .dropdown-child:hover::after {
+          width: calc(100% - 24px);
+        }
+        .dropdown-child.active::after {
+          width: 16px;
+        }
+      `}</style>
+
       <aside className="fixed left-0 top-0 h-full w-72 z-50 hidden lg:flex flex-col"
         style={{
-          background: 'linear-gradient(180deg, #0a0a0a 0%, #0d0d0d 50%, #0a0a0a 100%)',
-          boxShadow: '4px 0 24px rgba(0,0,0,0.5)',
+          background: 'linear-gradient(180deg, #1e2936 0%, #243242 50%, #1e2936 100%)',
+          boxShadow: '4px 0 30px rgba(0,0,0,0.3)',
         }}
       >
         {/* Logo / Name */}
@@ -193,20 +241,20 @@ export default function HomePage() {
                   {/* Dropdown trigger */}
                   <button
                     onClick={() => toggleDropdown(item.id)}
-                    className={`w-full flex items-center justify-between px-4 py-3 text-[13px] font-medium tracking-wide transition-all duration-200 rounded-lg group
-                      ${openDropdowns[item.id] ? 'text-[#c2410c] bg-white/5' : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+                    className={`nav-link w-full flex items-center justify-between px-4 py-3 text-[13px] font-semibold tracking-wide transition-all duration-200 group
+                      ${openDropdowns[item.id] ? 'text-[#c2410c]' : 'text-white/90 hover:text-white'}`}
                   >
                     <span>{item.label}</span>
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-300 ${openDropdowns[item.id] ? 'rotate-180 text-[#c2410c]' : 'text-white/30 group-hover:text-white/50'}`}
+                      className={`transition-transform duration-300 ${openDropdowns[item.id] ? 'rotate-180 text-[#c2410c]' : 'text-white/50 group-hover:text-white'}`}
                     />
                   </button>
                   {/* Dropdown children */}
                   <div
                     className={`overflow-hidden transition-all duration-300 ease-out ${openDropdowns[item.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
                   >
-                    <div className="ml-4 pl-4 border-l border-white/10 py-1">
+                    <div className="ml-4 pl-4 border-l-2 border-[#c2410c]/30 py-1">
                       {item.children?.map((child) => (
                         child.external ? (
                           <a
@@ -214,19 +262,19 @@ export default function HomePage() {
                             href={child.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="flex items-center gap-2 px-3 py-2.5 text-[12px] text-white/50 hover:text-[#c2410c] transition-colors rounded-md hover:bg-white/5"
+                            className="dropdown-child flex items-center gap-2 px-3 py-2.5 text-[12px] font-medium text-white/70 hover:text-[#c2410c] transition-colors"
                           >
                             <span>{child.label}</span>
-                            <ExternalLink size={10} className="opacity-50" />
+                            <ExternalLink size={10} className="opacity-60" />
                           </a>
                         ) : (
                           <button
                             key={child.id}
                             onClick={() => scrollTo(child.id)}
-                            className={`w-full text-left px-3 py-2.5 text-[12px] transition-colors rounded-md
+                            className={`dropdown-child w-full text-left px-3 py-2.5 text-[12px] font-medium transition-colors
                               ${activeSection === child.id
-                                ? 'text-[#c2410c] bg-[#c2410c]/10'
-                                : 'text-white/50 hover:text-white hover:bg-white/5'}`}
+                                ? 'active text-[#c2410c]'
+                                : 'text-white/70 hover:text-white'}`}
                           >
                             {child.label}
                           </button>
@@ -238,17 +286,17 @@ export default function HomePage() {
               ) : item.type === 'page' ? (
                 <Link
                   to={item.href || '/'}
-                  className="block px-4 py-3 text-[13px] font-medium tracking-wide text-white/60 hover:text-white hover:bg-white/5 transition-all duration-200 rounded-lg"
+                  className="nav-link block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200"
                 >
                   {item.label}
                 </Link>
               ) : (
                 <button
                   onClick={() => scrollTo(item.id)}
-                  className={`w-full text-left px-4 py-3 text-[13px] font-medium tracking-wide transition-all duration-200 rounded-lg
+                  className={`nav-link w-full text-left px-4 py-3 text-[13px] font-semibold tracking-wide transition-all duration-200
                     ${activeSection === item.id
-                      ? 'text-[#c2410c] bg-[#c2410c]/10 shadow-[inset_3px_0_0_#c2410c]'
-                      : 'text-white/60 hover:text-white hover:bg-white/5'}`}
+                      ? 'active text-[#c2410c]'
+                      : 'text-white/90 hover:text-white'}`}
                 >
                   {item.label}
                 </button>
@@ -257,42 +305,42 @@ export default function HomePage() {
           ))}
         </nav>
 
-        {/* Social Links - Bold & Clean */}
-        <div className="px-6 py-6 border-t border-white/10">
-          <div className="grid grid-cols-2 gap-2">
+        {/* Social Links - Bold & Bright */}
+        <div className="px-6 py-6 border-t border-[#3d4d5f]/40">
+          <div className="grid grid-cols-2 gap-3">
             <a
               href="mailto:jason@flowency.co.uk"
-              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#c2410c]/20 transition-all duration-200 group"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#c2410c]/10 border border-[#c2410c]/30 hover:bg-[#c2410c]/25 hover:border-[#c2410c]/50 transition-all duration-200 group"
             >
-              <Mail size={16} className="text-[#c2410c]" />
-              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">Email</span>
+              <Mail size={18} className="text-[#c2410c]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Email</span>
             </a>
             <a
               href="https://www.linkedin.com/in/jjonesuk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#0077b5]/20 transition-all duration-200 group"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/30 hover:bg-[#0077b5]/25 hover:border-[#0077b5]/50 transition-all duration-200 group"
             >
-              <Linkedin size={16} className="text-[#0077b5]" />
-              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">LinkedIn</span>
+              <Linkedin size={18} className="text-[#0077b5]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">LinkedIn</span>
             </a>
             <a
               href="https://www.instagram.com/jayjonesy73"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#E4405F]/20 transition-all duration-200 group"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#E4405F]/10 border border-[#E4405F]/30 hover:bg-[#E4405F]/25 hover:border-[#E4405F]/50 transition-all duration-200 group"
             >
-              <Instagram size={16} className="text-[#E4405F]" />
-              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">Instagram</span>
+              <Instagram size={18} className="text-[#E4405F]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Instagram</span>
             </a>
             <a
               href="https://wa.me/447758240770"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-2.5 rounded-lg bg-white/5 hover:bg-[#25D366]/20 transition-all duration-200 group"
+              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/25 hover:border-[#25D366]/50 transition-all duration-200 group"
             >
-              <MessageCircle size={16} className="text-[#25D366]" />
-              <span className="text-[12px] font-medium text-white/70 group-hover:text-white">WhatsApp</span>
+              <MessageCircle size={18} className="text-[#25D366]" />
+              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">WhatsApp</span>
             </a>
           </div>
         </div>
@@ -301,20 +349,20 @@ export default function HomePage() {
       {/* Mobile menu button */}
       <button
         onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-        className="lg:hidden fixed top-4 left-4 z-[100] p-3 bg-[#0a0a0a]/90 backdrop-blur-sm rounded-lg border border-white/10 text-white"
+        className="lg:hidden fixed top-4 left-4 z-[100] p-3 bg-[#1e2936]/95 backdrop-blur-sm rounded-lg border border-[#3d4d5f]/30 text-[#f8f7f5]"
       >
         {mobileMenuOpen ? <X size={20} /> : <Menu size={20} />}
       </button>
 
       {/* Mobile menu */}
       {mobileMenuOpen && (
-        <div className="lg:hidden fixed inset-0 z-50 bg-[#0a0a0a] overflow-y-auto">
+        <div className="lg:hidden fixed inset-0 z-50 bg-[#1e2936] overflow-y-auto">
           <div className="min-h-full flex flex-col pt-20 pb-8 px-6">
             {/* Mobile Logo */}
             <div className="mb-8">
               <h1 className="text-2xl font-bold">
                 <span className="text-[#c2410c]">Jason</span>
-                <span className="text-white ml-1">Jones</span>
+                <span className="text-[#f8f7f5] ml-1">Jones</span>
               </h1>
             </div>
 
@@ -326,13 +374,13 @@ export default function HomePage() {
                     <>
                       <button
                         onClick={() => toggleDropdown(item.id)}
-                        className="w-full flex items-center justify-between px-4 py-3 text-[15px] font-medium text-white/70"
+                        className="w-full flex items-center justify-between px-4 py-3 text-[15px] font-medium text-[#f8f7f5]/80"
                       >
                         <span>{item.label}</span>
                         <ChevronDown size={16} className={`transition-transform ${openDropdowns[item.id] ? 'rotate-180' : ''}`} />
                       </button>
                       {openDropdowns[item.id] && (
-                        <div className="ml-4 pl-4 border-l border-white/10 space-y-1">
+                        <div className="ml-4 pl-4 border-l border-[#3d4d5f]/40 space-y-1">
                           {item.children?.map((child) => (
                             child.external ? (
                               <a
@@ -340,7 +388,7 @@ export default function HomePage() {
                                 href={child.href}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="flex items-center gap-2 px-4 py-2.5 text-[14px] text-white/50"
+                                className="flex items-center gap-2 px-4 py-2.5 text-[14px] text-[#f8f7f5]/60"
                               >
                                 {child.label}
                                 <ExternalLink size={12} />
@@ -349,7 +397,7 @@ export default function HomePage() {
                               <button
                                 key={child.id}
                                 onClick={() => scrollTo(child.id)}
-                                className={`w-full text-left px-4 py-2.5 text-[14px] ${activeSection === child.id ? 'text-[#c2410c]' : 'text-white/50'}`}
+                                className={`w-full text-left px-4 py-2.5 text-[14px] ${activeSection === child.id ? 'text-[#c2410c]' : 'text-[#f8f7f5]/60'}`}
                               >
                                 {child.label}
                               </button>
@@ -362,14 +410,14 @@ export default function HomePage() {
                     <Link
                       to={item.href || '/'}
                       onClick={() => setMobileMenuOpen(false)}
-                      className="block px-4 py-3 text-[15px] font-medium text-white/70"
+                      className="block px-4 py-3 text-[15px] font-medium text-[#f8f7f5]/80"
                     >
                       {item.label}
                     </Link>
                   ) : (
                     <button
                       onClick={() => scrollTo(item.id)}
-                      className={`w-full text-left px-4 py-3 text-[15px] font-medium ${activeSection === item.id ? 'text-[#c2410c]' : 'text-white/70'}`}
+                      className={`w-full text-left px-4 py-3 text-[15px] font-medium ${activeSection === item.id ? 'text-[#c2410c]' : 'text-[#f8f7f5]/80'}`}
                     >
                       {item.label}
                     </button>
@@ -379,22 +427,22 @@ export default function HomePage() {
             </nav>
 
             {/* Mobile Social Links */}
-            <div className="mt-8 pt-6 border-t border-white/10 grid grid-cols-2 gap-3">
-              <a href="mailto:jason@flowency.co.uk" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+            <div className="mt-8 pt-6 border-t border-[#3d4d5f]/40 grid grid-cols-2 gap-3">
+              <a href="mailto:jason@flowency.co.uk" className="flex items-center gap-2 px-4 py-3 bg-[#2d3a4a] rounded-lg">
                 <Mail size={18} className="text-[#c2410c]" />
-                <span className="text-[13px] text-white/70">Email</span>
+                <span className="text-[13px] text-[#f8f7f5]/80">Email</span>
               </a>
-              <a href="https://www.linkedin.com/in/jjonesuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+              <a href="https://www.linkedin.com/in/jjonesuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-[#2d3a4a] rounded-lg">
                 <Linkedin size={18} className="text-[#0077b5]" />
-                <span className="text-[13px] text-white/70">LinkedIn</span>
+                <span className="text-[13px] text-[#f8f7f5]/80">LinkedIn</span>
               </a>
-              <a href="https://www.instagram.com/jayjonesy73" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+              <a href="https://www.instagram.com/jayjonesy73" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-[#2d3a4a] rounded-lg">
                 <Instagram size={18} className="text-[#E4405F]" />
-                <span className="text-[13px] text-white/70">Instagram</span>
+                <span className="text-[13px] text-[#f8f7f5]/80">Instagram</span>
               </a>
-              <a href="https://wa.me/447758240770" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-white/5 rounded-lg">
+              <a href="https://wa.me/447758240770" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 px-4 py-3 bg-[#2d3a4a] rounded-lg">
                 <MessageCircle size={18} className="text-[#25D366]" />
-                <span className="text-[13px] text-white/70">WhatsApp</span>
+                <span className="text-[13px] text-[#f8f7f5]/80">WhatsApp</span>
               </a>
             </div>
           </div>
@@ -409,18 +457,22 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* HERO */}
         {/* ============================================================ */}
-        <section id="home" className="min-h-[60vh] flex items-center px-8 lg:px-16 py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-cover bg-center opacity-20" style={{ backgroundImage: "url('/assets/images/about/hero/workshop.jpg')" }} />
+        <section id="home" className="min-h-[60vh] flex items-center px-8 lg:px-16 py-20 relative overflow-hidden bg-gradient-to-br from-[#1e2936] via-[#243242] to-[#2d3a4a]">
+          <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: "url('/assets/images/about/hero/workshop.jpg')" }} />
+          {/* Subtle texture overlay */}
+          <div className="absolute inset-0 opacity-[0.03]" style={{
+            backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
+          }} />
 
           <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Text */}
             <div className="text-center lg:text-left">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6">
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6 text-[#f8f7f5]">
                 Helping people see what's possible
                 <br />
-                <span className="text-[#c2410c] font-normal">then delivering it with them</span>
+                <span className="text-[#ea580c] font-normal">then delivering it with them</span>
               </h1>
-              <p className="text-white/50 text-lg">Tenacity. Radical candour. Getting shit done.</p>
+              <p className="text-[#a8b5c4] text-lg">Tenacity. Radical candour. Getting shit done.</p>
             </div>
 
             {/* Photo with faded edges */}
@@ -433,7 +485,7 @@ export default function HomePage() {
                 />
                 {/* Faded edge overlays */}
                 <div className="absolute inset-0 pointer-events-none rounded-lg" style={{
-                  background: 'linear-gradient(to right, #0a0a0a 0%, transparent 15%, transparent 85%, #0a0a0a 100%), linear-gradient(to bottom, #0a0a0a 0%, transparent 15%, transparent 85%, #0a0a0a 100%)'
+                  background: 'linear-gradient(to right, #1e2936 0%, transparent 15%, transparent 85%, #1e2936 100%), linear-gradient(to bottom, #1e2936 0%, transparent 15%, transparent 85%, #1e2936 100%)'
                 }} />
               </div>
             </div>
@@ -441,8 +493,8 @@ export default function HomePage() {
         </section>
 
         {/* TAGLINE BAR */}
-        <section className="py-8 bg-[#c2410c]">
-          <p className="text-center text-black font-semibold text-lg md:text-xl px-8">
+        <section className="py-8 bg-gradient-to-r from-[#c2410c] to-[#ea580c]">
+          <p className="text-center text-white font-semibold text-lg md:text-xl px-8">
             See it clearly. Say it plainly. Deliver what actually matters.
           </p>
         </section>
@@ -450,14 +502,14 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* WHO I AM - Book Spread */}
         {/* ============================================================ */}
-        <section id="WhoIAm" className="px-8 lg:px-12 xl:px-16 py-16 bg-white text-black">
+        <section id="WhoIAm" className="px-8 lg:px-12 xl:px-16 py-16 bg-[#f5f3f0] text-[#1e2936]">
           <div className="max-w-7xl mx-auto">
             <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-8">Who I Am</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
               {/* Bio */}
-              <div className="text-[13px] leading-relaxed text-black/80 space-y-4">
-                <p className="text-black font-medium text-[15px] leading-snug mb-4">
+              <div className="text-[13px] leading-relaxed text-[#1e2936]/75 space-y-4">
+                <p className="text-[#1e2936] font-medium text-[15px] leading-snug mb-4">
                   A love of tech. A feel for rhythm. An instinct for the simpler, better way.
                 </p>
                 <p>Given I'm old enough to have learned to code on a BBC Micro and picked up my first pair of drumsticks at the same time, I can safely say both technology and timing have been with me a while. Neither has let go.</p>
@@ -490,20 +542,20 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* FLOW ORIGIN STORY */}
         {/* ============================================================ */}
-        <section id="FlowOrigin" className="py-16 bg-[#0a0a0a]">
+        <section id="FlowOrigin" className="py-16 bg-gradient-to-br from-[#1e2936] to-[#2d3a4a]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">Origins</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-8">Flow, before anyone called it that</h2>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">Origins</p>
+              <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#f8f7f5]">Flow, before anyone called it that</h2>
 
-              <div className="space-y-5 text-[14px] leading-relaxed text-white/70">
+              <div className="space-y-5 text-[14px] leading-relaxed text-[#a8b5c4]">
                 <p>My first job was in a dyehouse. I was managing production planning for a fabric manufacturer: upstream constraints in yarn sourcing and knitting, finite dye capacity, a single stenter machine as the bottleneck downstream. One batch at a time. You only dyed what you could actually dry. You only processed real orders, never speculative work. If you got the timing wrong, fabric sat wet, went mouldy, became rework.</p>
                 <p>I was visualising work, managing flow, limiting WIP and responding to the constraint, before I had any of those words. I saw Kanban cards on that shop floor before I knew what they were called.</p>
                 <p>My first business trip was to M&S at Baker Street. Ten swatches of navy cotton jersey fabric on the table, all ostensibly the same. Each subtly different. One flatter, one redder, one with a metamerism you couldn't see until you placed it in a light box replicating the exact lighting of the shop floor. Same fabric. Different context. Completely different outcome. That lesson, that the environment in which something is used changes everything, has never left me.</p>
                 <p>Years later, when I encountered the Kanban Method, it felt less like learning something new and more like finding the name for something I'd already been doing. David Anderson's work, rooted in lean manufacturing and the Toyota Production System, mapped directly onto everything I'd learned in that dyehouse.</p>
                 <p>I'm a Kanban Management Professional through Kanban University, and I've attended the global Learnship conferences in Miami and Bilbao, where the people who are genuinely serious about this come together. I use the Kanban Maturity Model to help organisations understand where they are and plot a realistic path forward.</p>
-                <p className="text-white/50">Most organisations jump to SAFe or Scrum before they can even see their own system clearly. The Kanban Method starts where you are. It doesn't ask you to install a recipe. It asks you to look honestly at how work flows, or doesn't, and improve from there. It is, in my view, the most powerful and most underused tool in the Lean/Agile toolkit.</p>
+                <p className="text-[#7a8a9a]">Most organisations jump to SAFe or Scrum before they can even see their own system clearly. The Kanban Method starts where you are. It doesn't ask you to install a recipe. It asks you to look honestly at how work flows, or doesn't, and improve from there. It is, in my view, the most powerful and most underused tool in the Lean/Agile toolkit.</p>
               </div>
             </div>
 
@@ -518,23 +570,23 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* GETTING SHIT DONE - Accelerated Delivery */}
         {/* ============================================================ */}
-        <section id="AcceleratedDelivery" className="py-16 bg-[#111]">
+        <section id="AcceleratedDelivery" className="py-16 bg-[#2d3a4a]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">Getting Shit Done</h2>
-              <p className="text-white/40 mb-8">Accelerated Delivery</p>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Getting Shit Done</h2>
+              <p className="text-[#7a8a9a] mb-8">Accelerated Delivery</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-white/70">
+              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
                 <p>Deliver value faster. Reduce delays, multitasking and bottlenecks. Visualise work, limit WIP, continuously improve using data. Smoother, more predictable delivery that your teams can see and trust.</p>
                 <p>Make the invisible visible. Visualise your work, configure your tooling, instrument your workflow so you can see how your delivery system is actually performing and identify improvements you can make yourselves.</p>
                 <p>Deliver change that sticks. Experienced practitioners give your teams the skills and confidence to own and evolve their practices. Continuous improvement becomes part of the DNA, not a project with an end date.</p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <p className="text-[10px] text-white/30 uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-white/50 text-[13px]">British Airways / IAG · HSBC · Shell Recharge · Co-operative Bank · Cheshire Data Systems · Manchester Airports Group</p>
+              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
+                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#a8b5c4] text-[13px]">British Airways / IAG · HSBC · Shell Recharge · Co-operative Bank · Cheshire Data Systems · Manchester Airports Group</p>
               </div>
             </div>
 
@@ -554,7 +606,7 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* AI WITH CONTROL */}
         {/* ============================================================ */}
-        <section id="InnovationAI" className="py-16 bg-white text-black">
+        <section id="InnovationAI" className="py-16 bg-[#e8eaed] text-[#1e2936]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Images - left side, full bleed */}
             <div className="grid grid-cols-2 order-2 lg:order-1">
@@ -570,19 +622,19 @@ export default function HomePage() {
             {/* Text - right side with padding */}
             <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
               <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">AI with Control</h2>
-              <p className="text-black/40 mb-8">From strategy to implementation to execution</p>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#1e2936]">AI with Control</h2>
+              <p className="text-[#5a6a7a] mb-8">From strategy to implementation to execution</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-black/70">
+              <div className="space-y-4 text-[14px] leading-relaxed text-[#3d4d5f]">
                 <p>Actively building AI products and helping clients navigate AI strategy, implementation and execution. Not theory. Working systems.</p>
                 <p>Building AI-powered SaaS tools using LLMs including Claude, Gemini and Grok. Practical experience in prompt engineering, context orchestration and agentic workflow design.</p>
                 <p>Vibe coding done properly: right-sized, right-timed solutions that actually get used. Build what's needed, nothing more, ship it, learn, iterate.</p>
                 <p>Contributor to British Airways Operational Decision Intelligence. Bridges strategy, delivery and technical implementation credibly.</p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-black/10">
-                <p className="text-[10px] text-black/30 uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-black/50 text-[13px]">British Airways / IAG · Cheshire Data Systems · Intrapay / Sappaya</p>
+              <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
+                <p className="text-[10px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#3d4d5f] text-[13px]">British Airways / IAG · Cheshire Data Systems · Intrapay / Sappaya</p>
               </div>
             </div>
           </div>
@@ -591,28 +643,28 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* ALIGNMENT */}
         {/* ============================================================ */}
-        <section id="Alignment" className="py-16 bg-[#0a0a0a]">
+        <section id="Alignment" className="py-16 bg-gradient-to-br from-[#1e2936] to-[#2d3a4a]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">Strategy to Execution Alignment</h2>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Strategy to Execution Alignment</h2>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-white/70">
+              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
                 <p>Helping organisations close the gap between what the boardroom decides and what the teams actually deliver. OKRs, value streams, lean portfolio leadership: connecting the why to the what to the how.</p>
                 <p>Not another layer of process. A clearer line of sight. Working with leadership and delivery teams simultaneously, so the conversation in the boardroom and the work on the board are finally telling the same story.</p>
               </div>
 
               {/* Key story */}
-              <div className="mt-8 p-6 bg-[#c2410c]/10 border-l-4 border-[#c2410c]">
-                <p className="text-[14px] leading-relaxed text-white/80">
+              <div className="mt-8 p-6 bg-[#c2410c]/15 border-l-4 border-[#c2410c] rounded-r-lg">
+                <p className="text-[14px] leading-relaxed text-[#d4dce6]">
                   A leadership team. 85 Post-Its on the wall, every one labelled mandatory, critical and urgent. I asked "Why? Show me the money." and started pulling tickets down. The consultancy owner who'd placed me panicked. Then the leadership started doing it themselves. "Dave, do we really need that?" "Nah, probably not." 14 survived. 10 shipped as working digital products. That room didn't need a transformation programme. It needed someone to ask the right question.
                 </p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <p className="text-[10px] text-white/30 uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-white/50 text-[13px]">Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank · Intrapay / Sappaya</p>
+              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
+                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#a8b5c4] text-[13px]">Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank · Intrapay / Sappaya</p>
               </div>
             </div>
 
@@ -632,7 +684,7 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* FLOWENCY */}
         {/* ============================================================ */}
-        <section id="Flowency" className="py-16 bg-white text-black">
+        <section id="Flowency" className="py-16 bg-[#f5f3f0] text-[#1e2936]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Images - left side, full bleed */}
             <div className="grid grid-cols-2 order-2 lg:order-1">
@@ -648,19 +700,19 @@ export default function HomePage() {
             {/* Text - right side with padding */}
             <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
               <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">Flowency</h2>
-              <p className="text-black/40 mb-8">Making flow of value visible and predictable</p>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#1e2936]">Flowency</h2>
+              <p className="text-[#5a6a7a] mb-8">Making flow of value visible and predictable</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-black/70">
+              <div className="space-y-4 text-[14px] leading-relaxed text-[#3d4d5f]">
                 <p>Start where you are. Bring clarity, focus and stability. Then optimise for flow. Evolutionary, continuous improvement: building internal capability so the changes stick long after the engagement ends.</p>
                 <p>Uses STATIK (a Systems Thinking Approach to implementing Kanban) to diagnose structural friction and design fit-for-purpose delivery systems. Uncovers invisible and stalled work, establishes pull-based systems, and surfaces cycle time, lead time, flow efficiency and blocker trends. Makes the system legible before trying to change it.</p>
                 <p>Framework agnostic, method diverse. Scrum, Kanban, SAFe, Spotify: applied contextually for each organisation's maturity. Not installed. Grown. Holds the Kanban Management Professional (KMP) credential through Kanban University.</p>
                 <p>I've consulted, coached, led and co-sourced lean, Agile and DevOps teams and scaled them, using SAFe, LeSS and Spotify, with success and without. The failures taught me as much as the wins. That honesty is part of how I work.</p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-black/10">
-                <p className="text-[10px] text-black/30 uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-black/50 text-[13px]">HSBC (x2) · Capital One UK (40-45 teams, 4 SAFe Release Trains) · Modix / Cox Automotive · Manchester Airports Group · Barclaycard UK</p>
+              <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
+                <p className="text-[10px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#3d4d5f] text-[13px]">HSBC (x2) · Capital One UK (40-45 teams, 4 SAFe Release Trains) · Modix / Cox Automotive · Manchester Airports Group · Barclaycard UK</p>
               </div>
             </div>
           </div>
@@ -669,23 +721,23 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* VIBE CODING */}
         {/* ============================================================ */}
-        <section id="VibeCoding" className="py-16 bg-[#0a0a0a]">
+        <section id="VibeCoding" className="py-16 bg-[#2d3a4a]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6">Vibe Coding</h2>
-              <p className="text-white/40 mb-8">Fit 4 Purpose</p>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Vibe Coding</h2>
+              <p className="text-[#7a8a9a] mb-8">Fit 4 Purpose</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-white/70">
+              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
                 <p>Making solutions and products that are right-sized, right-timed and actually get used. Not over-engineered. Not under-thought. Fit for purpose, which requires understanding what purpose actually is.</p>
                 <p>Building AI-powered SaaS applications using modern LLM ecosystems. Practical, deployable, real. The kind of thing that exists in production, not in a pitch deck.</p>
                 <p>The same instinct that strips 85 initiatives down to 14 applies here: build what's needed, nothing more, ship it, learn, iterate. Speed without recklessness. Simplicity without corners cut.</p>
               </div>
 
-              <div className="mt-8 pt-6 border-t border-white/10">
-                <p className="text-[10px] text-white/30 uppercase tracking-widest mb-2">Projects</p>
-                <p className="text-white/50 text-[13px]">Internal Flowency tools · BA Operational Intelligence · Client prototypes</p>
+              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
+                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Projects</p>
+                <p className="text-[#a8b5c4] text-[13px]">Internal Flowency tools · BA Operational Intelligence · Client prototypes</p>
               </div>
             </div>
 
@@ -703,10 +755,10 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* WHAT I DON'T DO */}
         {/* ============================================================ */}
-        <section id="WhatIDontDo" className="px-8 lg:px-16 py-16 bg-[#c2410c] text-black">
+        <section id="WhatIDontDo" className="px-8 lg:px-16 py-16 bg-gradient-to-r from-[#c2410c] to-[#ea580c] text-white">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">What I don't do</h2>
-            <p className="text-black/60 text-center mb-12">I've seen enough to know what works, and what doesn't.</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-white">What I don't do</h2>
+            <p className="text-white/70 text-center mb-12">I've seen enough to know what works, and what doesn't.</p>
 
             <div className="space-y-8">
               <DontDoItem title="Force change upon you" text="Real change sticks when it's done by your people, not to them. I meet you where you are and build momentum through incremental change and visible results. Not fear, disruption, or top-down mandates." />
@@ -721,10 +773,10 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* HIGHLIGHTS */}
         {/* ============================================================ */}
-        <section id="Highlights" className="py-16 bg-[#1a1a1a]">
+        <section id="Highlights" className="py-16 bg-[#1e2936]">
           <div className="px-8 lg:px-16 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-white">Highlights</h2>
-            <p className="text-white/50 text-center">Everyone has their favourites. Places I've enjoyed. Friends made. Peers learned from. Outcomes realised.</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-[#f8f7f5]">Highlights</h2>
+            <p className="text-[#a8b5c4] text-center">Everyone has their favourites. Places I've enjoyed. Friends made. Peers learned from. Outcomes realised.</p>
           </div>
 
           <CaptionedPhotoGallery images={highlightImages} />
@@ -735,9 +787,9 @@ export default function HomePage() {
         {/* ============================================================ */}
         <section id="GigList" ref={gigListRef} className="relative py-16 lg:py-20 overflow-hidden">
           {/* Textured background with subtle warmth */}
-          <div className="absolute inset-0 bg-[#faf9f7]" />
+          <div className="absolute inset-0 bg-[#e8eaed]" />
           <div
-            className="absolute inset-0 opacity-[0.03]"
+            className="absolute inset-0 opacity-[0.04]"
             style={{
               backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
             }}
@@ -764,10 +816,10 @@ export default function HomePage() {
           <div className="relative z-10">
             {/* Header */}
             <div className="text-center mb-12 px-8">
-              <h2 className="text-4xl md:text-5xl font-bold text-[#1a1a1a] mb-4">
+              <h2 className="text-4xl md:text-5xl font-bold text-[#1e2936] mb-4">
                 The Gig List
               </h2>
-              <p className="text-[#666] text-lg">
+              <p className="text-[#5a6a7a] text-lg">
                 Just some of the great organisations I've worked with over the years.
               </p>
             </div>
@@ -825,25 +877,25 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* SAY HELLO */}
         {/* ============================================================ */}
-        <section id="SayHello" className="px-8 lg:px-16 py-16 bg-white text-black">
+        <section id="SayHello" className="px-8 lg:px-16 py-16 bg-[#f5f3f0] text-[#1e2936]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center">Let's talk</h2>
-            <p className="text-black/50 text-center mb-12">Fill in the form or drop me a line. No pitch decks. No jargon. Just a conversation about what you're trying to achieve.</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-[#1e2936]">Let's talk</h2>
+            <p className="text-[#5a6a7a] text-center mb-12">Fill in the form or drop me a line. No pitch decks. No jargon. Just a conversation about what you're trying to achieve.</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
               <div>
                 <div className="space-y-3 text-[14px]">
-                  <p><a href="tel:+447758240770" className="text-black hover:text-[#c2410c] transition-colors">+44 7758 240770</a></p>
-                  <p><a href="mailto:jason@flowency.co.uk" className="text-black hover:text-[#c2410c] transition-colors">jason@flowency.co.uk</a></p>
+                  <p><a href="tel:+447758240770" className="text-[#1e2936] hover:text-[#c2410c] transition-colors">+44 7758 240770</a></p>
+                  <p><a href="mailto:jason@flowency.co.uk" className="text-[#1e2936] hover:text-[#c2410c] transition-colors">jason@flowency.co.uk</a></p>
                 </div>
               </div>
 
               <form className="space-y-4">
-                <input type="text" placeholder="Name" className="w-full bg-black/5 border border-black/10 px-4 py-3 text-black text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-black/30" />
-                <input type="email" placeholder="Email" className="w-full bg-black/5 border border-black/10 px-4 py-3 text-black text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-black/30" />
-                <input type="tel" placeholder="Phone" className="w-full bg-black/5 border border-black/10 px-4 py-3 text-black text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-black/30" />
-                <textarea placeholder="Message" rows={4} className="w-full bg-black/5 border border-black/10 px-4 py-3 text-black text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors resize-none placeholder:text-black/30" />
-                <button type="submit" className="px-6 py-3 bg-[#c2410c] text-white text-[13px] font-medium hover:bg-[#9a3409] transition-colors">
+                <input type="text" placeholder="Name" className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-[#1e2936]/40 rounded" />
+                <input type="email" placeholder="Email" className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-[#1e2936]/40 rounded" />
+                <input type="tel" placeholder="Phone" className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-[#1e2936]/40 rounded" />
+                <textarea placeholder="Message" rows={4} className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors resize-none placeholder:text-[#1e2936]/40 rounded" />
+                <button type="submit" className="px-6 py-3 bg-gradient-to-r from-[#c2410c] to-[#ea580c] text-white text-[13px] font-semibold hover:from-[#9a3409] hover:to-[#c2410c] transition-all rounded shadow-lg shadow-[#c2410c]/20">
                   Send Message
                 </button>
               </form>
@@ -852,12 +904,12 @@ export default function HomePage() {
         </section>
 
         {/* Footer */}
-        <footer className="px-8 lg:px-16 py-8 bg-[#0a0a0a] border-t border-white/10">
+        <footer className="px-8 lg:px-16 py-8 bg-[#1e2936] border-t border-[#3d4d5f]/30">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-white/30 text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
-            <div className="flex items-center gap-6 text-white/30 text-[11px]">
-              <Link to="/what-shapes-me" className="hover:text-white transition-colors">What Shapes Me</Link>
-              <a href="https://flowency.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Flowency</a>
+            <p className="text-[#7a8a9a] text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
+            <div className="flex items-center gap-6 text-[#7a8a9a] text-[11px]">
+              <Link to="/what-shapes-me" className="hover:text-[#f8f7f5] transition-colors">What Shapes Me</Link>
+              <a href="https://flowency.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-[#f8f7f5] transition-colors">Flowency</a>
             </div>
           </div>
         </footer>
@@ -874,18 +926,18 @@ export default function HomePage() {
 function PhilosophyPoint({ number, title, text }: { number: string; title: string; text: string }) {
   return (
     <div>
-      <h3 className="text-[14px] font-bold text-black leading-snug mb-1">
+      <h3 className="text-[14px] font-bold text-[#1e2936] leading-snug mb-1">
         <span className="text-[#c2410c]">{number} //</span> {title}
       </h3>
-      <p className="text-[12px] text-black/60 leading-relaxed">{text}</p>
+      <p className="text-[12px] text-[#3d4d5f] leading-relaxed">{text}</p>
     </div>
   );
 }
 
 function ImagePlaceholder({ label, path, wide = false, light = false }: { label: string; path: string; wide?: boolean; light?: boolean }) {
   return (
-    <div className={`${wide ? "aspect-[2/1]" : "aspect-square"} ${light ? "bg-black/5" : "bg-white/5"} flex items-center justify-center`}>
-      <span className={`text-[10px] ${light ? "text-black/20" : "text-white/20"} text-center px-2`}>[{label}]<br /><span className="text-[8px] opacity-50">{path}</span></span>
+    <div className={`${wide ? "aspect-[2/1]" : "aspect-square"} ${light ? "bg-[#1e2936]/5" : "bg-[#f8f7f5]/10"} flex items-center justify-center`}>
+      <span className={`text-[10px] ${light ? "text-[#1e2936]/25" : "text-[#f8f7f5]/25"} text-center px-2`}>[{label}]<br /><span className="text-[8px] opacity-50">{path}</span></span>
     </div>
   );
 }
@@ -893,8 +945,8 @@ function ImagePlaceholder({ label, path, wide = false, light = false }: { label:
 function DontDoItem({ title, text }: { title: string; text: string }) {
   return (
     <div>
-      <h3 className="text-lg font-bold text-black mb-2">{title}</h3>
-      <p className="text-black/70 text-[14px] leading-relaxed">{text}</p>
+      <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
+      <p className="text-white/80 text-[14px] leading-relaxed">{text}</p>
     </div>
   );
 }
