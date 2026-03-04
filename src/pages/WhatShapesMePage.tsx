@@ -20,13 +20,13 @@ const professionalBooks = [
   { title: "Flow", author: "Fin Goulding & Haydn Shaughnessy", cover: "/assets/images/books/flow-goulding.jpg", description: "A rare book that bridges the human and systemic sides of flow, not just the engineering metrics, but what it actually takes to build organisations that can move." },
   { title: "Agile Software Development Ecosystems", author: "Jim Highsmith", cover: "/assets/images/books/agile-ecosystems.jpg", description: "One of the original texts. Before SAFe, before the Spotify model, before every consultancy had an agile brand, Highsmith was writing the foundations. Reminds you where all of this came from." },
   { title: "Turtles All the Way Down", author: "DeLozier & Grinder", cover: "/assets/images/books/turtles-all-the-way-down.jpg", description: "NLP modelling strategies for personal genius. The meta-level thinking about how people learn and how patterns form has informed how I coach more than most agile books." },
+  { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", cover: "/assets/images/books/thinking-fast-slow.jpg", description: "Two systems. One that reacts fast, pattern-matches and jumps to conclusions. One that works harder, thinks slower, and is usually right. Understanding the difference has made me a better coach, facilitator, and listener." },
 ];
 
 const personalBooks = [
   { title: "Shoe Dog", author: "Phil Knight", cover: "/assets/images/books/shoe-dog.jpg", description: "The Nike origin story. Honest, messy, brilliant. A reminder that building something real is never the clean narrative it looks like in retrospect. One of the most energising reads I've had in years." },
   { title: "Bill Drummond", author: "Paolo Hewitt", cover: "/assets/images/books/bill-drummond.jpg", description: "The KLF. Art, music, chaos and burning a million pounds on a Scottish island. A book about doing things your own way and not caring whether it fits the framework. More relevant to my work than it has any right to be." },
   { title: "The Subtle Art of Not Giving a F*ck", author: "Mark Manson", cover: "/assets/images/books/subtle-art.jpg", description: "I've never been interested in saying what people want to hear. In rooms where everyone else was staying quiet, I called it, grounded, always, but called it. This book puts a framework around what I've always just done instinctively." },
-  { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", cover: "/assets/images/books/thinking-fast-slow.jpg", description: "Two systems. One that reacts fast, pattern-matches and jumps to conclusions. One that works harder, thinks slower, and is usually right. Understanding the difference has made me a better coach, facilitator, and listener." },
 ];
 
 const drummers = [
