@@ -594,38 +594,29 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* SHOW ME THE MONEY - Value & Intent Alignment */}
         {/* ============================================================ */}
-        <section id="ShowMeTheMoney" className="py-16 bg-[#1a1f26]">
+        <section id="ShowMeTheMoney" className="py-20 bg-[#0a0a0a]">
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
-            <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Show Me The Money</h2>
-              <p className="text-[#7a8a9a] mb-8">Value & Intent Alignment</p>
+            <div className="px-8 lg:pl-16 lg:pr-12 flex flex-col justify-center">
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-white leading-tight">Show Me The Money</h2>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
+              <div className="space-y-6 text-[17px] leading-relaxed text-white/90">
                 <p>In the age of AI-accelerated development, the bottleneck isn't delivery speed anymore. It's knowing what's worth building in the first place.</p>
                 <p>I help organisations ruthlessly prioritise. Show me the money. Show me the value. Show me why this matters more than everything else competing for attention. If you can't answer that, we shouldn't be building it.</p>
                 <p>Most backlogs are graveyards of good intentions. Features nobody asked for. Initiatives labelled "strategic" because someone senior said so. I ask the uncomfortable questions that clear the fog.</p>
               </div>
 
-              {/* Key story */}
-              <div className="mt-8 p-6 bg-[#c2410c]/15 border-l-4 border-[#c2410c] rounded-r-lg">
-                <p className="text-[14px] leading-relaxed text-[#d4dce6]">
-                  85 Post-Its on the wall. Every one mandatory, critical and urgent. I asked "Why? Show me the money." The consultancy owner who'd placed me panicked. Then leadership started doing it themselves. "Dave, do we really need that?" "Nah, probably not." 14 survived. 10 shipped as working digital products.
-                </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-[#a8b5c4] text-[13px]">Shell Recharge · HSBC · Capital One UK · Co-operative Bank · British Airways</p>
+              <div className="mt-10">
+                <p className="text-[13px] font-semibold text-white/60 uppercase tracking-wider mb-3">Clients</p>
+                <p className="text-white/90 text-[15px]">Shell Recharge · HSBC · Capital One UK · Co-operative Bank · British Airways</p>
               </div>
             </div>
 
-            {/* Image - right side, single impactful image */}
-            <div className="flex items-center justify-center">
+            {/* Image - right side */}
+            <div className="h-full min-h-[400px] lg:min-h-0">
               <img
                 src="/assets/images/showme.webp"
-                alt="Show Me The Money"
+                alt="Show Me The Money - prioritisation workshop"
                 className="w-full h-full object-cover"
               />
             </div>
