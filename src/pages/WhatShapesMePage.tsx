@@ -1,0 +1,308 @@
+import { Link } from "wouter";
+import { Mail, Linkedin, Instagram, MessageCircle, ArrowLeft } from "lucide-react";
+
+// ============================================================================
+// WHAT SHAPES ME PAGE
+// Books, Music, Drummers - the influences behind the work
+// ============================================================================
+
+const professionalBooks = [
+  { title: "Flow Engineering", author: "Pereira & Davis", cover: "/assets/images/books/flow-engineering.jpg", description: "The question every exec asks me: 'how do I get results faster?' This book answers it practically, clearly and without the usual fluff. Essential reading for anyone serious about delivery." },
+  { title: "The Principles of Product Development Flow", author: "Donald Reinertsen", cover: "/assets/images/books/principles-product-dev-flow.jpg", description: "Not for the faint-hearted. Reinertsen's economic framework for flow changed how I think about prioritisation, WIP and the true cost of delay. Dense, rigorous, transformative." },
+  { title: "Project to Product", author: "Mik Kersten", cover: "/assets/images/books/project-to-product.jpg", description: "Saw a keynote and was immediately taken. The forensic challenge to silo and project thinking, reframed as value streams and product thinking, is still one of the most important shifts an organisation can make." },
+  { title: "Sooner, Safer, Happier", author: "Jon Smart et al", cover: "/assets/images/books/sooner-safer-happier.jpg", description: "Does what it says on the tin. Practical, honest, grounded in real transformation experience. The title alone is a better transformation goal than most strategy decks I've seen." },
+  { title: "Leading Change", author: "John Kotter", cover: "/assets/images/books/leading-change.jpg", description: "Still the clearest framework for understanding why change fails and what to do instead. Every transformation I've been part of has bumped into one of Kotter's eight stages. Usually the ones people skip." },
+  { title: "Making Work Visible", author: "Dominica DeGrandis", cover: "/assets/images/books/making-work-visible.jpg", description: "Time theft is real and most organisations have no idea it's happening. Dominica names the five thieves and shows you how to see them. I've used this in client workshops more times than I can count." },
+  { title: "Lean Change Management", author: "Jason Little", cover: "/assets/images/books/lean-change-management.jpg", description: "Change that sticks has to be owned by the people living it. Jason Little gets this in a way that most change management approaches completely miss. Practical, human, and genuinely useful." },
+  { title: "A Seat at the Table", author: "Mark Schwartz", cover: "/assets/images/books/seat-at-the-table.jpg", description: "IT leadership reframed. The conversation between technology and the business has needed this book for decades. Clarity, confidence, and a strong sense of what good actually looks like." },
+  { title: "Getting Naked", author: "Patrick Lencioni", cover: "/assets/images/books/getting-naked.jpg", description: "The most important thing a consultant can do is be vulnerable enough to tell the truth before they've won the trust. Lencioni's fable captures something I try to live by, especially when it's uncomfortable." },
+  { title: "Commitment", author: "Maassen & Geary", cover: "/assets/images/books/commitment.jpg", description: "A genuinely novel format, fiction used to explain real options thinking and economic decision-making. I've recommended this to more CTOs than any other book on this list." },
+  { title: "Flow", author: "Fin Goulding & Haydn Shaughnessy", cover: "/assets/images/books/flow-goulding.jpg", description: "A rare book that bridges the human and systemic sides of flow, not just the engineering metrics, but what it actually takes to build organisations that can move." },
+  { title: "Agile Software Development Ecosystems", author: "Jim Highsmith", cover: "/assets/images/books/agile-ecosystems.jpg", description: "One of the original texts. Before SAFe, before the Spotify model, before every consultancy had an agile brand, Highsmith was writing the foundations. Reminds you where all of this came from." },
+  { title: "Turtles All the Way Down", author: "DeLozier & Grinder", cover: "/assets/images/books/turtles-all-the-way-down.jpg", description: "NLP modelling strategies for personal genius. The meta-level thinking about how people learn and how patterns form has informed how I coach more than most agile books." },
+];
+
+const personalBooks = [
+  { title: "Shoe Dog", author: "Phil Knight", cover: "/assets/images/books/shoe-dog.jpg", description: "The Nike origin story. Honest, messy, brilliant. A reminder that building something real is never the clean narrative it looks like in retrospect. One of the most energising reads I've had in years." },
+  { title: "Bill Drummond", author: "Paolo Hewitt", cover: "/assets/images/books/bill-drummond.jpg", description: "The KLF. Art, music, chaos and burning a million pounds on a Scottish island. A book about doing things your own way and not caring whether it fits the framework. More relevant to my work than it has any right to be." },
+  { title: "The Subtle Art of Not Giving a F*ck", author: "Mark Manson", cover: "/assets/images/books/subtle-art.jpg", description: "I've never been interested in saying what people want to hear. In rooms where everyone else was staying quiet, I called it, grounded, always, but called it. This book puts a framework around what I've always just done instinctively." },
+  { title: "Thinking, Fast and Slow", author: "Daniel Kahneman", cover: "/assets/images/books/thinking-fast-slow.jpg", description: "Two systems. One that reacts fast, pattern-matches and jumps to conclusions. One that works harder, thinks slower, and is usually right. Understanding the difference has made me a better coach, facilitator, and listener." },
+];
+
+const drummers = [
+  { name: "Neil Peart", band: "Rush", description: "Precision, complexity, intellect. Peart treated the drum kit as a compositional instrument, not just a rhythm section. Every note placed with intent. The systems thinker's drummer." },
+  { name: "Jeff Porcaro", band: "Toto", description: "The half-time shuffle on Rosanna. Possibly the most studied groove in recorded music history. Porcaro made feel look effortless, which is the hardest thing to do. Context, sensitivity, taste." },
+  { name: "Keith Moon", band: "The Who", description: "Beautiful, deliberate chaos. Moon played around the beat, not on it, and somehow it worked. A reminder that rules exist to be understood deeply before you break them beautifully." },
+];
+
+const albums = [
+  { title: "Exile on Main Street", artist: "The Rolling Stones", description: "Loose, raw, layered. A masterpiece that sounds like it wasn't trying to be one. More ideas per side than most bands produce in a career." },
+  { title: "Never Mind the Bollocks", artist: "The Sex Pistols", description: "It wasn't supposed to work. It worked completely. Sometimes the most disruptive thing you can do is say 'this is wrong' loudly enough that everyone stops pretending it isn't." },
+  { title: "Dark Side of the Moon", artist: "Pink Floyd", description: "Precision meeting emotion. A record about time, money, madness and what we do to each other, built with obsessive craft and then played at enormous scale. Nick Mason holds the whole thing together. Quietly." },
+];
+
+export default function WhatShapesMePage() {
+  return (
+    <div className="min-h-screen bg-[#0a0a0a] text-white font-['Montserrat',sans-serif]">
+
+      {/* ================================================================ */}
+      {/* LEFT SIDEBAR NAV - Desktop */}
+      {/* ================================================================ */}
+      <aside className="fixed left-0 top-0 h-full w-52 z-50 bg-[#0a0a0a] border-r border-white/10 hidden lg:flex flex-col">
+        <Link to="/" className="p-6 border-b border-white/10">
+          <span className="text-lg font-bold"><span className="text-[#c2410c]">jason</span>jones</span>
+        </Link>
+
+        <nav className="flex-1 py-4 overflow-y-auto">
+          <Link to="/" className="w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent flex items-center gap-2">
+            <ArrowLeft size={12} /> back to about
+          </Link>
+          <div className="my-4 border-t border-white/10" />
+          <a href="#hero" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-[#c2410c] border-l-2 border-[#c2410c] bg-white/5">what shapes me</a>
+          <a href="#books-pro" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">books - professional</a>
+          <a href="#books-personal" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">books - personal</a>
+          <a href="#drummers" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">the drummers</a>
+          <a href="#albums" className="block w-full text-left px-6 py-2 text-[12px] uppercase tracking-wider text-white/40 hover:text-white/70 border-l-2 border-transparent">albums</a>
+        </nav>
+
+        <div className="p-6 border-t border-white/10 space-y-2">
+          <a href="mailto:jason@flowency.co.uk" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
+            <Mail size={12} /> Email
+          </a>
+          <a href="https://www.linkedin.com/in/jjonesuk" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
+            <Linkedin size={12} /> LinkedIn
+          </a>
+          <a href="https://www.instagram.com/jayjonesy73" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
+            <Instagram size={12} /> Instagram
+          </a>
+          <a href="https://wa.me/447758240770" target="_blank" rel="noopener noreferrer" className="flex items-center gap-2 text-white/30 hover:text-[#c2410c] text-[11px]">
+            <MessageCircle size={12} /> WhatsApp
+          </a>
+        </div>
+      </aside>
+
+      {/* Mobile back button */}
+      <Link to="/" className="lg:hidden fixed top-4 left-4 z-[100] p-2 text-white/60 hover:text-white flex items-center gap-2 text-sm">
+        <ArrowLeft size={20} /> Back
+      </Link>
+
+      {/* ================================================================ */}
+      {/* MAIN CONTENT */}
+      {/* ================================================================ */}
+      <main className="lg:ml-52">
+
+        {/* ============================================================ */}
+        {/* HERO */}
+        {/* ============================================================ */}
+        <section id="hero" className="min-h-[50vh] flex items-center px-8 lg:px-16 py-20 relative overflow-hidden">
+          <div className="absolute inset-0 bg-gradient-to-br from-[#c2410c]/10 to-transparent" />
+
+          <div className="relative z-10 max-w-4xl">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6">
+              Standing on the shoulders of
+              <br />
+              <span className="text-[#c2410c] font-normal">giants</span>
+            </h1>
+            <div className="space-y-4 text-white/70 text-[15px] leading-relaxed max-w-3xl">
+              <p>The first time I played with one of the UK's top brass bands, I followed the conductor's downbeat precisely and was completely out of time with everyone else. The ensemble were connected to each other. The conductor was shaping the music, not driving it. I had to step back, listen to everything happening around me, and adapt. That lesson about reading a room and observing a whole system before you act in it has never left me.</p>
+              <p>BBC Micro at age 12. SCC training rooms in the early 2000s. Dassault Systemes in Toulouse. Teams in Vietnam, India and Poland. Every one of those environments taught something different about systems, about people, about context, about what it means to do work that actually matters.</p>
+              <p>I co-founded a construction tech startup. We built ClearBuild, a centralised construction site management application that was voted runner-up for most innovative new product at InterBuild 2007. Then the UK construction recession hit. Nobody wanted it. Everybody was protecting costs. We hadn't seen it coming. The product was right. The timing was brutal. I have a deep respect for anyone who has built something real and watched the market move. Timing is everything.</p>
+              <p className="text-white/50">These are the things that shaped how I think, how I work, and occasionally how I play. Always open to more suggestions.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* PROFESSIONAL BOOKS */}
+        {/* ============================================================ */}
+        <section id="books-pro" className="px-8 lg:px-16 py-16 bg-white text-black">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Books</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8">Professional</h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
+              {professionalBooks.map((book, index) => (
+                <FlipBookCard key={index} number={index + 1} {...book} />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* PERSONAL BOOKS */}
+        {/* ============================================================ */}
+        <section id="books-personal" className="px-8 lg:px-16 py-16 bg-[#111]">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Books</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8">Personal</h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {personalBooks.map((book, index) => (
+                <FlipBookCard key={index} number={professionalBooks.length + index + 1} {...book} dark />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* THE DRUMMERS */}
+        {/* ============================================================ */}
+        <section id="drummers" className="px-8 lg:px-16 py-16 bg-[#c2410c] text-black">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-black/60 text-xs font-bold uppercase tracking-widest mb-2">Music</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8">The Drummers</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {drummers.map((drummer, index) => (
+                <div key={index} className="bg-black/10 p-6">
+                  <h3 className="text-xl font-bold mb-1">{drummer.name}</h3>
+                  <p className="text-black/60 text-sm mb-4">{drummer.band}</p>
+                  <p className="text-black/80 text-[14px] leading-relaxed">{drummer.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* ALBUMS */}
+        {/* ============================================================ */}
+        <section id="albums" className="px-8 lg:px-16 py-16 bg-[#0a0a0a]">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Music</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8">Albums</h2>
+
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+              {albums.map((album, index) => (
+                <div key={index} className="border border-white/10 p-6">
+                  <h3 className="text-xl font-bold mb-1">{album.title}</h3>
+                  <p className="text-white/50 text-sm mb-4">{album.artist}</p>
+                  <p className="text-white/70 text-[14px] leading-relaxed">{album.description}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Footer */}
+        <footer className="px-8 lg:px-16 py-8 bg-[#0a0a0a] border-t border-white/10">
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-white/30 text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
+            <div className="flex items-center gap-6 text-white/30 text-[11px]">
+              <Link to="/" className="hover:text-white transition-colors">Home</Link>
+              <a href="https://flowency.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Flowency</a>
+            </div>
+          </div>
+        </footer>
+
+      </main>
+    </div>
+  );
+}
+
+// ============================================================================
+// COMPONENTS
+// ============================================================================
+
+// Flip card styles injected via style tag for 3D transform support
+const flipCardStyles = `
+  .flip-card {
+    perspective: 1000px;
+    height: 320px;
+  }
+  .flip-card-inner {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+    transform-style: preserve-3d;
+  }
+  .flip-card:hover .flip-card-inner {
+    transform: rotateY(180deg);
+  }
+  .flip-card-front,
+  .flip-card-back {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    backface-visibility: hidden;
+    -webkit-backface-visibility: hidden;
+  }
+  .flip-card-back {
+    transform: rotateY(180deg);
+  }
+`;
+
+function FlipBookCard({
+  number,
+  title,
+  author,
+  cover,
+  description,
+  dark = false
+}: {
+  number: number;
+  title: string;
+  author: string;
+  cover: string;
+  description: string;
+  dark?: boolean
+}) {
+  return (
+    <>
+      <style>{flipCardStyles}</style>
+      <div className="flip-card">
+        <div className="flip-card-inner">
+          {/* Front - Book Cover */}
+          <div className="flip-card-front">
+            <div
+              className={`h-full flex flex-col items-center justify-center p-4 ${
+                dark ? "bg-[#1a1a1a] border border-white/10" : "bg-[#f5f5f5]"
+              }`}
+            >
+              <img
+                src={cover}
+                alt={`${title} by ${author}`}
+                className="max-h-[260px] w-auto object-contain drop-shadow-lg"
+                onError={(e) => {
+                  // Fallback if image doesn't load - show title card
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                  const fallback = target.nextElementSibling as HTMLElement;
+                  if (fallback) fallback.style.display = 'flex';
+                }}
+              />
+              {/* Fallback when image fails to load */}
+              <div
+                className={`hidden flex-col items-center justify-center text-center h-[260px] w-full px-4 ${
+                  dark ? "bg-gradient-to-br from-[#c2410c]/20 to-[#1a1a1a]" : "bg-gradient-to-br from-[#c2410c]/10 to-white"
+                }`}
+              >
+                <span className="text-[#c2410c] text-[10px] font-bold mb-2">#{number}</span>
+                <h3 className={`text-lg font-bold leading-tight mb-2 ${dark ? "text-white" : "text-black"}`}>{title}</h3>
+                <p className={`text-sm ${dark ? "text-white/50" : "text-black/50"}`}>{author}</p>
+              </div>
+              <p className={`text-[10px] mt-3 ${dark ? "text-white/40" : "text-black/40"}`}>Hover to read</p>
+            </div>
+          </div>
+
+          {/* Back - Description */}
+          <div className="flip-card-back">
+            <div
+              className={`h-full p-5 flex flex-col overflow-hidden ${
+                dark
+                  ? "bg-gradient-to-br from-[#c2410c] to-[#9a350a] text-white"
+                  : "bg-gradient-to-br from-[#c2410c] to-[#7c320a] text-white"
+              }`}
+            >
+              <span className="text-[10px] font-bold text-white/60">#{number}</span>
+              <h3 className="text-[15px] font-bold mt-1 mb-0.5 text-white">{title}</h3>
+              <p className="text-[12px] mb-3 text-white/70">{author}</p>
+              <p className="text-[13px] leading-relaxed text-white/90 overflow-y-auto flex-1">{description}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
