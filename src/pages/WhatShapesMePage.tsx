@@ -13,6 +13,7 @@ const professionalBooks = [
   { title: "Sooner, Safer, Happier", author: "Jon Smart et al", cover: "/assets/images/books/sooner-safer-happier.jpg", description: "Does what it says on the tin. Practical, honest, grounded in real transformation experience. The title alone is a better transformation goal than most strategy decks I've seen." },
   { title: "Leading Change", author: "John Kotter", cover: "/assets/images/books/leading-change.jpg", description: "Still the clearest framework for understanding why change fails and what to do instead. Every transformation I've been part of has bumped into one of Kotter's eight stages. Usually the ones people skip." },
   { title: "Making Work Visible", author: "Dominica DeGrandis", cover: "/assets/images/books/making-work-visible.jpg", description: "Time theft is real and most organisations have no idea it's happening. Dominica names the five thieves and shows you how to see them. I've used this in client workshops more times than I can count." },
+  { title: "Kanban", author: "David J. Anderson", cover: "/assets/images/books/kanban-condensed.jpg", description: "The book that codified what many teams were already doing instinctively. Anderson gave us the language to talk about flow, WIP limits, and pull systems in a way that boards and teams could both understand. Foundational." },
   { title: "Lean Change Management", author: "Jason Little", cover: "/assets/images/books/lean-change-management.jpg", description: "Change that sticks has to be owned by the people living it. Jason Little gets this in a way that most change management approaches completely miss. Practical, human, and genuinely useful." },
   { title: "A Seat at the Table", author: "Mark Schwartz", cover: "/assets/images/books/seat-at-the-table.jpg", description: "IT leadership reframed. The conversation between technology and the business has needed this book for decades. Clarity, confidence, and a strong sense of what good actually looks like." },
   { title: "Getting Naked", author: "Patrick Lencioni", cover: "/assets/images/books/getting-naked.jpg", description: "The most important thing a consultant can do is be vulnerable enough to tell the truth before they've won the trust. Lencioni's fable captures something I try to live by, especially when it's uncomfortable." },
@@ -124,6 +125,46 @@ export default function WhatShapesMePage() {
               {professionalBooks.map((book, index) => (
                 <FlipBookCard key={index} number={index + 1} {...book} />
               ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* FEATURED BOOK - THE PHOENIX PROJECT */}
+        {/* ============================================================ */}
+        <section className="px-8 lg:px-16 py-16 bg-[#0a0a0a]">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Featured</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">The one that changed everything</h2>
+
+            <div className="flex flex-col md:flex-row gap-8 items-start">
+              <div className="w-48 md:w-56 flex-shrink-0 mx-auto md:mx-0">
+                <div className="perspective-[1000px]">
+                  <div className="relative group cursor-pointer transition-transform duration-700 transform-style-3d hover:rotate-y-180">
+                    <div className="backface-hidden">
+                      <img
+                        src="/assets/images/books/the-pheonix-project.jpg"
+                        alt="The Phoenix Project"
+                        className="w-full shadow-2xl"
+                      />
+                    </div>
+                    <div className="absolute inset-0 backface-hidden rotate-y-180 bg-[#c2410c] p-4 flex flex-col justify-center">
+                      <p className="text-black text-xs font-bold uppercase tracking-widest mb-2">Gene Kim, Kevin Behr & George Spafford</p>
+                      <p className="text-black/80 text-[13px] leading-relaxed">The Phoenix Project</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div className="flex-1">
+                <h3 className="text-2xl font-bold text-white mb-2">The Phoenix Project</h3>
+                <p className="text-[#c2410c] text-sm mb-4">Gene Kim, Kevin Behr & George Spafford</p>
+                <div className="space-y-4 text-white/70 text-[15px] leading-relaxed">
+                  <p>If I could recommend one book to every IT leader, CTO, or frustrated delivery manager, this would be it. The Phoenix Project took the principles of lean manufacturing and showed, through narrative, how they apply to software delivery and IT operations.</p>
+                  <p>It's a novel about a fictional company in crisis, but it reads like a documentary of every dysfunctional organisation I've ever worked with. The politics, the firefighting, the heroics that mask systemic failure, it's all there. And then, slowly, the transformation begins.</p>
+                  <p>This book didn't just change how I think about delivery. It gave me a language to explain to executives why their projects are late, why their teams are burned out, and what they can actually do about it. The Four Types of Work. The Three Ways. Theory of Constraints applied to IT. All of it came together here first.</p>
+                  <p className="text-white/50 italic">If you haven't read it, start here. Everything else on this list makes more sense after you do.</p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
