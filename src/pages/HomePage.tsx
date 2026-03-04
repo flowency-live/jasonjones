@@ -1,7 +1,8 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
 import { Mail, Linkedin, Instagram, MessageCircle, Menu, X } from "lucide-react";
-import { PhotoGallery, GalleryImage, CaptionedPhotoGallery, CaptionedImage } from "@/components/PhotoGallery";
+import { PhotoGallery, CaptionedPhotoGallery } from "@/components/PhotoGallery";
+import type { GalleryImage, CaptionedImage } from "@/components/PhotoGallery";
 
 // ============================================================================
 // HOME PAGE - About Jason Jones
