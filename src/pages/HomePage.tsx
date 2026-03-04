@@ -171,7 +171,7 @@ export default function HomePage() {
       {/* Slate blue theme with orange accents */}
       {/* ================================================================ */}
 
-      {/* CSS for sliding underline animation */}
+      {/* CSS for sliding underline animation with gradient fade */}
       <style>{`
         .nav-link {
           position: relative;
@@ -183,7 +183,7 @@ export default function HomePage() {
           bottom: 8px;
           height: 2px;
           width: 0;
-          background: linear-gradient(90deg, #c2410c 0%, #ea580c 100%);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
           transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .nav-link:hover::after {
@@ -191,10 +191,11 @@ export default function HomePage() {
         }
         .nav-link.active::after {
           width: 24px;
-          background: #c2410c;
+          background: linear-gradient(90deg, #c2410c 0%, #7a8a9a 100%);
         }
         .nav-link.active:hover::after {
           width: calc(100% - 32px);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
         }
         .dropdown-child {
           position: relative;
@@ -202,18 +203,43 @@ export default function HomePage() {
         .dropdown-child::after {
           content: '';
           position: absolute;
-          left: 12px;
-          bottom: 6px;
-          height: 1.5px;
+          left: 16px;
+          bottom: 8px;
+          height: 2px;
           width: 0;
-          background: #c2410c;
-          transition: width 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
+          transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
         }
         .dropdown-child:hover::after {
-          width: calc(100% - 24px);
+          width: calc(100% - 32px);
         }
         .dropdown-child.active::after {
-          width: 16px;
+          width: 24px;
+          background: linear-gradient(90deg, #c2410c 0%, #7a8a9a 100%);
+        }
+        .dropdown-child.active:hover::after {
+          width: calc(100% - 32px);
+          background: linear-gradient(90deg, #c2410c 0%, #ea580c 40%, #5a6a7a 100%);
+        }
+        /* Dropdown hover behavior */
+        .nav-dropdown-wrapper {
+          position: relative;
+        }
+        .nav-dropdown-content {
+          max-height: 0;
+          opacity: 0;
+          overflow: hidden;
+          transition: max-height 0.35s ease-out, opacity 0.25s ease-out;
+        }
+        .nav-dropdown-wrapper:hover .nav-dropdown-content {
+          max-height: 500px;
+          opacity: 1;
+        }
+        .nav-dropdown-wrapper:hover .nav-dropdown-chevron {
+          transform: rotate(180deg);
+        }
+        .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
+          color: #c2410c;
         }
       `}</style>
 
@@ -237,23 +263,19 @@ export default function HomePage() {
           {NAV_STRUCTURE.map((item) => (
             <div key={item.id}>
               {item.type === 'dropdown' ? (
-                <>
+                <div className="nav-dropdown-wrapper">
                   {/* Dropdown trigger */}
                   <button
-                    onClick={() => toggleDropdown(item.id)}
-                    className={`nav-link w-full flex items-center justify-between px-4 py-3 text-[13px] font-semibold tracking-wide transition-all duration-200 group
-                      ${openDropdowns[item.id] ? 'text-[#c2410c]' : 'text-white/90 hover:text-white'}`}
+                    className="nav-dropdown-trigger nav-link w-full flex items-center justify-between px-4 py-3 text-[13px] font-semibold tracking-wide transition-all duration-200 group text-white/90"
                   >
                     <span>{item.label}</span>
                     <ChevronDown
                       size={14}
-                      className={`transition-transform duration-300 ${openDropdowns[item.id] ? 'rotate-180 text-[#c2410c]' : 'text-white/50 group-hover:text-white'}`}
+                      className="nav-dropdown-chevron transition-transform duration-300 text-white/50 group-hover:text-white"
                     />
                   </button>
                   {/* Dropdown children */}
-                  <div
-                    className={`overflow-hidden transition-all duration-300 ease-out ${openDropdowns[item.id] ? 'max-h-96 opacity-100' : 'max-h-0 opacity-0'}`}
-                  >
+                  <div className="nav-dropdown-content">
                     <div className="ml-4 pl-4 border-l-2 border-[#c2410c]/30 py-1">
                       {item.children?.map((child) => (
                         child.external ? (
@@ -262,19 +284,19 @@ export default function HomePage() {
                             href={child.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="dropdown-child flex items-center gap-2 px-3 py-2.5 text-[12px] font-medium text-white/70 hover:text-[#c2410c] transition-colors"
+                            className="dropdown-child flex items-center gap-2 px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-colors"
                           >
                             <span>{child.label}</span>
-                            <ExternalLink size={10} className="opacity-60" />
+                            <ExternalLink size={12} className="opacity-60" />
                           </a>
                         ) : (
                           <button
                             key={child.id}
                             onClick={() => scrollTo(child.id)}
-                            className={`dropdown-child w-full text-left px-3 py-2.5 text-[12px] font-medium transition-colors
+                            className={`dropdown-child w-full text-left px-4 py-3 text-[13px] font-semibold tracking-wide transition-colors
                               ${activeSection === child.id
                                 ? 'active text-[#c2410c]'
-                                : 'text-white/70 hover:text-white'}`}
+                                : 'text-white/90 hover:text-white'}`}
                           >
                             {child.label}
                           </button>
@@ -282,7 +304,7 @@ export default function HomePage() {
                       ))}
                     </div>
                   </div>
-                </>
+                </div>
               ) : item.type === 'page' ? (
                 <Link
                   to={item.href || '/'}
