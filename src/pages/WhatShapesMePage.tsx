@@ -89,34 +89,35 @@ export default function WhatShapesMePage() {
       >
         {/* Logo / Name */}
         <Link to="/" className="px-10 pt-10 pb-6">
-          <h1 className="text-[22px] font-bold tracking-tight font-['Poppins',sans-serif]">
-            <span className="text-[#c2410c] italic">//</span>
-            <span className="text-[#c2410c]">jason</span>
-            <span className="text-white font-bold">jones</span>
+          <h1 className="text-[44px] tracking-tight font-['Poppins',sans-serif] text-white">
+            <span className="font-normal">Jason</span>
+            <span className="font-bold ml-1">Jones</span>
+            <span className="text-white/30 font-normal ml-2">:</span>
+            <span className="text-white/30 font-normal ml-1">:</span>
           </h1>
         </Link>
 
         {/* Navigation */}
         <nav className="flex-1 px-6 py-4 overflow-y-auto font-['Poppins',sans-serif]">
-          <Link to="/" className="nav-link-shapes flex items-center gap-2 px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+          <Link to="/" className="nav-link-shapes flex items-center gap-2 px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
             <ArrowLeft size={14} /> back to home
           </Link>
 
           <div className="my-4 mx-4 border-t border-[#3d4d5f]/40" />
 
-          <a href="#hero" className="nav-link-shapes active block px-4 py-2 text-[15px] font-normal lowercase text-[#c2410c] transition-all duration-200">
+          <a href="#hero" className="nav-link-shapes active block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-[#ea580c] transition-all duration-200">
             what shapes me
           </a>
-          <a href="#books-pro" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+          <a href="#books-pro" className="nav-link-shapes block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
             books - professional
           </a>
-          <a href="#books-personal" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+          <a href="#books-personal" className="nav-link-shapes block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
             books - personal
           </a>
-          <a href="#drummers" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+          <a href="#drummers" className="nav-link-shapes block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
             the drummers
           </a>
-          <a href="#albums" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+          <a href="#albums" className="nav-link-shapes block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
             albums
           </a>
         </nav>
@@ -126,7 +127,7 @@ export default function WhatShapesMePage() {
           <div className="flex flex-wrap gap-3">
             <a
               href="mailto:jason@flowency.co.uk"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#ea580c] text-white hover:opacity-60 transition-all duration-200"
             >
               <Mail size={16} />
             </a>
@@ -134,7 +135,7 @@ export default function WhatShapesMePage() {
               href="https://www.linkedin.com/in/jjonesuk"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#0077b5] text-white hover:opacity-60 transition-all duration-200"
             >
               <Linkedin size={16} />
             </a>
@@ -142,7 +143,7 @@ export default function WhatShapesMePage() {
               href="https://www.instagram.com/jayjonesy73"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#E4405F] text-white hover:opacity-60 transition-all duration-200"
             >
               <Instagram size={16} />
             </a>
@@ -150,7 +151,7 @@ export default function WhatShapesMePage() {
               href="https://wa.me/447758240770"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#25D366] text-white hover:opacity-60 transition-all duration-200"
             >
               <MessageCircle size={16} />
             </a>
@@ -194,7 +195,7 @@ export default function WhatShapesMePage() {
         {/* ============================================================ */}
         <section id="books-pro" className="px-8 lg:px-16 py-16 bg-white text-black">
           <div className="max-w-6xl mx-auto">
-            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Books</p>
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-2">Books</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-8">Professional</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
@@ -210,7 +211,7 @@ export default function WhatShapesMePage() {
         {/* ============================================================ */}
         <section className="px-8 lg:px-16 py-16 bg-[#0a0a0a]">
           <div className="max-w-6xl mx-auto">
-            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Featured</p>
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-2">Featured</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">The one that changed everything</h2>
 
             <div className="flex flex-col md:flex-row gap-8 items-start">
@@ -225,7 +226,7 @@ export default function WhatShapesMePage() {
                       />
                     </div>
                     <div className="absolute inset-0 backface-hidden rotate-y-180 bg-[#c2410c] p-4 flex flex-col justify-center">
-                      <p className="text-black text-xs font-bold uppercase tracking-widest mb-2">Gene Kim, Kevin Behr & George Spafford</p>
+                      <p className="text-black text-xs font-bold uppercase tracking-[0.1em]st mb-2">Gene Kim, Kevin Behr & George Spafford</p>
                       <p className="text-black/80 text-[13px] leading-relaxed">The Phoenix Project</p>
                     </div>
                   </div>
@@ -250,7 +251,7 @@ export default function WhatShapesMePage() {
         {/* ============================================================ */}
         <section id="books-personal" className="px-8 lg:px-16 py-16 bg-[#111]">
           <div className="max-w-6xl mx-auto">
-            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Books</p>
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-2">Books</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-8">Personal</h2>
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -266,7 +267,7 @@ export default function WhatShapesMePage() {
         {/* ============================================================ */}
         <section id="drummers" className="px-8 lg:px-16 py-16 bg-[#c2410c] text-black">
           <div className="max-w-6xl mx-auto">
-            <p className="text-black/60 text-xs font-bold uppercase tracking-widest mb-2">Music</p>
+            <p className="text-black/60 text-xs font-bold uppercase tracking-[0.1em]st mb-2">Music</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-8">The Drummers</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -286,7 +287,7 @@ export default function WhatShapesMePage() {
         {/* ============================================================ */}
         <section id="albums" className="px-8 lg:px-16 py-16 bg-[#0a0a0a]">
           <div className="max-w-6xl mx-auto">
-            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-2">Music</p>
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-2">Music</p>
             <h2 className="text-2xl md:text-3xl font-bold mb-8">Albums</h2>
 
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8">

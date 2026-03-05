@@ -241,7 +241,7 @@ export default function HomePage() {
           transform: rotate(180deg);
         }
         .nav-dropdown-wrapper:hover .nav-dropdown-trigger {
-          color: #c2410c;
+          color: #ea580c;
         }
       `}</style>
 
@@ -254,10 +254,11 @@ export default function HomePage() {
       >
         {/* Logo / Name */}
         <Link to="/" className="px-10 pt-10 pb-6">
-          <h1 className="text-[22px] font-bold tracking-tight font-['Poppins',sans-serif]">
-            <span className="text-[#c2410c] italic">//</span>
-            <span className="text-[#c2410c]">jason</span>
-            <span className="text-white font-bold">jones</span>
+          <h1 className="text-[44px] tracking-tight font-['Poppins',sans-serif] text-white">
+            <span className="font-normal">Jason</span>
+            <span className="font-bold ml-1">Jones</span>
+            <span className="text-white/30 font-normal ml-2">:</span>
+            <span className="text-white/30 font-normal ml-1">:</span>
           </h1>
         </Link>
 
@@ -269,9 +270,9 @@ export default function HomePage() {
                 <div className="nav-dropdown-wrapper">
                   {/* Dropdown trigger */}
                   <button
-                    className="nav-dropdown-trigger nav-link w-full flex items-center justify-between px-4 py-2 text-[15px] font-normal transition-all duration-200 group text-white"
+                    className="nav-dropdown-trigger nav-link w-full flex items-center justify-between px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] transition-all duration-200 group text-white"
                   >
-                    <span className="lowercase">{item.label}</span>
+                    <span>{item.label}</span>
                     <ChevronDown
                       size={14}
                       className="nav-dropdown-chevron transition-transform duration-300 text-white/50 group-hover:text-white"
@@ -296,9 +297,9 @@ export default function HomePage() {
                           <button
                             key={child.id}
                             onClick={() => scrollTo(child.id)}
-                            className={`dropdown-child w-full text-left px-4 py-2 text-[14px] font-normal lowercase transition-colors
+                            className={`dropdown-child w-full text-left px-4 py-2 text-[14px] font-normal lowercase tracking-[0.1em] transition-colors
                               ${activeSection === child.id
-                                ? 'active text-[#c2410c]'
+                                ? 'active text-[#ea580c]'
                                 : 'text-white/80 hover:text-white'}`}
                           >
                             {child.label}
@@ -311,17 +312,17 @@ export default function HomePage() {
               ) : item.type === 'page' ? (
                 <Link
                   to={item.href || '/'}
-                  className="nav-link block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200"
+                  className="nav-link block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200"
                 >
                   {item.label}
                 </Link>
               ) : (
                 <button
                   onClick={() => scrollTo(item.id)}
-                  className={`nav-link w-full text-left px-4 py-2 text-[15px] font-normal lowercase transition-all duration-200
+                  className={`nav-link w-full text-left px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] transition-all duration-200
                     ${activeSection === item.id
-                      ? 'active text-[#c2410c]'
-                      : 'text-white hover:text-[#c2410c]'}`}
+                      ? 'active text-[#ea580c]'
+                      : 'text-white hover:text-[#ea580c]'}`}
                 >
                   {item.label}
                 </button>
@@ -335,7 +336,7 @@ export default function HomePage() {
           <div className="flex flex-wrap gap-3">
             <a
               href="mailto:jason@flowency.co.uk"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#ea580c] text-white hover:opacity-60 transition-all duration-200"
             >
               <Mail size={16} />
             </a>
@@ -343,7 +344,7 @@ export default function HomePage() {
               href="https://www.linkedin.com/in/jjonesuk"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#0077b5] text-white hover:opacity-60 transition-all duration-200"
             >
               <Linkedin size={16} />
             </a>
@@ -351,7 +352,7 @@ export default function HomePage() {
               href="https://www.instagram.com/jayjonesy73"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#E4405F] text-white hover:opacity-60 transition-all duration-200"
             >
               <Instagram size={16} />
             </a>
@@ -359,7 +360,7 @@ export default function HomePage() {
               href="https://wa.me/447758240770"
               target="_blank"
               rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
+              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#25D366] text-white hover:opacity-60 transition-all duration-200"
             >
               <MessageCircle size={16} />
             </a>
@@ -525,7 +526,7 @@ export default function HomePage() {
         {/* ============================================================ */}
         <section id="WhoIAm" className="px-8 lg:px-12 xl:px-16 py-16 bg-[#f5f3f0] text-[#1e2936]">
           <div className="max-w-7xl mx-auto">
-            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-8">Who I Am</p>
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-8">Who I Am</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
               {/* Bio */}
@@ -567,7 +568,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">Origins</p>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">Origins</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#f8f7f5]">Flow, before anyone called it that</h2>
 
               <div className="space-y-5 text-[16px] leading-relaxed text-[#d0d8e0]">
@@ -595,7 +596,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Show Me The Money</h2>
 
               <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
@@ -605,7 +606,7 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Clients</p>
                 <p className="text-[#d0d8e0] text-[14px]">Shell Recharge · HSBC · Capital One UK · Co-operative Bank · British Airways</p>
               </div>
             </div>
@@ -628,7 +629,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Getting Shit Done</h2>
               <p className="text-[#a8b5c4] mb-8">Accelerated Delivery</p>
 
@@ -639,7 +640,7 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Clients</p>
                 <p className="text-[#d0d8e0] text-[14px]">British Airways / IAG · HSBC · Shell Recharge · Co-operative Bank · Cheshire Data Systems · Manchester Airports Group</p>
               </div>
             </div>
@@ -675,7 +676,7 @@ export default function HomePage() {
 
             {/* Text - right side with padding */}
             <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#1e2936]">AI with Control</h2>
               <p className="text-[#5a6a7a] mb-8">From strategy to implementation to execution</p>
 
@@ -687,7 +688,7 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
-                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-[0.1em]st mb-2">Clients</p>
                 <p className="text-[#3d4d5f] text-[14px]">British Airways / IAG · Cheshire Data Systems · Intrapay / Sappaya</p>
               </div>
             </div>
@@ -701,7 +702,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Strategy to Execution Alignment</h2>
 
               <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
@@ -717,7 +718,7 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Clients</p>
                 <p className="text-[#d0d8e0] text-[14px]">Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank · Intrapay / Sappaya</p>
               </div>
             </div>
@@ -753,7 +754,7 @@ export default function HomePage() {
 
             {/* Text - right side with padding */}
             <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#1e2936]">Flowency</h2>
               <p className="text-[#5a6a7a] mb-8">Making flow of value visible and predictable</p>
 
@@ -765,7 +766,7 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
-                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-[0.1em]st mb-2">Clients</p>
                 <p className="text-[#3d4d5f] text-[14px]">HSBC (x2) · Capital One UK (40-45 teams, 4 SAFe Release Trains) · Modix / Cox Automotive · Manchester Airports Group · Barclaycard UK</p>
               </div>
             </div>
@@ -779,7 +780,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
+              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Vibe Coding</h2>
               <p className="text-[#a8b5c4] mb-8">Fit 4 Purpose</p>
 
@@ -790,7 +791,7 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Projects</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Projects</p>
                 <p className="text-[#d0d8e0] text-[14px]">Internal Flowency tools · BA Operational Intelligence · Client prototypes</p>
               </div>
             </div>
