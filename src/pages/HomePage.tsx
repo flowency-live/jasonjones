@@ -245,32 +245,33 @@ export default function HomePage() {
         }
       `}</style>
 
-      <aside className="fixed left-0 top-0 h-full w-72 z-50 hidden lg:flex flex-col"
+      <aside className="fixed left-0 top-0 h-full z-50 hidden lg:flex flex-col"
         style={{
-          background: 'linear-gradient(180deg, #1e2936 0%, #243242 50%, #1e2936 100%)',
-          boxShadow: '4px 0 30px rgba(0,0,0,0.3)',
+          width: 'clamp(280px, 20vw, 360px)',
+          background: 'linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
+          boxShadow: '4px 0 30px rgba(0,0,0,0.5)',
         }}
       >
         {/* Logo / Name */}
-        <Link to="/" className="px-8 py-8">
-          <h1 className="text-2xl font-bold tracking-tight">
-            <span className="text-[#c2410c]">Jason</span>
-            <span className="text-white ml-1">Jones</span>
+        <Link to="/" className="px-10 pt-10 pb-6">
+          <h1 className="text-[22px] font-bold tracking-tight font-['Poppins',sans-serif]">
+            <span className="text-[#c2410c] italic">//</span>
+            <span className="text-[#c2410c]">jason</span>
+            <span className="text-white font-bold">jones</span>
           </h1>
-          <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#c2410c] to-transparent" />
         </Link>
 
         {/* Navigation */}
-        <nav className="flex-1 px-4 py-2 overflow-y-auto">
+        <nav className="flex-1 px-6 py-4 overflow-y-auto font-['Poppins',sans-serif]">
           {NAV_STRUCTURE.map((item) => (
             <div key={item.id}>
               {item.type === 'dropdown' ? (
                 <div className="nav-dropdown-wrapper">
                   {/* Dropdown trigger */}
                   <button
-                    className="nav-dropdown-trigger nav-link w-full flex items-center justify-between px-4 py-3 text-[13px] font-semibold tracking-wide transition-all duration-200 group text-white/90"
+                    className="nav-dropdown-trigger nav-link w-full flex items-center justify-between px-4 py-2 text-[15px] font-normal transition-all duration-200 group text-white"
                   >
-                    <span>{item.label}</span>
+                    <span className="lowercase">{item.label}</span>
                     <ChevronDown
                       size={14}
                       className="nav-dropdown-chevron transition-transform duration-300 text-white/50 group-hover:text-white"
@@ -278,7 +279,7 @@ export default function HomePage() {
                   </button>
                   {/* Dropdown children */}
                   <div className="nav-dropdown-content">
-                    <div className="ml-4 pl-4 border-l-2 border-[#c2410c]/30 py-1">
+                    <div className="ml-4 pl-4 border-l border-[#c2410c]/40 py-1">
                       {item.children?.map((child) => (
                         child.external ? (
                           <a
@@ -286,19 +287,19 @@ export default function HomePage() {
                             href={child.href}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="dropdown-child flex items-center gap-2 px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-colors"
+                            className="dropdown-child flex items-center gap-2 px-4 py-2 text-[14px] font-normal text-white/80 hover:text-white transition-colors"
                           >
-                            <span>{child.label}</span>
-                            <ExternalLink size={12} className="opacity-60" />
+                            <span className="lowercase">{child.label}</span>
+                            <ExternalLink size={11} className="opacity-60" />
                           </a>
                         ) : (
                           <button
                             key={child.id}
                             onClick={() => scrollTo(child.id)}
-                            className={`dropdown-child w-full text-left px-4 py-3 text-[13px] font-semibold tracking-wide transition-colors
+                            className={`dropdown-child w-full text-left px-4 py-2 text-[14px] font-normal lowercase transition-colors
                               ${activeSection === child.id
                                 ? 'active text-[#c2410c]'
-                                : 'text-white/90 hover:text-white'}`}
+                                : 'text-white/80 hover:text-white'}`}
                           >
                             {child.label}
                           </button>
@@ -310,17 +311,17 @@ export default function HomePage() {
               ) : item.type === 'page' ? (
                 <Link
                   to={item.href || '/'}
-                  className="nav-link block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200"
+                  className="nav-link block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200"
                 >
                   {item.label}
                 </Link>
               ) : (
                 <button
                   onClick={() => scrollTo(item.id)}
-                  className={`nav-link w-full text-left px-4 py-3 text-[13px] font-semibold tracking-wide transition-all duration-200
+                  className={`nav-link w-full text-left px-4 py-2 text-[15px] font-normal lowercase transition-all duration-200
                     ${activeSection === item.id
                       ? 'active text-[#c2410c]'
-                      : 'text-white/90 hover:text-white'}`}
+                      : 'text-white hover:text-[#c2410c]'}`}
                 >
                   {item.label}
                 </button>
@@ -329,42 +330,38 @@ export default function HomePage() {
           ))}
         </nav>
 
-        {/* Social Links - Bold & Bright */}
-        <div className="px-6 py-6 border-t border-[#3d4d5f]/40">
-          <div className="grid grid-cols-2 gap-3">
+        {/* Social Links */}
+        <div className="px-6 py-8">
+          <div className="flex flex-wrap gap-3">
             <a
               href="mailto:jason@flowency.co.uk"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#c2410c]/10 border border-[#c2410c]/30 hover:bg-[#c2410c]/25 hover:border-[#c2410c]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <Mail size={18} className="text-[#c2410c]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Email</span>
+              <Mail size={16} />
             </a>
             <a
               href="https://www.linkedin.com/in/jjonesuk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/30 hover:bg-[#0077b5]/25 hover:border-[#0077b5]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <Linkedin size={18} className="text-[#0077b5]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">LinkedIn</span>
+              <Linkedin size={16} />
             </a>
             <a
               href="https://www.instagram.com/jayjonesy73"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#E4405F]/10 border border-[#E4405F]/30 hover:bg-[#E4405F]/25 hover:border-[#E4405F]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <Instagram size={18} className="text-[#E4405F]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Instagram</span>
+              <Instagram size={16} />
             </a>
             <a
               href="https://wa.me/447758240770"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/25 hover:border-[#25D366]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <MessageCircle size={18} className="text-[#25D366]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">WhatsApp</span>
+              <MessageCircle size={16} />
             </a>
           </div>
         </div>
@@ -476,7 +473,7 @@ export default function HomePage() {
       {/* ================================================================ */}
       {/* MAIN CONTENT */}
       {/* ================================================================ */}
-      <main className="lg:ml-72">
+      <main className="lg:ml-[clamp(280px,20vw,360px)]">
 
         {/* ============================================================ */}
         {/* HERO */}
@@ -496,7 +493,7 @@ export default function HomePage() {
                 <br />
                 <span className="text-[#ea580c] font-normal">then delivering it with them</span>
               </h1>
-              <p className="text-[#a8b5c4] text-lg">Tenacity. Radical candour. Getting shit done.</p>
+              <p className="text-[#d0d8e0] text-lg font-medium">Tenacity. Radical candour. Getting shit done.</p>
             </div>
 
             {/* Photo with faded edges */}
@@ -571,15 +568,15 @@ export default function HomePage() {
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
               <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">Origins</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-8 text-[#f8f7f5]">Flow, before anyone called it that</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#f8f7f5]">Flow, before anyone called it that</h2>
 
-              <div className="space-y-5 text-[14px] leading-relaxed text-[#a8b5c4]">
+              <div className="space-y-5 text-[16px] leading-relaxed text-[#d0d8e0]">
                 <p>My first job was in a dyehouse. I was managing production planning for a fabric manufacturer: upstream constraints in yarn sourcing and knitting, finite dye capacity, a single stenter machine as the bottleneck downstream. One batch at a time. You only dyed what you could actually dry. You only processed real orders, never speculative work. If you got the timing wrong, fabric sat wet, went mouldy, became rework.</p>
                 <p>I was visualising work, managing flow, limiting WIP and responding to the constraint, before I had any of those words. I saw Kanban cards on that shop floor before I knew what they were called.</p>
                 <p>My first business trip was to M&S at Baker Street. Ten swatches of navy cotton jersey fabric on the table, all ostensibly the same. Each subtly different. One flatter, one redder, one with a metamerism you couldn't see until you placed it in a light box replicating the exact lighting of the shop floor. Same fabric. Different context. Completely different outcome. That lesson, that the environment in which something is used changes everything, has never left me.</p>
                 <p>Years later, when I encountered the Kanban Method, it felt less like learning something new and more like finding the name for something I'd already been doing. David Anderson's work, rooted in lean manufacturing and the Toyota Production System, mapped directly onto everything I'd learned in that dyehouse.</p>
                 <p>I'm a Kanban Management Professional through Kanban University, and I've attended the global Learnship conferences in Miami and Bilbao, where the people who are genuinely serious about this come together. I use the Kanban Maturity Model to help organisations understand where they are and plot a realistic path forward.</p>
-                <p className="text-[#7a8a9a]">Most organisations jump to SAFe or Scrum before they can even see their own system clearly. The Kanban Method starts where you are. It doesn't ask you to install a recipe. It asks you to look honestly at how work flows, or doesn't, and improve from there. It is, in my view, the most powerful and most underused tool in the Lean/Agile toolkit.</p>
+                <p className="text-[#a8b5c4]">Most organisations jump to SAFe or Scrum before they can even see their own system clearly. The Kanban Method starts where you are. It doesn't ask you to install a recipe. It asks you to look honestly at how work flows, or doesn't, and improve from there. It is, in my view, the most powerful and most underused tool in the Lean/Agile toolkit.</p>
               </div>
             </div>
 
@@ -599,17 +596,17 @@ export default function HomePage() {
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
               <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Show Me The Money</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Show Me The Money</h2>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
+              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
                 <p>Remember this film? Jerry Maguire, 1996. "Show me the money" isn't about greed. It's about honesty. Demanding what's deserved. Cutting through bullshit.</p>
                 <p>In the age of AI-accelerated development, the bottleneck isn't delivery speed anymore. It's knowing what's worth building in the first place.</p>
                 <p>Most backlogs are graveyards of good intentions. Features nobody asked for. Initiatives labelled "strategic" because someone senior said so. I ask the uncomfortable questions that clear the fog.</p>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-[#a8b5c4] text-[13px]">Shell Recharge · HSBC · Capital One UK · Co-operative Bank · British Airways</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#d0d8e0] text-[14px]">Shell Recharge · HSBC · Capital One UK · Co-operative Bank · British Airways</p>
               </div>
             </div>
 
@@ -632,18 +629,18 @@ export default function HomePage() {
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
               <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Getting Shit Done</h2>
-              <p className="text-[#7a8a9a] mb-8">Accelerated Delivery</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Getting Shit Done</h2>
+              <p className="text-[#a8b5c4] mb-8">Accelerated Delivery</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
+              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
                 <p>Deliver value faster. Reduce delays, multitasking and bottlenecks. Visualise work, limit WIP, continuously improve using data. Smoother, more predictable delivery that your teams can see and trust.</p>
                 <p>Make the invisible visible. Visualise your work, configure your tooling, instrument your workflow so you can see how your delivery system is actually performing and identify improvements you can make yourselves.</p>
                 <p>Deliver change that sticks. Experienced practitioners give your teams the skills and confidence to own and evolve their practices. Continuous improvement becomes part of the DNA, not a project with an end date.</p>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-[#a8b5c4] text-[13px]">British Airways / IAG · HSBC · Shell Recharge · Co-operative Bank · Cheshire Data Systems · Manchester Airports Group</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#d0d8e0] text-[14px]">British Airways / IAG · HSBC · Shell Recharge · Co-operative Bank · Cheshire Data Systems · Manchester Airports Group</p>
               </div>
             </div>
 
@@ -679,10 +676,10 @@ export default function HomePage() {
             {/* Text - right side with padding */}
             <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
               <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#1e2936]">AI with Control</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#1e2936]">AI with Control</h2>
               <p className="text-[#5a6a7a] mb-8">From strategy to implementation to execution</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-[#3d4d5f]">
+              <div className="space-y-4 text-[16px] leading-relaxed text-[#3d4d5f]">
                 <p>Actively building AI products and helping clients navigate AI strategy, implementation and execution. Not theory. Working systems.</p>
                 <p>Building AI-powered SaaS tools using LLMs including Claude, Gemini and Grok. Practical experience in prompt engineering, context orchestration and agentic workflow design.</p>
                 <p>Vibe coding done properly: right-sized, right-timed solutions that actually get used. Build what's needed, nothing more, ship it, learn, iterate.</p>
@@ -690,8 +687,8 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
-                <p className="text-[10px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-[#3d4d5f] text-[13px]">British Airways / IAG · Cheshire Data Systems · Intrapay / Sappaya</p>
+                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#3d4d5f] text-[14px]">British Airways / IAG · Cheshire Data Systems · Intrapay / Sappaya</p>
               </div>
             </div>
           </div>
@@ -705,9 +702,9 @@ export default function HomePage() {
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
               <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Strategy to Execution Alignment</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Strategy to Execution Alignment</h2>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
+              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
                 <p>Helping organisations close the gap between what the boardroom decides and what the teams actually deliver. OKRs, value streams, lean portfolio leadership: connecting the why to the what to the how.</p>
                 <p>Not another layer of process. A clearer line of sight. Working with leadership and delivery teams simultaneously, so the conversation in the boardroom and the work on the board are finally telling the same story.</p>
               </div>
@@ -720,8 +717,8 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-[#a8b5c4] text-[13px]">Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank · Intrapay / Sappaya</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#d0d8e0] text-[14px]">Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank · Intrapay / Sappaya</p>
               </div>
             </div>
 
@@ -757,10 +754,10 @@ export default function HomePage() {
             {/* Text - right side with padding */}
             <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
               <p className="text-[#c2410c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#1e2936]">Flowency</h2>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#1e2936]">Flowency</h2>
               <p className="text-[#5a6a7a] mb-8">Making flow of value visible and predictable</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-[#3d4d5f]">
+              <div className="space-y-4 text-[16px] leading-relaxed text-[#3d4d5f]">
                 <p>Start where you are. Bring clarity, focus and stability. Then optimise for flow. Evolutionary, continuous improvement: building internal capability so the changes stick long after the engagement ends.</p>
                 <p>Uses STATIK (a Systems Thinking Approach to implementing Kanban) to diagnose structural friction and design fit-for-purpose delivery systems. Uncovers invisible and stalled work, establishes pull-based systems, and surfaces cycle time, lead time, flow efficiency and blocker trends. Makes the system legible before trying to change it.</p>
                 <p>Framework agnostic, method diverse. Scrum, Kanban, SAFe, Spotify: applied contextually for each organisation's maturity. Not installed. Grown. Holds the Kanban Management Professional (KMP) credential through Kanban University.</p>
@@ -768,8 +765,8 @@ export default function HomePage() {
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
-                <p className="text-[10px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
-                <p className="text-[#3d4d5f] text-[13px]">HSBC (x2) · Capital One UK (40-45 teams, 4 SAFe Release Trains) · Modix / Cox Automotive · Manchester Airports Group · Barclaycard UK</p>
+                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-widest mb-2">Clients</p>
+                <p className="text-[#3d4d5f] text-[14px]">HSBC (x2) · Capital One UK (40-45 teams, 4 SAFe Release Trains) · Modix / Cox Automotive · Manchester Airports Group · Barclaycard UK</p>
               </div>
             </div>
           </div>
@@ -783,18 +780,18 @@ export default function HomePage() {
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
               <p className="text-[#ea580c] text-xs font-bold uppercase tracking-widest mb-4">What I Do</p>
-              <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Vibe Coding</h2>
-              <p className="text-[#7a8a9a] mb-8">Fit 4 Purpose</p>
+              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Vibe Coding</h2>
+              <p className="text-[#a8b5c4] mb-8">Fit 4 Purpose</p>
 
-              <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
+              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
                 <p>Making solutions and products that are right-sized, right-timed and actually get used. Not over-engineered. Not under-thought. Fit for purpose, which requires understanding what purpose actually is.</p>
                 <p>Building AI-powered SaaS applications using modern LLM ecosystems. Practical, deployable, real. The kind of thing that exists in production, not in a pitch deck.</p>
                 <p>The same instinct that strips 85 initiatives down to 14 applies here: build what's needed, nothing more, ship it, learn, iterate. Speed without recklessness. Simplicity without corners cut.</p>
               </div>
 
               <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[10px] text-[#7a8a9a] uppercase tracking-widest mb-2">Projects</p>
-                <p className="text-[#a8b5c4] text-[13px]">Internal Flowency tools · BA Operational Intelligence · Client prototypes</p>
+                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-widest mb-2">Projects</p>
+                <p className="text-[#d0d8e0] text-[14px]">Internal Flowency tools · BA Operational Intelligence · Client prototypes</p>
               </div>
             </div>
 
@@ -814,7 +811,7 @@ export default function HomePage() {
         {/* ============================================================ */}
         <section id="WhatIDontDo" className="px-8 lg:px-16 py-16 bg-gradient-to-r from-[#c2410c] to-[#ea580c] text-white">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-white">What I don't do</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-white">What I don't do</h2>
             <p className="text-white/70 text-center mb-12">I've seen enough to know what works, and what doesn't.</p>
 
             <div className="space-y-8">
@@ -832,8 +829,8 @@ export default function HomePage() {
         {/* ============================================================ */}
         <section id="Highlights" className="py-16 bg-[#1e2936]">
           <div className="px-8 lg:px-16 mb-12">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-[#f8f7f5]">Highlights</h2>
-            <p className="text-[#a8b5c4] text-center">Everyone has their favourites. Places I've enjoyed. Friends made. Peers learned from. Outcomes realised.</p>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-[#f8f7f5]">Highlights</h2>
+            <p className="text-[#d0d8e0] text-center">Everyone has their favourites. Places I've enjoyed. Friends made. Peers learned from. Outcomes realised.</p>
           </div>
 
           <CaptionedPhotoGallery images={highlightImages} />
@@ -936,7 +933,7 @@ export default function HomePage() {
         {/* ============================================================ */}
         <section id="SayHello" className="px-8 lg:px-16 py-16 bg-[#f5f3f0] text-[#1e2936]">
           <div className="max-w-4xl mx-auto">
-            <h2 className="text-2xl md:text-3xl font-bold mb-4 text-center text-[#1e2936]">Let's talk</h2>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-[#1e2936]">Let's talk</h2>
             <p className="text-[#5a6a7a] text-center mb-12">Fill in the form or drop me a line. No pitch decks. No jargon. Just a conversation about what you're trying to achieve.</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
@@ -963,8 +960,8 @@ export default function HomePage() {
         {/* Footer */}
         <footer className="px-8 lg:px-16 py-8 bg-[#1e2936] border-t border-[#3d4d5f]/30">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[#7a8a9a] text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
-            <div className="flex items-center gap-6 text-[#7a8a9a] text-[11px]">
+            <p className="text-[#a8b5c4] text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
+            <div className="flex items-center gap-6 text-[#a8b5c4] text-[11px]">
               <Link to="/what-shapes-me" className="hover:text-[#f8f7f5] transition-colors">What Shapes Me</Link>
               <a href="https://flowency.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-[#f8f7f5] transition-colors">Flowency</a>
             </div>

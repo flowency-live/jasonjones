@@ -80,82 +80,79 @@ export default function WhatShapesMePage() {
       {/* ================================================================ */}
       <style>{navStyles}</style>
 
-      <aside className="fixed left-0 top-0 h-full w-72 z-50 hidden lg:flex flex-col"
+      <aside className="fixed left-0 top-0 h-full z-50 hidden lg:flex flex-col"
         style={{
-          background: 'linear-gradient(180deg, #1e2936 0%, #243242 50%, #1e2936 100%)',
-          boxShadow: '4px 0 30px rgba(0,0,0,0.3)',
+          width: 'clamp(280px, 20vw, 360px)',
+          background: 'linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
+          boxShadow: '4px 0 30px rgba(0,0,0,0.5)',
         }}
       >
         {/* Logo / Name */}
-        <Link to="/" className="px-8 py-8">
-          <h1 className="text-2xl font-bold tracking-tight">
-            <span className="text-[#c2410c]">Jason</span>
-            <span className="text-white ml-1">Jones</span>
+        <Link to="/" className="px-10 pt-10 pb-6">
+          <h1 className="text-[22px] font-bold tracking-tight font-['Poppins',sans-serif]">
+            <span className="text-[#c2410c] italic">//</span>
+            <span className="text-[#c2410c]">jason</span>
+            <span className="text-white font-bold">jones</span>
           </h1>
-          <div className="mt-2 w-12 h-0.5 bg-gradient-to-r from-[#c2410c] to-transparent" />
         </Link>
 
         {/* Navigation */}
-        <nav className="flex-1 px-4 py-2 overflow-y-auto">
-          <Link to="/" className="nav-link-shapes flex items-center gap-2 px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
-            <ArrowLeft size={14} /> Back to Home
+        <nav className="flex-1 px-6 py-4 overflow-y-auto font-['Poppins',sans-serif]">
+          <Link to="/" className="nav-link-shapes flex items-center gap-2 px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+            <ArrowLeft size={14} /> back to home
           </Link>
 
           <div className="my-4 mx-4 border-t border-[#3d4d5f]/40" />
 
-          <a href="#hero" className="nav-link-shapes active block px-4 py-3 text-[13px] font-semibold tracking-wide text-[#c2410c] transition-all duration-200">
-            What Shapes Me
+          <a href="#hero" className="nav-link-shapes active block px-4 py-2 text-[15px] font-normal lowercase text-[#c2410c] transition-all duration-200">
+            what shapes me
           </a>
-          <a href="#books-pro" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
-            Books - Professional
+          <a href="#books-pro" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+            books - professional
           </a>
-          <a href="#books-personal" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
-            Books - Personal
+          <a href="#books-personal" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+            books - personal
           </a>
-          <a href="#drummers" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
-            The Drummers
+          <a href="#drummers" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+            the drummers
           </a>
-          <a href="#albums" className="nav-link-shapes block px-4 py-3 text-[13px] font-semibold tracking-wide text-white/90 hover:text-white transition-all duration-200">
-            Albums
+          <a href="#albums" className="nav-link-shapes block px-4 py-2 text-[15px] font-normal lowercase text-white hover:text-[#c2410c] transition-all duration-200">
+            albums
           </a>
         </nav>
 
-        {/* Social Links - Bold & Bright (matching HomePage) */}
-        <div className="px-6 py-6 border-t border-[#3d4d5f]/40">
-          <div className="grid grid-cols-2 gap-3">
+        {/* Social Links */}
+        <div className="px-6 py-8">
+          <div className="flex flex-wrap gap-3">
             <a
               href="mailto:jason@flowency.co.uk"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#c2410c]/10 border border-[#c2410c]/30 hover:bg-[#c2410c]/25 hover:border-[#c2410c]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <Mail size={18} className="text-[#c2410c]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Email</span>
+              <Mail size={16} />
             </a>
             <a
               href="https://www.linkedin.com/in/jjonesuk"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#0077b5]/10 border border-[#0077b5]/30 hover:bg-[#0077b5]/25 hover:border-[#0077b5]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <Linkedin size={18} className="text-[#0077b5]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">LinkedIn</span>
+              <Linkedin size={16} />
             </a>
             <a
               href="https://www.instagram.com/jayjonesy73"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#E4405F]/10 border border-[#E4405F]/30 hover:bg-[#E4405F]/25 hover:border-[#E4405F]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <Instagram size={18} className="text-[#E4405F]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">Instagram</span>
+              <Instagram size={16} />
             </a>
             <a
               href="https://wa.me/447758240770"
               target="_blank"
               rel="noopener noreferrer"
-              className="flex items-center gap-2.5 px-3 py-3 rounded-lg bg-[#25D366]/10 border border-[#25D366]/30 hover:bg-[#25D366]/25 hover:border-[#25D366]/50 transition-all duration-200 group"
+              className="w-9 h-9 flex items-center justify-center rounded-full border-2 border-[#c2410c] text-[#c2410c] hover:bg-[#c2410c] hover:text-white transition-all duration-200"
             >
-              <MessageCircle size={18} className="text-[#25D366]" />
-              <span className="text-[12px] font-semibold text-white/90 group-hover:text-white">WhatsApp</span>
+              <MessageCircle size={16} />
             </a>
           </div>
         </div>
@@ -169,7 +166,7 @@ export default function WhatShapesMePage() {
       {/* ================================================================ */}
       {/* MAIN CONTENT */}
       {/* ================================================================ */}
-      <main className="lg:ml-72">
+      <main className="lg:ml-[clamp(280px,20vw,360px)]">
 
         {/* ============================================================ */}
         {/* HERO */}
@@ -183,11 +180,11 @@ export default function WhatShapesMePage() {
               <br />
               <span className="text-[#c2410c] font-normal">giants</span>
             </h1>
-            <div className="space-y-4 text-white/70 text-[15px] leading-relaxed max-w-3xl">
+            <div className="space-y-4 text-white/85 text-[16px] leading-relaxed max-w-3xl">
               <p>The first time I played with one of the UK's top brass bands, I followed the conductor's downbeat precisely and was completely out of time with everyone else. The ensemble were connected to each other. The conductor was shaping the music, not driving it. I had to step back, listen to everything happening around me, and adapt. That lesson about reading a room and observing a whole system before you act in it has never left me.</p>
               <p>BBC Micro at age 12. SCC training rooms in the early 2000s. Dassault Systemes in Toulouse. Teams in Vietnam, India and Poland. Every one of those environments taught something different about systems, about people, about context, about what it means to do work that actually matters.</p>
               <p>I co-founded a construction tech startup. We built ClearBuild, a centralised construction site management application that was voted runner-up for most innovative new product at InterBuild 2007. Then the UK construction recession hit. Nobody wanted it. Everybody was protecting costs. We hadn't seen it coming. The product was right. The timing was brutal. I have a deep respect for anyone who has built something real and watched the market move. Timing is everything.</p>
-              <p className="text-white/50">These are the things that shaped how I think, how I work, and occasionally how I play. Always open to more suggestions.</p>
+              <p className="text-white/70">These are the things that shaped how I think, how I work, and occasionally how I play. Always open to more suggestions.</p>
             </div>
           </div>
         </section>
@@ -237,11 +234,11 @@ export default function WhatShapesMePage() {
               <div className="flex-1">
                 <h3 className="text-2xl font-bold text-white mb-2">The Phoenix Project</h3>
                 <p className="text-[#c2410c] text-sm mb-4">Gene Kim, Kevin Behr & George Spafford</p>
-                <div className="space-y-4 text-white/70 text-[15px] leading-relaxed">
+                <div className="space-y-4 text-white/85 text-[16px] leading-relaxed">
                   <p>If I could recommend one book to every IT leader, CTO, or frustrated delivery manager, this would be it. The Phoenix Project took the principles of lean manufacturing and showed, through narrative, how they apply to software delivery and IT operations.</p>
                   <p>It's a novel about a fictional company in crisis, but it reads like a documentary of every dysfunctional organisation I've ever worked with. The politics, the firefighting, the heroics that mask systemic failure, it's all there. And then, slowly, the transformation begins.</p>
                   <p>This book didn't just change how I think about delivery. It gave me a language to explain to executives why their projects are late, why their teams are burned out, and what they can actually do about it. The Four Types of Work. The Three Ways. Theory of Constraints applied to IT. All of it came together here first.</p>
-                  <p className="text-white/50 italic">If you haven't read it, start here. Everything else on this list makes more sense after you do.</p>
+                  <p className="text-white/70 italic">If you haven't read it, start here. Everything else on this list makes more sense after you do.</p>
                 </div>
               </div>
             </div>
@@ -277,7 +274,7 @@ export default function WhatShapesMePage() {
                 <div key={index} className="bg-black/10 p-6">
                   <h3 className="text-xl font-bold mb-1">{drummer.name}</h3>
                   <p className="text-black/60 text-sm mb-4">{drummer.band}</p>
-                  <p className="text-black/80 text-[14px] leading-relaxed">{drummer.description}</p>
+                  <p className="text-black/80 text-[15px] leading-relaxed">{drummer.description}</p>
                 </div>
               ))}
             </div>
@@ -296,8 +293,8 @@ export default function WhatShapesMePage() {
               {albums.map((album, index) => (
                 <div key={index} className="border border-white/10 p-6">
                   <h3 className="text-xl font-bold mb-1">{album.title}</h3>
-                  <p className="text-white/50 text-sm mb-4">{album.artist}</p>
-                  <p className="text-white/70 text-[14px] leading-relaxed">{album.description}</p>
+                  <p className="text-white/70 text-sm mb-4">{album.artist}</p>
+                  <p className="text-white/85 text-[15px] leading-relaxed">{album.description}</p>
                 </div>
               ))}
             </div>
@@ -400,7 +397,7 @@ function FlipBookCard({
               >
                 <span className="text-[#c2410c] text-[10px] font-bold mb-2">#{number}</span>
                 <h3 className={`text-lg font-bold leading-tight mb-2 ${dark ? "text-white" : "text-black"}`}>{title}</h3>
-                <p className={`text-sm ${dark ? "text-white/50" : "text-black/50"}`}>{author}</p>
+                <p className={`text-sm ${dark ? "text-white/70" : "text-black/50"}`}>{author}</p>
               </div>
               <p className={`text-[10px] mt-3 ${dark ? "text-white/40" : "text-black/40"}`}>Hover to read</p>
             </div>
@@ -417,7 +414,7 @@ function FlipBookCard({
             >
               <span className="text-[10px] font-bold text-white/60">#{number}</span>
               <h3 className="text-[15px] font-bold mt-1 mb-0.5 text-white">{title}</h3>
-              <p className="text-[12px] mb-3 text-white/70">{author}</p>
+              <p className="text-[12px] mb-3 text-white/85">{author}</p>
               <p className="text-[13px] leading-relaxed text-white/90 overflow-y-auto flex-1">{description}</p>
             </div>
           </div>
