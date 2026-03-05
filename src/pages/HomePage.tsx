@@ -602,7 +602,7 @@ export default function HomePage() {
               <h2 className="text-2xl md:text-3xl font-bold mb-6 text-[#f8f7f5]">Show Me The Money</h2>
 
               <div className="space-y-4 text-[14px] leading-relaxed text-[#a8b5c4]">
-                <p>Remember Jerry Maguire, 1996? "Show me the money" isn't about greed. It's about honesty. Demanding what's deserved. Cutting through bullshit.</p>
+                <p>Remember this film? Jerry Maguire, 1996. "Show me the money" isn't about greed. It's about honesty. Demanding what's deserved. Cutting through bullshit.</p>
                 <p>In the age of AI-accelerated development, the bottleneck isn't delivery speed anymore. It's knowing what's worth building in the first place.</p>
                 <p>Most backlogs are graveyards of good intentions. Features nobody asked for. Initiatives labelled "strategic" because someone senior said so. I ask the uncomfortable questions that clear the fog.</p>
               </div>
