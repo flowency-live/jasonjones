@@ -60,6 +60,7 @@ const personalBooks = [
   { title: "Shoe Dog", author: "Phil Knight", cover: "/assets/images/books/shoe-dog.jpg", description: "The Nike origin story. Honest, messy, brilliant. A reminder that building something real is never the clean narrative it looks like in retrospect. One of the most energising reads I've had in years." },
   { title: "Bill Drummond", author: "Paolo Hewitt", cover: "/assets/images/books/bill-drummond.jpg", description: "The KLF. Art, music, chaos and burning a million pounds on a Scottish island. A book about doing things your own way and not caring whether it fits the framework. More relevant to my work than it has any right to be." },
   { title: "The Subtle Art of Not Giving a F*ck", author: "Mark Manson", cover: "/assets/images/books/subtle-art.jpg", description: "I've never been interested in saying what people want to hear. In rooms where everyone else was staying quiet, I called it, grounded, always, but called it. This book puts a framework around what I've always just done instinctively." },
+  { title: "Radical Candor", author: "Kim Scott", cover: "/assets/images/books/RC-Book.webp", description: "Care personally, challenge directly. Scott's framework gave me the language for something I'd always believed: that the kindest thing you can do is tell people the truth. Ruinous empathy helps no one." },
 ];
 
 const drummers = [
