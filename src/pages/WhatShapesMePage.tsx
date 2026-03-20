@@ -34,6 +34,10 @@ const navStyles = `
   }
 `;
 
+const currentlyReading = [
+  { title: "Beyond Belief", author: "V.S. Naipaul", cover: "/assets/images/books/beyondbelief.webp", description: "Naipaul's journey through Iran, Pakistan, Indonesia and Malaysia, exploring how Islam has shaped and reshaped these non-Arab societies. Complex, uncomfortable, illuminating." },
+];
+
 const professionalBooks = [
   { title: "Flow Engineering", author: "Pereira & Davis", cover: "/assets/images/books/flow-engineering.jpg", description: "The question every exec asks me: 'how do I get results faster?' This book answers it practically, clearly and without the usual fluff. Essential reading for anyone serious about delivery." },
   { title: "The Principles of Product Development Flow", author: "Donald Reinertsen", cover: "/assets/images/books/principles-product-dev-flow.jpg", description: "Not for the faint-hearted. Reinertsen's economic framework for flow changed how I think about prioritisation, WIP and the true cost of delay. Dense, rigorous, transformative." },
@@ -107,6 +111,9 @@ export default function WhatShapesMePage() {
 
           <a href="#hero" className="nav-link-shapes active block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-[#ea580c] transition-all duration-200">
             what shapes me
+          </a>
+          <a href="#currently-reading" className="nav-link-shapes block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
+            currently reading
           </a>
           <a href="#books-pro" className="nav-link-shapes block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
             books - professional
@@ -186,6 +193,22 @@ export default function WhatShapesMePage() {
               <p>BBC Micro at age 12. SCC training rooms in the early 2000s. Dassault Systemes in Toulouse. Teams in Vietnam, India and Poland. Every one of those environments taught something different about systems, about people, about context, about what it means to do work that actually matters.</p>
               <p>I co-founded a construction tech startup. We built ClearBuild, a centralised construction site management application that was voted runner-up for most innovative new product at InterBuild 2007. Then the UK construction recession hit. Nobody wanted it. Everybody was protecting costs. We hadn't seen it coming. The product was right. The timing was brutal. I have a deep respect for anyone who has built something real and watched the market move. Timing is everything.</p>
               <p className="text-white/70">These are the things that shaped how I think, how I work, and occasionally how I play. Always open to more suggestions.</p>
+            </div>
+          </div>
+        </section>
+
+        {/* ============================================================ */}
+        {/* CURRENTLY READING / LISTENING */}
+        {/* ============================================================ */}
+        <section id="currently-reading" className="px-8 lg:px-16 py-16 bg-[#1e2936]">
+          <div className="max-w-6xl mx-auto">
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em] mb-2">Now</p>
+            <h2 className="text-2xl md:text-3xl font-bold mb-8 text-white">Currently Reading / Listening</h2>
+
+            <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
+              {currentlyReading.map((book, index) => (
+                <FlipBookCard key={index} number={index + 1} {...book} dark />
+              ))}
             </div>
           </div>
         </section>
