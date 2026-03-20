@@ -22,7 +22,6 @@ type NavItem = {
 const NAV_STRUCTURE: NavItem[] = [
   { id: "home", label: "Home", type: "section" },
   { id: "WhoIAm", label: "Introduction", type: "section" },
-  { id: "FlowOrigin", label: "Flow Origins", type: "section" },
   {
     id: "what-i-do",
     label: "What I Do",
@@ -55,7 +54,6 @@ const NAV_STRUCTURE: NavItem[] = [
 const NAV_ITEMS = [
   { id: "home", label: "home" },
   { id: "WhoIAm", label: "introduction" },
-  { id: "FlowOrigin", label: "flow origins" },
   { id: "WhatIDo", label: "what I do" },
   { id: "WhatIDontDo", label: "what I don't do" },
   { id: "Highlights", label: "highlights" },
@@ -69,7 +67,6 @@ const flowOriginImages: GalleryImage[] = [
   { src: "/assets/images/about/flow-origin/Bilbao.png", alt: "Learnship Bilbao", className: "aspect-square" },
   { src: "/assets/images/about/flow-origin/KMUPoster.png", alt: "Kanban University", className: "aspect-square" },
   { src: "/assets/images/about/flow-origin/20241112_103736.jpg", alt: "Learnship Miami", className: "aspect-square" },
-  { src: "/assets/images/about/flow-origin/statik.png", alt: "STATIK Framework", className: "col-span-2 aspect-[2/1]", objectFit: "contain", bgColor: "#ffffff" },
 ];
 
 // Client logos for the Gig List section
@@ -949,7 +946,7 @@ const SERVICE_OFFERINGS: ServiceOffering[] = [
       "Not another layer of process. A clearer line of sight - so the conversation in the boardroom and the work on the board are finally telling the same story.",
       "I've done this greenfield - starting with a plan and building global delivery capability from scratch - and across live operational portfolios of 40+ teams. Messy, complex, rewarding."
     ],
-    clients: "Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank"
+    clients: "HSBC Investment Bank · Capital One UK · Co-operative Bank"
   },
   {
     id: "ChangeThatSticks",
@@ -982,30 +979,35 @@ const SERVICE_OFFERINGS: ServiceOffering[] = [
 ];
 
 // ============================================================================
-// WHAT I DO SECTION COMPONENT - Full Width Alternating Layout
+// WHAT I DO SECTION COMPONENT - Full Width Editorial Layout
 // ============================================================================
 
 function WhatIDoSection() {
   return (
     <div id="WhatIDo">
-      {/* Section Header */}
-      <section className="py-16 lg:py-20 bg-[#1e2936]">
-        <div className="text-center px-8 lg:px-16">
-          <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-4">What I Do</p>
-          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#f8f7f5] font-['Poppins',sans-serif] mb-4">
-            Delivery. Flow. Transformation.
+      {/* Section Header - Bold editorial style */}
+      <section className="relative py-20 lg:py-28 bg-[#1e2936] overflow-hidden">
+        {/* Subtle diagonal accent */}
+        <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-[#ea580c]/0 via-[#ea580c]/15 to-[#ea580c]/0 transform rotate-12 origin-top" />
+
+        <div className="relative z-10 px-8 lg:px-16 max-w-5xl mx-auto">
+          <p className="text-[#ea580c] text-[11px] font-bold uppercase tracking-[0.3em] mb-6">What I Do</p>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#f8f7f5] font-['Poppins',sans-serif] leading-[1.1] mb-6">
+            Delivery. Flow.<br />
+            <span className="text-[#ea580c]">Transformation.</span>
           </h2>
-          <p className="text-[#d0d8e0] text-lg max-w-2xl mx-auto">
+          <p className="text-[#a8b5c4] text-lg lg:text-xl max-w-2xl leading-relaxed">
             Twenty years of helping organisations see their systems clearly and deliver what actually matters.
           </p>
         </div>
       </section>
 
-      {/* Full-width alternating sections */}
+      {/* Full-width alternating sections with index for numbering */}
       {SERVICE_OFFERINGS.map((offering, index) => (
         <ServiceSection
           key={offering.id}
           offering={offering}
+          index={index}
           imageOnRight={index % 2 === 0}
         />
       ))}
@@ -1014,66 +1016,108 @@ function WhatIDoSection() {
 }
 
 // ============================================================================
-// SERVICE SECTION COMPONENT - Full Width with Alternating Layout
+// SERVICE SECTION COMPONENT - Full Width Editorial with Bold Numbers
 // ============================================================================
 
 interface ServiceSectionProps {
   offering: ServiceOffering;
+  index: number;
   imageOnRight: boolean;
 }
 
-function ServiceSection({ offering, imageOnRight }: ServiceSectionProps) {
-  const bgColor = imageOnRight ? 'bg-[#f5f3f0]' : 'bg-white';
+function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) {
+  const sectionNum = String(index + 1).padStart(2, '0');
+
+  // Alternating color schemes for visual variety
+  const schemes = [
+    { bg: 'bg-[#0a0a0a]', text: 'text-white', muted: 'text-[#8a99a8]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#c2410c] to-[#1e2936]' },
+    { bg: 'bg-[#f5f3f0]', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#1e2936] to-[#3d4d5f]' },
+    { bg: 'bg-[#1e2936]', text: 'text-white', muted: 'text-[#a8b5c4]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#ea580c] to-[#c2410c]' },
+    { bg: 'bg-white', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#2d3a4a] to-[#1e2936]' },
+  ];
+  const scheme = schemes[index % schemes.length];
 
   return (
-    <section id={offering.id} className={`${bgColor}`}>
-      <div className="max-w-7xl mx-auto">
-        <div className={`grid grid-cols-1 lg:grid-cols-5 gap-0`}>
-          {/* Image Side - narrower */}
+    <section id={offering.id} className={`${scheme.bg} relative overflow-hidden`}>
+      {/* Background number - massive editorial typography */}
+      <div className={`absolute ${imageOnRight ? 'right-8 lg:right-16' : 'left-8 lg:left-16'} top-1/2 -translate-y-1/2 pointer-events-none select-none`}>
+        <span className={`block text-[180px] md:text-[280px] lg:text-[400px] font-bold ${scheme.numberColor} font-['Poppins',sans-serif] leading-none`}>
+          {sectionNum}
+        </span>
+      </div>
+
+      <div className="relative z-10 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 min-h-[600px] lg:min-h-[700px]">
+
+          {/* Image Side - dynamic gradient placeholder */}
           <div className={`lg:col-span-2 ${imageOnRight ? 'lg:order-2' : 'lg:order-1'}`}>
-            <div className="aspect-[4/3] lg:aspect-[3/4] bg-[#1e2936] flex items-center justify-center relative overflow-hidden">
-              <span className="text-[#ea580c]/40 text-base font-medium font-['Poppins',sans-serif] tracking-wide">
-                [{offering.title}]
+            <div className={`h-full min-h-[300px] lg:min-h-full bg-gradient-to-br ${scheme.imageBg} flex items-center justify-center relative overflow-hidden group`}>
+              {/* Decorative elements */}
+              <div className="absolute inset-0 opacity-20">
+                <div className="absolute top-8 left-8 w-32 h-32 border border-white/20 rounded-full" />
+                <div className="absolute bottom-12 right-12 w-24 h-24 border border-white/10" />
+                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-white/10 rotate-45" />
+              </div>
+
+              {/* Large number overlay */}
+              <span className="text-white/10 text-[120px] md:text-[180px] font-bold font-['Poppins',sans-serif] leading-none select-none group-hover:scale-110 transition-transform duration-700">
+                {sectionNum}
               </span>
+
+              {/* Label */}
+              <div className="absolute bottom-6 left-6 right-6">
+                <span className="text-white/60 text-[11px] font-bold uppercase tracking-[0.2em]">
+                  {offering.subtitle}
+                </span>
+              </div>
             </div>
           </div>
 
-          {/* Content Side - wider */}
+          {/* Content Side */}
           <div className={`lg:col-span-3 ${imageOnRight ? 'lg:order-1' : 'lg:order-2'} flex items-center`}>
-            <div className="px-8 lg:px-16 py-12 lg:py-20">
-              {/* Subtitle */}
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.15em] mb-3">
-                {offering.subtitle}
-              </p>
+            <div className="px-8 lg:px-16 xl:px-20 py-16 lg:py-20">
+              {/* Section number + subtitle */}
+              <div className="flex items-center gap-4 mb-6">
+                <span className={`${scheme.accent} text-[13px] font-bold`}>{sectionNum}</span>
+                <div className={`h-px flex-1 max-w-[60px] ${scheme.accent === 'text-[#ea580c]' ? 'bg-[#ea580c]/40' : 'bg-[#c2410c]/40'}`} />
+                <span className={`${scheme.accent} text-[11px] font-bold uppercase tracking-[0.2em]`}>
+                  {offering.subtitle}
+                </span>
+              </div>
 
-              {/* Title */}
-              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1e2936] font-['Poppins',sans-serif] mb-6">
+              {/* Title - bigger, bolder */}
+              <h3 className={`text-3xl md:text-4xl lg:text-5xl font-bold ${scheme.text} font-['Poppins',sans-serif] leading-[1.1] mb-8`}>
                 {offering.title}
               </h3>
 
-              {/* Teaser - highlighted */}
-              <p className="text-lg text-[#1e2936] font-medium leading-relaxed mb-6">
-                {offering.teaser}
-              </p>
+              {/* Teaser - emphasized with left border */}
+              <div className={`pl-6 border-l-4 ${scheme.accent === 'text-[#ea580c]' ? 'border-[#ea580c]' : 'border-[#c2410c]'} mb-8`}>
+                <p className={`text-lg lg:text-xl ${scheme.text} font-medium leading-relaxed`}>
+                  {offering.teaser}
+                </p>
+              </div>
 
               {/* Full content */}
-              <div className="space-y-4 mb-8">
+              <div className="space-y-4 mb-10">
                 {offering.fullContent.map((paragraph, i) => (
-                  <p key={i} className="text-[15px] text-[#3d4d5f] leading-relaxed">
+                  <p key={i} className={`text-[15px] ${scheme.muted} leading-relaxed`}>
                     {paragraph}
                   </p>
                 ))}
               </div>
 
-              {/* Clients */}
-              <div className="pt-6 border-t border-[#1e2936]/15">
-                <p className="text-[11px] text-[#5a6a7a] uppercase tracking-[0.15em] font-semibold mb-2">Clients</p>
-                <p className="text-[14px] text-[#3d4d5f]">{offering.clients}</p>
+              {/* Clients - subtle treatment */}
+              <div className={`pt-6 border-t ${scheme.accent === 'text-[#ea580c]' ? 'border-white/10' : 'border-[#1e2936]/10'}`}>
+                <p className={`text-[10px] ${scheme.muted} uppercase tracking-[0.2em] font-semibold mb-2`}>Selected Clients</p>
+                <p className={`text-[13px] ${scheme.muted}`}>{offering.clients}</p>
               </div>
             </div>
           </div>
         </div>
       </div>
+
+      {/* Bottom accent line */}
+      <div className={`h-px ${scheme.accent === 'text-[#ea580c]' ? 'bg-gradient-to-r from-transparent via-[#ea580c]/20 to-transparent' : 'bg-gradient-to-r from-transparent via-[#c2410c]/20 to-transparent'}`} />
     </section>
   );
 }
