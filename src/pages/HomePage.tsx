@@ -623,74 +623,85 @@ export default function HomePage() {
         <WhatIDoSection />
 
         {/* ============================================================ */}
-        {/* WHAT I DON'T DO - Swiss Grid Layout */}
+        {/* WHAT I DON'T DO - Editorial Swiss Grid */}
         {/* ============================================================ */}
-        <section id="WhatIDontDo" className="bg-[#0a0a0a] text-white overflow-hidden">
-          <div className="max-w-7xl mx-auto">
-            {/* Header row */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 border-b border-white/10">
-              <div className="lg:col-span-4 px-8 py-12 lg:py-16 border-r border-white/10">
-                <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.2em] mb-3">Boundaries</p>
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-['Poppins',sans-serif] leading-tight">
-                  What I<br />don't do
+        <section id="WhatIDontDo" className="relative bg-[#0a0a0a] text-white overflow-hidden">
+          {/* Diagonal accent line */}
+          <div className="absolute top-0 left-1/2 w-px h-full bg-gradient-to-b from-[#ea580c]/0 via-[#ea580c]/20 to-[#ea580c]/0 transform -rotate-12 origin-top" />
+
+          <div className="max-w-7xl mx-auto relative">
+            {/* Header */}
+            <div className="px-8 lg:px-16 pt-20 pb-12 lg:pt-28 lg:pb-16">
+              <div className="max-w-3xl">
+                <p className="text-[#ea580c] text-[11px] font-bold uppercase tracking-[0.3em] mb-4">Boundaries</p>
+                <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-['Poppins',sans-serif] leading-[1.1] mb-6">
+                  What I don't do
                 </h2>
-              </div>
-              <div className="lg:col-span-8 px-8 py-12 lg:py-16 flex items-end">
-                <p className="text-[#a8b5c4] text-lg max-w-xl">
+                <p className="text-[#8a99a8] text-lg lg:text-xl leading-relaxed">
                   I've seen enough to know what works, and what doesn't.
                 </p>
               </div>
             </div>
 
-            {/* Grid of items - Swiss asymmetric layout */}
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-              {/* Item 1 - Large */}
-              <div className="lg:col-span-2 p-8 lg:p-10 border-b border-r border-white/10 bg-gradient-to-br from-[#c2410c] to-[#ea580c]">
-                <span className="inline-block text-white/40 text-[11px] font-bold tracking-widest mb-4">01</span>
-                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">Force change upon you</h3>
-                <p className="text-white/80 text-[15px] leading-relaxed">
+            {/* 2x2 Grid */}
+            <div className="grid grid-cols-1 md:grid-cols-2">
+              {/* Item 1 - Force change (Orange highlight) */}
+              <div className="group relative p-8 lg:p-12 border-t border-r border-white/[0.06] bg-gradient-to-br from-[#c2410c] to-[#b83a09] overflow-hidden transition-all duration-500 hover:from-[#d44a10] hover:to-[#c2410c]">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-white/[0.03] rounded-full blur-2xl transform translate-x-16 -translate-y-16 group-hover:scale-150 transition-transform duration-700" />
+                <span className="block text-[72px] lg:text-[96px] font-bold text-white/[0.15] font-['Poppins',sans-serif] leading-none mb-2 select-none">01</span>
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 -mt-8 lg:-mt-12 relative">
+                  Force change on your people
+                </h3>
+                <p className="text-white/80 text-[15px] lg:text-base leading-relaxed relative">
                   Real change sticks when it's done by your people, not to them. I meet you where you are and build momentum through incremental change and visible results. Not fear, disruption, or top-down mandates.
                 </p>
               </div>
 
-              {/* Item 2 - Standard */}
-              <div className="p-8 lg:p-10 border-b border-white/10 bg-[#111]">
-                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest mb-4">02</span>
-                <h3 className="text-lg font-bold text-white mb-3">Arrive with a framework</h3>
-                <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
-                  You can't install someone else's recipe into your organisation. Never works. I'm not an agile theory evangelist.
+              {/* Item 2 - Solve wrong problem */}
+              <div className="group relative p-8 lg:p-12 border-t border-white/[0.06] bg-[#0f0f0f] overflow-hidden transition-all duration-300 hover:bg-[#141414]">
+                <div className="absolute bottom-0 left-0 w-24 h-24 bg-[#ea580c]/[0.03] rounded-full blur-xl transform -translate-x-12 translate-y-12 group-hover:scale-150 transition-transform duration-700" />
+                <span className="block text-[72px] lg:text-[96px] font-bold text-white/[0.06] font-['Poppins',sans-serif] leading-none mb-2 select-none group-hover:text-[#ea580c]/10 transition-colors duration-500">02</span>
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 -mt-8 lg:-mt-12 relative">
+                  Solve the wrong problem
+                </h3>
+                <p className="text-[#8a99a8] text-[15px] lg:text-base leading-relaxed relative">
+                  Sometimes the most valuable thing I do is ask "why are you doing this at all?" The room didn't need a transformation programme. It needed someone to ask the right question.
                 </p>
               </div>
 
-              {/* Item 3 - Standard */}
-              <div className="p-8 lg:p-10 border-b border-r border-white/10 bg-[#0a0a0a]">
-                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest mb-4">03</span>
-                <h3 className="text-lg font-bold text-white mb-3">Beat around the bush</h3>
-                <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
-                  I listen first. Once I truly understand the challenge, I give straight-talking, pragmatic, actionable advice. If something doesn't need doing, I'll tell you.
+              {/* Item 3 - Install a recipe */}
+              <div className="group relative p-8 lg:p-12 border-t border-r border-white/[0.06] bg-[#0c0c0c] overflow-hidden transition-all duration-300 hover:bg-[#111]">
+                <div className="absolute top-0 left-1/2 w-20 h-20 bg-[#ea580c]/[0.02] rounded-full blur-xl group-hover:scale-150 transition-transform duration-700" />
+                <span className="block text-[72px] lg:text-[96px] font-bold text-white/[0.06] font-['Poppins',sans-serif] leading-none mb-2 select-none group-hover:text-[#ea580c]/10 transition-colors duration-500">03</span>
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 -mt-8 lg:-mt-12 relative">
+                  Install a recipe and call it transformation
+                </h3>
+                <p className="text-[#8a99a8] text-[15px] lg:text-base leading-relaxed relative">
+                  Outcomes follow Practices. Practices follow Culture. Culture follows Values. If you start anywhere other than values, you'll end up with a load of busy people fire-fighting and calling it change.
                 </p>
               </div>
 
-              {/* Item 4 - Standard */}
-              <div className="p-8 lg:p-10 border-b border-r border-white/10 bg-[#111]">
-                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest mb-4">04</span>
-                <h3 className="text-lg font-bold text-white mb-3">Fix something that shouldn't exist</h3>
-                <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
-                  Sometimes the most valuable thing I do is ask 'why are you doing this at all?' The room didn't need a transformation programme. It needed someone to ask the right question.
-                </p>
-              </div>
+              {/* Item 4 - Make myself indispensable (Special closing item) */}
+              <div className="group relative p-8 lg:p-12 border-t border-white/[0.06] bg-[#0a0a0a] overflow-hidden transition-all duration-300">
+                {/* Accent border that reveals on hover */}
+                <div className="absolute inset-0 border-2 border-[#ea580c]/0 group-hover:border-[#ea580c]/20 transition-all duration-500" />
+                <div className="absolute right-8 bottom-8 w-16 h-16 border border-[#ea580c]/10 rounded-full group-hover:scale-[3] group-hover:border-[#ea580c]/5 transition-all duration-700" />
 
-              {/* Item 5 - Wide */}
-              <div className="lg:col-span-2 p-8 lg:p-10 border-b border-white/10 bg-[#0a0a0a] flex flex-col lg:flex-row lg:items-center gap-6">
-                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest lg:mr-4">05</span>
-                <div>
-                  <h3 className="text-lg font-bold text-white mb-2">Install a recipe and call it transformation</h3>
-                  <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
-                    Outcomes follow Practices. Practices follow Culture. Culture follows Values. If you start anywhere other than values, you'll end up with busy people fire-fighting and calling it change.
-                  </p>
-                </div>
+                <span className="block text-[72px] lg:text-[96px] font-bold text-white/[0.06] font-['Poppins',sans-serif] leading-none mb-2 select-none group-hover:text-[#ea580c]/10 transition-colors duration-500">04</span>
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 -mt-8 lg:-mt-12 relative">
+                  Make myself indispensable
+                </h3>
+                <p className="text-[#8a99a8] text-[15px] lg:text-base leading-relaxed relative mb-4">
+                  I'm not here to become a permanent fixture. I build capability, not dependency — mentoring your people, embedding good habits, configuring your tools so your teams can see and improve things for themselves.
+                </p>
+                <p className="text-[#ea580c] text-[14px] font-medium relative">
+                  The goal is that you don't need me anymore. That's how I know it worked.
+                </p>
               </div>
             </div>
+
+            {/* Bottom accent line */}
+            <div className="h-px bg-gradient-to-r from-transparent via-[#ea580c]/30 to-transparent" />
           </div>
         </section>
 
