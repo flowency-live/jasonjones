@@ -623,19 +623,73 @@ export default function HomePage() {
         <WhatIDoSection />
 
         {/* ============================================================ */}
-        {/* WHAT I DON'T DO */}
+        {/* WHAT I DON'T DO - Swiss Grid Layout */}
         {/* ============================================================ */}
-        <section id="WhatIDontDo" className="px-8 lg:px-16 py-16 bg-gradient-to-r from-[#c2410c] to-[#ea580c] text-white">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-white">What I don't do</h2>
-            <p className="text-white/70 text-center mb-12">I've seen enough to know what works, and what doesn't.</p>
+        <section id="WhatIDontDo" className="bg-[#0a0a0a] text-white overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            {/* Header row */}
+            <div className="grid grid-cols-1 lg:grid-cols-12 border-b border-white/10">
+              <div className="lg:col-span-4 px-8 py-12 lg:py-16 border-r border-white/10">
+                <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.2em] mb-3">Boundaries</p>
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white font-['Poppins',sans-serif] leading-tight">
+                  What I<br />don't do
+                </h2>
+              </div>
+              <div className="lg:col-span-8 px-8 py-12 lg:py-16 flex items-end">
+                <p className="text-[#a8b5c4] text-lg max-w-xl">
+                  I've seen enough to know what works, and what doesn't.
+                </p>
+              </div>
+            </div>
 
-            <div className="space-y-8">
-              <DontDoItem title="Force change upon you" text="Real change sticks when it's done by your people, not to them. I meet you where you are and build momentum through incremental change and visible results. Not fear, disruption, or top-down mandates." />
-              <DontDoItem title="Arrive with a framework and tell you to install it" text="You can't install someone else's recipe into your organisation. Never works. I'm not an agile theory evangelist. There's more than one way to solve most problems. I help you find the way that works for you." />
-              <DontDoItem title="Beat around the bush" text="I listen first. Once I truly understand the challenge, I give straight-talking, pragmatic, actionable advice. If something doesn't need doing, I'll tell you." />
-              <DontDoItem title="Fix something that shouldn't exist" text="Sometimes the most valuable thing I do is ask 'why are you doing this at all?' The room didn't need a transformation programme. It needed someone to ask the right question." />
-              <DontDoItem title="Install a recipe and call it transformation" text="Outcomes follow Practices. Practices follow Culture. Culture follows Values. If you start anywhere other than values, you'll end up with a load of busy people fire-fighting and calling it change." />
+            {/* Grid of items - Swiss asymmetric layout */}
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+              {/* Item 1 - Large */}
+              <div className="lg:col-span-2 p-8 lg:p-10 border-b border-r border-white/10 bg-gradient-to-br from-[#c2410c] to-[#ea580c]">
+                <span className="inline-block text-white/40 text-[11px] font-bold tracking-widest mb-4">01</span>
+                <h3 className="text-xl lg:text-2xl font-bold text-white mb-3">Force change upon you</h3>
+                <p className="text-white/80 text-[15px] leading-relaxed">
+                  Real change sticks when it's done by your people, not to them. I meet you where you are and build momentum through incremental change and visible results. Not fear, disruption, or top-down mandates.
+                </p>
+              </div>
+
+              {/* Item 2 - Standard */}
+              <div className="p-8 lg:p-10 border-b border-white/10 bg-[#111]">
+                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest mb-4">02</span>
+                <h3 className="text-lg font-bold text-white mb-3">Arrive with a framework</h3>
+                <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
+                  You can't install someone else's recipe into your organisation. Never works. I'm not an agile theory evangelist.
+                </p>
+              </div>
+
+              {/* Item 3 - Standard */}
+              <div className="p-8 lg:p-10 border-b border-r border-white/10 bg-[#0a0a0a]">
+                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest mb-4">03</span>
+                <h3 className="text-lg font-bold text-white mb-3">Beat around the bush</h3>
+                <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
+                  I listen first. Once I truly understand the challenge, I give straight-talking, pragmatic, actionable advice. If something doesn't need doing, I'll tell you.
+                </p>
+              </div>
+
+              {/* Item 4 - Standard */}
+              <div className="p-8 lg:p-10 border-b border-r border-white/10 bg-[#111]">
+                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest mb-4">04</span>
+                <h3 className="text-lg font-bold text-white mb-3">Fix something that shouldn't exist</h3>
+                <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
+                  Sometimes the most valuable thing I do is ask 'why are you doing this at all?' The room didn't need a transformation programme. It needed someone to ask the right question.
+                </p>
+              </div>
+
+              {/* Item 5 - Wide */}
+              <div className="lg:col-span-2 p-8 lg:p-10 border-b border-white/10 bg-[#0a0a0a] flex flex-col lg:flex-row lg:items-center gap-6">
+                <span className="inline-block text-[#ea580c] text-[11px] font-bold tracking-widest lg:mr-4">05</span>
+                <div>
+                  <h3 className="text-lg font-bold text-white mb-2">Install a recipe and call it transformation</h3>
+                  <p className="text-[#a8b5c4] text-[14px] leading-relaxed">
+                    Outcomes follow Practices. Practices follow Culture. Culture follows Values. If you start anywhere other than values, you'll end up with busy people fire-fighting and calling it change.
+                  </p>
+                </div>
+              </div>
             </div>
           </div>
         </section>
@@ -1026,16 +1080,6 @@ function BeliefPoint({ number, title, text }: { number: string; title: string; t
         {title}
       </h3>
       <p className="text-[13px] text-[#3d4d5f]/90 leading-relaxed pl-0">{text}</p>
-    </div>
-  );
-}
-
-
-function DontDoItem({ title, text }: { title: string; text: string }) {
-  return (
-    <div>
-      <h3 className="text-lg font-bold text-white mb-2">{title}</h3>
-      <p className="text-white/80 text-[14px] leading-relaxed">{text}</p>
     </div>
   );
 }
