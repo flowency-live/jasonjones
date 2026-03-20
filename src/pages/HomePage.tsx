@@ -884,7 +884,6 @@ function WhatIDoSection() {
           key={offering.id}
           offering={offering}
           imageOnRight={index % 2 === 0}
-          isFirst={index === 0}
         />
       ))}
     </div>
@@ -898,10 +897,9 @@ function WhatIDoSection() {
 interface ServiceSectionProps {
   offering: ServiceOffering;
   imageOnRight: boolean;
-  isFirst: boolean;
 }
 
-function ServiceSection({ offering, imageOnRight, isFirst }: ServiceSectionProps) {
+function ServiceSection({ offering, imageOnRight }: ServiceSectionProps) {
   const bgColor = imageOnRight ? 'bg-[#f5f3f0]' : 'bg-white';
   const textColor = 'text-[#1e2936]';
 
