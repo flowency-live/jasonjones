@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink } from "lucide-react";
+import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink, Plus, Minus } from "lucide-react";
 import { PhotoGallery, CaptionedPhotoGallery } from "@/components/PhotoGallery";
 import type { GalleryImage, CaptionedImage } from "@/components/PhotoGallery";
 
@@ -28,13 +28,13 @@ const NAV_STRUCTURE: NavItem[] = [
     label: "What I Do",
     type: "dropdown",
     children: [
-      { id: "ShowMeTheMoney", label: "Show Me The Money", type: "section" },
-      { id: "AcceleratedDelivery", label: "Accelerated Delivery", type: "section" },
-      { id: "Alignment", label: "Value & Flow Alignment", type: "section" },
-      { id: "TeamCoaching", label: "Team Performance Coaching", type: "section" },
-      { id: "Governance", label: "Governance & Guardrails", type: "section" },
+      { id: "LetItFlow", label: "Let it FLOW", type: "section" },
+      { id: "StrategyToDone", label: "From Strategy to Done", type: "section" },
+      { id: "ChangeThatSticks", label: "Change that STICKS", type: "section" },
+      { id: "CoachingTransformation", label: "Coaching & Transformation", type: "section" },
     ]
   },
+  { id: "ai-with-control", label: "AI with Control", type: "page", href: "/ai" },
   { id: "WhatIDontDo", label: "What I Don't Do", type: "section" },
   {
     id: "doing-now",
@@ -56,11 +56,7 @@ const NAV_ITEMS = [
   { id: "home", label: "home" },
   { id: "WhoIAm", label: "introduction" },
   { id: "FlowOrigin", label: "flow origins" },
-  { id: "ShowMeTheMoney", label: "show me the money" },
-  { id: "AcceleratedDelivery", label: "accelerated delivery" },
-  { id: "Alignment", label: "alignment" },
-  { id: "TeamCoaching", label: "team coaching" },
-  { id: "Governance", label: "governance" },
+  { id: "WhatIDo", label: "what I do" },
   { id: "WhatIDontDo", label: "what I don't do" },
   { id: "Highlights", label: "highlights" },
   { id: "GigList", label: "the gig list" },
@@ -590,222 +586,9 @@ export default function HomePage() {
         </section>
 
         {/* ============================================================ */}
-        {/* SHOW ME THE MONEY - Value & Intent Alignment */}
+        {/* WHAT I DO - Compact Card Grid */}
         {/* ============================================================ */}
-        <section id="ShowMeTheMoney" className="py-16 bg-[#2d3a4a]">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Text - left side with padding */}
-            <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Show Me The Money</h2>
-
-              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
-                <p>Remember this film? Jerry Maguire, 1996. "Show me the money" isn't about greed. It's about honesty. Demanding what's deserved. Cutting through bullshit.</p>
-                <p>In the age of AI-accelerated development, the bottleneck isn't delivery speed anymore. It's knowing what's worth building in the first place.</p>
-                <p>Most backlogs are graveyards of good intentions. Features nobody asked for. Initiatives labelled "strategic" because someone senior said so. I ask the uncomfortable questions that clear the fog.</p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Clients</p>
-                <p className="text-[#d0d8e0] text-[14px]">Shell Recharge · HSBC · Capital One UK · Co-operative Bank · British Airways</p>
-              </div>
-            </div>
-
-            {/* Image - right side */}
-            <div className="grid grid-cols-1">
-              <img
-                src="/assets/images/showme.jpg"
-                alt="Show Me The Money - prioritisation workshop"
-                className="w-full h-full object-cover"
-              />
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================ */}
-        {/* GETTING SHIT DONE - Accelerated Delivery */}
-        {/* ============================================================ */}
-        <section id="AcceleratedDelivery" className="py-16 bg-[#2d3a4a]">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Text - left side with padding */}
-            <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Getting Shit Done</h2>
-              <p className="text-[#a8b5c4] mb-8">Accelerated Delivery</p>
-
-              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
-                <p>Deliver value faster. Reduce delays, multitasking and bottlenecks. Visualise work, limit WIP, continuously improve using data. Smoother, more predictable delivery that your teams can see and trust.</p>
-                <p>Make the invisible visible. Visualise your work, configure your tooling, instrument your workflow so you can see how your delivery system is actually performing and identify improvements you can make yourselves.</p>
-                <p>Deliver change that sticks. Experienced practitioners give your teams the skills and confidence to own and evolve their practices. Continuous improvement becomes part of the DNA, not a project with an end date.</p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Clients</p>
-                <p className="text-[#d0d8e0] text-[14px]">British Airways / IAG · HSBC · Shell Recharge · Co-operative Bank · Cheshire Data Systems · Manchester Airports Group</p>
-              </div>
-            </div>
-
-            {/* Images - right side, full bleed */}
-            <div className="grid grid-cols-2">
-              <ImagePlaceholder label="Workshop 1" path="/assets/images/about/accelerated-delivery/1.jpg" />
-              <ImagePlaceholder label="Workshop 2" path="/assets/images/about/accelerated-delivery/2.jpg" />
-              <ImagePlaceholder label="Workshop 3" path="/assets/images/about/accelerated-delivery/3.jpg" />
-              <ImagePlaceholder label="Workshop 4" path="/assets/images/about/accelerated-delivery/4.jpg" />
-              <div className="col-span-2">
-                <ImagePlaceholder label="Workshop wide" path="/assets/images/about/accelerated-delivery/wide.jpg" wide />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================ */}
-        {/* AI WITH CONTROL */}
-        {/* ============================================================ */}
-        <section id="InnovationAI" className="py-16 bg-[#e8eaed] text-[#1e2936]">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Images - left side, full bleed */}
-            <div className="grid grid-cols-2 order-2 lg:order-1">
-              <div className="col-span-2">
-                <ImagePlaceholder label="AI Tool" path="/assets/images/about/ai/wide.jpg" wide light />
-              </div>
-              <ImagePlaceholder label="AI 1" path="/assets/images/about/ai/1.jpg" light />
-              <ImagePlaceholder label="AI 2" path="/assets/images/about/ai/2.jpg" light />
-              <ImagePlaceholder label="AI 3" path="/assets/images/about/ai/3.jpg" light />
-              <ImagePlaceholder label="AI 4" path="/assets/images/about/ai/4.jpg" light />
-            </div>
-
-            {/* Text - right side with padding */}
-            <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#1e2936]">AI with Control</h2>
-              <p className="text-[#5a6a7a] mb-8">From strategy to implementation to execution</p>
-
-              <div className="space-y-4 text-[16px] leading-relaxed text-[#3d4d5f]">
-                <p>Actively building AI products and helping clients navigate AI strategy, implementation and execution. Not theory. Working systems.</p>
-                <p>Building AI-powered SaaS tools using LLMs including Claude, Gemini and Grok. Practical experience in prompt engineering, context orchestration and agentic workflow design.</p>
-                <p>Vibe coding done properly: right-sized, right-timed solutions that actually get used. Build what's needed, nothing more, ship it, learn, iterate.</p>
-                <p>Contributor to British Airways Operational Decision Intelligence. Bridges strategy, delivery and technical implementation credibly.</p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
-                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-[0.1em]st mb-2">Clients</p>
-                <p className="text-[#3d4d5f] text-[14px]">British Airways / IAG · Cheshire Data Systems · Intrapay / Sappaya</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================ */}
-        {/* ALIGNMENT */}
-        {/* ============================================================ */}
-        <section id="Alignment" className="py-16 bg-gradient-to-br from-[#1e2936] to-[#2d3a4a]">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Text - left side with padding */}
-            <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Strategy to Execution Alignment</h2>
-
-              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
-                <p>Helping organisations close the gap between what the boardroom decides and what the teams actually deliver. OKRs, value streams, lean portfolio leadership: connecting the why to the what to the how.</p>
-                <p>Not another layer of process. A clearer line of sight. Working with leadership and delivery teams simultaneously, so the conversation in the boardroom and the work on the board are finally telling the same story.</p>
-              </div>
-
-              {/* Key story */}
-              <div className="mt-8 p-6 bg-[#c2410c]/15 border-l-4 border-[#c2410c] rounded-r-lg">
-                <p className="text-[14px] leading-relaxed text-[#d4dce6]">
-                  A leadership team. 85 Post-Its on the wall, every one labelled mandatory, critical and urgent. I asked "Why? Show me the money." and started pulling tickets down. The consultancy owner who'd placed me panicked. Then the leadership started doing it themselves. "Dave, do we really need that?" "Nah, probably not." 14 survived. 10 shipped as working digital products. That room didn't need a transformation programme. It needed someone to ask the right question.
-                </p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Clients</p>
-                <p className="text-[#d0d8e0] text-[14px]">Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank · Intrapay / Sappaya</p>
-              </div>
-            </div>
-
-            {/* Images - right side, full bleed */}
-            <div className="grid grid-cols-2">
-              <ImagePlaceholder label="Strategy 1" path="/assets/images/about/alignment/1.jpg" />
-              <ImagePlaceholder label="Strategy 2" path="/assets/images/about/alignment/2.jpg" />
-              <ImagePlaceholder label="Strategy 3" path="/assets/images/about/alignment/3.jpg" />
-              <ImagePlaceholder label="Strategy 4" path="/assets/images/about/alignment/4.jpg" />
-              <div className="col-span-2">
-                <ImagePlaceholder label="Post-It Wall" path="/assets/images/about/alignment/postit-wall.jpg" wide />
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================ */}
-        {/* FLOWENCY */}
-        {/* ============================================================ */}
-        <section id="Flowency" className="py-16 bg-[#f5f3f0] text-[#1e2936]">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Images - left side, full bleed */}
-            <div className="grid grid-cols-2 order-2 lg:order-1">
-              <ImagePlaceholder label="Flow 1" path="/assets/images/about/flowency/1.jpg" light />
-              <ImagePlaceholder label="Flow 2" path="/assets/images/about/flowency/2.jpg" light />
-              <div className="col-span-2">
-                <ImagePlaceholder label="Flow wide" path="/assets/images/about/flowency/wide.jpg" wide light />
-              </div>
-              <ImagePlaceholder label="Flow 3" path="/assets/images/about/flowency/3.jpg" light />
-              <ImagePlaceholder label="Flow 4" path="/assets/images/about/flowency/4.jpg" light />
-            </div>
-
-            {/* Text - right side with padding */}
-            <div className="order-1 lg:order-2 px-8 lg:pl-12 lg:pr-16">
-              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#1e2936]">Flowency</h2>
-              <p className="text-[#5a6a7a] mb-8">Making flow of value visible and predictable</p>
-
-              <div className="space-y-4 text-[16px] leading-relaxed text-[#3d4d5f]">
-                <p>Start where you are. Bring clarity, focus and stability. Then optimise for flow. Evolutionary, continuous improvement: building internal capability so the changes stick long after the engagement ends.</p>
-                <p>Uses STATIK (a Systems Thinking Approach to implementing Kanban) to diagnose structural friction and design fit-for-purpose delivery systems. Uncovers invisible and stalled work, establishes pull-based systems, and surfaces cycle time, lead time, flow efficiency and blocker trends. Makes the system legible before trying to change it.</p>
-                <p>Framework agnostic, method diverse. Scrum, Kanban, SAFe, Spotify: applied contextually for each organisation's maturity. Not installed. Grown. Holds the Kanban Management Professional (KMP) credential through Kanban University.</p>
-                <p>I've consulted, coached, led and co-sourced lean, Agile and DevOps teams and scaled them, using SAFe, LeSS and Spotify, with success and without. The failures taught me as much as the wins. That honesty is part of how I work.</p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#1e2936]/10">
-                <p className="text-[12px] text-[#5a6a7a] uppercase tracking-[0.1em]st mb-2">Clients</p>
-                <p className="text-[#3d4d5f] text-[14px]">HSBC (x2) · Capital One UK (40-45 teams, 4 SAFe Release Trains) · Modix / Cox Automotive · Manchester Airports Group · Barclaycard UK</p>
-              </div>
-            </div>
-          </div>
-        </section>
-
-        {/* ============================================================ */}
-        {/* VIBE CODING */}
-        {/* ============================================================ */}
-        <section id="VibeCoding" className="py-16 bg-[#2d3a4a]">
-          <div className="grid grid-cols-1 lg:grid-cols-2">
-            {/* Text - left side with padding */}
-            <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">What I Do</p>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6 text-[#f8f7f5]">Vibe Coding</h2>
-              <p className="text-[#a8b5c4] mb-8">Fit 4 Purpose</p>
-
-              <div className="space-y-4 text-[16px] leading-relaxed text-[#d0d8e0]">
-                <p>Making solutions and products that are right-sized, right-timed and actually get used. Not over-engineered. Not under-thought. Fit for purpose, which requires understanding what purpose actually is.</p>
-                <p>Building AI-powered SaaS applications using modern LLM ecosystems. Practical, deployable, real. The kind of thing that exists in production, not in a pitch deck.</p>
-                <p>The same instinct that strips 85 initiatives down to 14 applies here: build what's needed, nothing more, ship it, learn, iterate. Speed without recklessness. Simplicity without corners cut.</p>
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-[#3d4d5f]/50">
-                <p className="text-[12px] text-[#a8b5c4] uppercase tracking-[0.1em]st mb-2">Projects</p>
-                <p className="text-[#d0d8e0] text-[14px]">Internal Flowency tools · BA Operational Intelligence · Client prototypes</p>
-              </div>
-            </div>
-
-            {/* Images - right side, full bleed */}
-            <div className="grid grid-cols-2">
-              <ImagePlaceholder label="Screenshot 1" path="/assets/images/about/vibe-coding/1.jpg" />
-              <ImagePlaceholder label="Screenshot 2" path="/assets/images/about/vibe-coding/2.jpg" />
-              <div className="col-span-2">
-                <ImagePlaceholder label="App screenshot" path="/assets/images/about/vibe-coding/wide.jpg" wide />
-              </div>
-            </div>
-          </div>
-        </section>
+        <WhatIDoSection />
 
         {/* ============================================================ */}
         {/* WHAT I DON'T DO */}
@@ -975,7 +758,279 @@ export default function HomePage() {
 }
 
 // ============================================================================
-// COMPONENTS
+// WHAT I DO - SERVICE OFFERINGS DATA
+// ============================================================================
+
+interface ServiceOffering {
+  id: string;
+  title: string;
+  subtitle: string;
+  teaser: string;
+  fullContent: string[];
+  clients: string;
+}
+
+const SERVICE_OFFERINGS: ServiceOffering[] = [
+  {
+    id: "LetItFlow",
+    title: "Let it FLOW",
+    subtitle: "Delivery Leadership & Flow Metrics",
+    teaser: "Making flow of value visible and predictable. Start where you are, bring clarity, then optimise for flow.",
+    fullContent: [
+      "I've spent the best part of 20 years helping organisations stop firefighting and start delivering with real, predictable flow. My approach? Framework-agnostic. I'll draw from Agile, Waterfall, Kanban, systems thinking, JFDI - whatever actually fits the problem, not the textbook.",
+      "What I really care about is making the work visible - seeing the actual system, finding the bottlenecks, and improving things with evidence, not opinions. Lead time, cycle time, the metrics that matter. Not vanity dashboards that make everyone feel busy. I configure the tooling and instrument the workflow so teams can see how their delivery system is actually performing - and improve it themselves.",
+      "When flow works, value follows. That bit never gets old."
+    ],
+    clients: "HSBC · Capital One UK · CDL · Manchester Airports Group"
+  },
+  {
+    id: "StrategyToDone",
+    title: "From Strategy to Done",
+    subtitle: "Boardroom to Delivery Alignment",
+    teaser: "Closing the gap between what the boardroom decides and what teams actually deliver.",
+    fullContent: [
+      "Here's the thing - ambitious strategic goals have a habit of dying somewhere between the boardroom and the delivery layer. I specialise in making sure they don't.",
+      "My journey includes partnering with C-suite leaders to structure organisations around outcome-led value streams, translating big commercial commitments into delivery plans that are realistic, risk-aware and actually executable. OKRs, lean portfolio leadership, making trade-offs visible - connecting the why to the what to the how.",
+      "Not another layer of process. A clearer line of sight - so the conversation in the boardroom and the work on the board are finally telling the same story.",
+      "I've done this greenfield - starting with a plan and building global delivery capability from scratch - and across live operational portfolios of 40+ teams. Messy, complex, rewarding."
+    ],
+    clients: "Shell Recharge · HSBC Investment Bank · Capital One UK · Co-operative Bank"
+  },
+  {
+    id: "ChangeThatSticks",
+    title: "Change that STICKS",
+    subtitle: "Building Teams & Capability",
+    teaser: "Experienced practitioners give your teams the skills to own and evolve their practices.",
+    fullContent: [
+      "The fundamentals of great delivery haven't changed - curious people, learning together, building trust, improving as they go. That predates any framework. Agile didn't invent good human behaviour, it just gave it some structure.",
+      "My journey includes coaching at every level - from individual squads through to Release Train Engineers and Divisional CTOs. I'm a big believer in showing, not telling, which means working alongside teams as a servant-leader, modelling the practices, not just presenting slides about them.",
+      "The bit I'm most proud of? Building Communities of Practice and mentoring internal champions so that the change outlasts my engagement. Good habits, shared learning, continuous improvement - baked into the DNA, not bolted on. That's the goal.",
+      "Done this across transformations spanning 45 teams and three continents. Challenging. And brilliant."
+    ],
+    clients: "British Airways · Capital One UK (45 teams) · Barclaycard UK"
+  },
+  {
+    id: "CoachingTransformation",
+    title: "Coaching & Transformation",
+    subtitle: "Culture & Values Work",
+    teaser: "Outcomes follow Practices. Practices follow Culture. Culture follows Values.",
+    fullContent: [
+      "You know the saying - culture eats strategy for breakfast. It's a cliché because it's true.",
+      "But here's what I've learned: culture doesn't change because someone puts new posters on the wall or renames the weekly status meeting a \"stand-up.\" Culture follows practices. And practices follow values. That's the chain.",
+      "If people still fundamentally value a plan and certainty over the discomfort of exploring the unknown - if the real belief is \"just tell me what to do and when it'll be done\" - then no amount of ceremonies or transformation programmes will shift the culture. The values show through in what people actually do, every single day.",
+      "My journey includes helping organisations get honest about this. Not with blame, but with curiosity. What do we really value here? What are the practices telling us? And are we genuinely willing to sit with a bit of uncertainty in exchange for learning, adapting and building something better?",
+      "That's where the real transformation happens. Not in the framework. Not in the tooling. In the conversations people have when things get uncomfortable.",
+      "It's hard work. It's also the most rewarding work there is."
+    ],
+    clients: "Co-operative Bank · Shaw Trust · SSE"
+  }
+];
+
+// ============================================================================
+// WHAT I DO SECTION COMPONENT
+// ============================================================================
+
+function WhatIDoSection() {
+  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
+  const [sectionVisible, setSectionVisible] = useState(false);
+  const sectionRef = useRef<HTMLDivElement>(null);
+
+  const toggleCard = (id: string) => {
+    setExpandedCards(prev => {
+      const next = new Set(prev);
+      if (next.has(id)) {
+        next.delete(id);
+      } else {
+        next.add(id);
+      }
+      return next;
+    });
+  };
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setSectionVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.1 }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return (
+    <section id="WhatIDo" ref={sectionRef} className="py-16 lg:py-20 bg-[#1e2936]">
+      {/* CSS for animations */}
+      <style>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(24px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+        .service-card {
+          opacity: 0;
+        }
+        .service-card.visible {
+          animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+        }
+        .expandable-content {
+          display: grid;
+          grid-template-rows: 0fr;
+          transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .expandable-content.expanded {
+          grid-template-rows: 1fr;
+        }
+        .expandable-content > div {
+          overflow: hidden;
+        }
+        .accent-line {
+          width: 0;
+          transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .service-card.expanded .accent-line {
+          width: 60px;
+        }
+      `}</style>
+
+      {/* Header */}
+      <div className="text-center mb-12 px-6 md:px-8 lg:px-16">
+        <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-4">What I Do</p>
+        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#f8f7f5] mb-4">
+          Delivery. Flow. Transformation.
+        </h2>
+        <p className="text-[#d0d8e0] text-lg max-w-2xl mx-auto">
+          Twenty years of helping organisations see their systems clearly and deliver what actually matters.
+        </p>
+      </div>
+
+      {/* Card Grid */}
+      <div className="px-6 md:px-8 lg:px-16 max-w-7xl mx-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
+          {SERVICE_OFFERINGS.map((offering, index) => (
+            <ServiceCard
+              key={offering.id}
+              offering={offering}
+              isExpanded={expandedCards.has(offering.id)}
+              onToggle={() => toggleCard(offering.id)}
+              index={index}
+              visible={sectionVisible}
+            />
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
+// ============================================================================
+// SERVICE CARD COMPONENT
+// ============================================================================
+
+interface ServiceCardProps {
+  offering: ServiceOffering;
+  isExpanded: boolean;
+  onToggle: () => void;
+  index: number;
+  visible: boolean;
+}
+
+function ServiceCard({ offering, isExpanded, onToggle, index, visible }: ServiceCardProps) {
+  return (
+    <div
+      className={`service-card ${visible ? 'visible' : ''} ${isExpanded ? 'expanded' : ''}
+        bg-[#2d3a4a] rounded-lg border border-[#3d4d5f]/30 overflow-hidden
+        transition-all duration-300 ease-out
+        hover:bg-[#3d4d5f] hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20
+        hover:border-[#ea580c]/30`}
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      {/* Coloured Placeholder Image */}
+      <div className="aspect-square bg-gradient-to-br from-[#c2410c]/25 via-[#ea580c]/15 to-[#1e2936]
+                      flex items-center justify-center border-b border-[#3d4d5f]/20
+                      transition-transform duration-500 ease-out group-hover:scale-105">
+        <span className="text-[#ea580c]/50 text-sm font-medium font-['Poppins',sans-serif] tracking-wide">
+          [{offering.title}]
+        </span>
+      </div>
+
+      {/* Card Content */}
+      <div className="p-5 lg:p-6">
+        {/* Title */}
+        <h3 className="text-lg lg:text-xl font-bold text-[#f8f7f5] font-['Poppins',sans-serif] mb-1">
+          {offering.title}
+        </h3>
+
+        {/* Subtitle */}
+        <p className="text-[11px] text-[#ea580c] uppercase tracking-[0.1em] font-semibold mb-3">
+          {offering.subtitle}
+        </p>
+
+        {/* Teaser (always visible) */}
+        <p className="text-[13px] text-[#d0d8e0] leading-relaxed mb-4 line-clamp-3">
+          {offering.teaser}
+        </p>
+
+        {/* Expandable Content */}
+        <div className={`expandable-content ${isExpanded ? 'expanded' : ''}`}>
+          <div>
+            {/* Orange accent line */}
+            <div className="accent-line h-[3px] bg-gradient-to-r from-[#c2410c] via-[#ea580c] to-transparent mb-4" />
+
+            {/* Full content */}
+            <div className="space-y-3 mb-4">
+              {offering.fullContent.map((paragraph, i) => (
+                <p key={i} className="text-[13px] text-[#d0d8e0] leading-relaxed">
+                  {paragraph}
+                </p>
+              ))}
+            </div>
+
+            {/* Clients */}
+            <div className="pt-4 border-t border-[#3d4d5f]/50">
+              <p className="text-[10px] text-[#a8b5c4] uppercase tracking-[0.1em] font-semibold mb-1">Clients</p>
+              <p className="text-[12px] text-[#d0d8e0]">{offering.clients}</p>
+            </div>
+          </div>
+        </div>
+
+        {/* Expand/Collapse Button */}
+        <button
+          onClick={onToggle}
+          className="flex items-center gap-2 mt-4 min-h-[44px] text-[#ea580c] hover:text-[#c2410c]
+                     transition-all duration-200 group"
+        >
+          {isExpanded ? (
+            <>
+              <Minus size={16} className="transition-transform group-hover:scale-110" />
+              <span className="text-[12px] font-semibold uppercase tracking-[0.05em]">Show less</span>
+            </>
+          ) : (
+            <>
+              <Plus size={16} className="transition-transform group-hover:scale-110 group-hover:rotate-90" />
+              <span className="text-[12px] font-semibold uppercase tracking-[0.05em]">Read more</span>
+            </>
+          )}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// OTHER COMPONENTS
 // ============================================================================
 
 function PhilosophyPoint({ number, title, text }: { number: string; title: string; text: string }) {

@@ -1,12 +1,14 @@
 import { Route, Switch } from "wouter";
 import HomePage from "@/pages/HomePage";
 import WhatShapesMePage from "@/pages/WhatShapesMePage";
+import AIPage from "@/pages/AIPage";
 
 function App() {
   return (
     <Switch>
       <Route path="/" component={HomePage} />
       <Route path="/what-shapes-me" component={WhatShapesMePage} />
+      <Route path="/ai" component={AIPage} />
       <Route>
         <div className="min-h-screen bg-[#0a0a0a] text-white flex items-center justify-center">
           <div className="text-center">
