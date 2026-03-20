@@ -901,56 +901,52 @@ interface ServiceSectionProps {
 
 function ServiceSection({ offering, imageOnRight }: ServiceSectionProps) {
   const bgColor = imageOnRight ? 'bg-[#f5f3f0]' : 'bg-white';
-  const textColor = 'text-[#1e2936]';
 
   return (
     <section id={offering.id} className={`${bgColor}`}>
-      <div className={`grid grid-cols-1 lg:grid-cols-2 ${imageOnRight ? '' : 'lg:flex-row-reverse'}`}>
-        {/* Image Side */}
-        <div className={`${imageOnRight ? 'lg:order-2' : 'lg:order-1'}`}>
-          <div className="aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] lg:min-h-[500px] bg-gradient-to-br from-[#1e2936] via-[#2d3a4a] to-[#3d4d5f] flex items-center justify-center relative overflow-hidden">
-            {/* Decorative elements */}
-            <div className="absolute inset-0 opacity-20" style={{
-              backgroundImage: `linear-gradient(45deg, #ea580c 1px, transparent 1px), linear-gradient(-45deg, #ea580c 1px, transparent 1px)`,
-              backgroundSize: '40px 40px'
-            }} />
-            <span className="relative z-10 text-[#ea580c]/60 text-lg font-medium font-['Poppins',sans-serif] tracking-wide">
-              [{offering.title}]
-            </span>
-          </div>
-        </div>
-
-        {/* Content Side */}
-        <div className={`${imageOnRight ? 'lg:order-1' : 'lg:order-2'} flex items-center`}>
-          <div className="px-8 lg:px-12 xl:px-16 py-12 lg:py-16 max-w-2xl">
-            {/* Subtitle */}
-            <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-3">
-              {offering.subtitle}
-            </p>
-
-            {/* Title */}
-            <h3 className={`text-2xl md:text-3xl lg:text-4xl font-bold ${textColor} font-['Poppins',sans-serif] mb-6`}>
-              {offering.title}
-            </h3>
-
-            {/* Teaser - highlighted */}
-            <p className={`text-lg ${textColor}/90 font-medium leading-relaxed mb-6`}>
-              {offering.teaser}
-            </p>
-
-            {/* Full content */}
-            <div className="space-y-4 mb-8">
-              {offering.fullContent.map((paragraph, i) => (
-                <p key={i} className={`text-[15px] ${textColor}/75 leading-relaxed`}>
-                  {paragraph}
-                </p>
-              ))}
+      <div className="max-w-7xl mx-auto">
+        <div className={`grid grid-cols-1 lg:grid-cols-5 gap-0`}>
+          {/* Image Side - narrower */}
+          <div className={`lg:col-span-2 ${imageOnRight ? 'lg:order-2' : 'lg:order-1'}`}>
+            <div className="aspect-[4/3] lg:aspect-[3/4] bg-[#1e2936] flex items-center justify-center relative overflow-hidden">
+              <span className="text-[#ea580c]/40 text-base font-medium font-['Poppins',sans-serif] tracking-wide">
+                [{offering.title}]
+              </span>
             </div>
+          </div>
 
-            {/* Clients */}
-            <div className="pt-6 border-t border-[#1e2936]/10">
-              <p className="text-[11px] text-[#1e2936]/50 uppercase tracking-[0.15em] font-semibold mb-2">Clients</p>
-              <p className={`text-[14px] ${textColor}/70`}>{offering.clients}</p>
+          {/* Content Side - wider */}
+          <div className={`lg:col-span-3 ${imageOnRight ? 'lg:order-1' : 'lg:order-2'} flex items-center`}>
+            <div className="px-8 lg:px-16 py-12 lg:py-20">
+              {/* Subtitle */}
+              <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.15em] mb-3">
+                {offering.subtitle}
+              </p>
+
+              {/* Title */}
+              <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-[#1e2936] font-['Poppins',sans-serif] mb-6">
+                {offering.title}
+              </h3>
+
+              {/* Teaser - highlighted */}
+              <p className="text-lg text-[#1e2936] font-medium leading-relaxed mb-6">
+                {offering.teaser}
+              </p>
+
+              {/* Full content */}
+              <div className="space-y-4 mb-8">
+                {offering.fullContent.map((paragraph, i) => (
+                  <p key={i} className="text-[15px] text-[#3d4d5f] leading-relaxed">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              {/* Clients */}
+              <div className="pt-6 border-t border-[#1e2936]/15">
+                <p className="text-[11px] text-[#5a6a7a] uppercase tracking-[0.15em] font-semibold mb-2">Clients</p>
+                <p className="text-[14px] text-[#3d4d5f]">{offering.clients}</p>
+              </div>
             </div>
           </div>
         </div>
