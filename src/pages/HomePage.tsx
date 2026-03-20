@@ -522,36 +522,68 @@ export default function HomePage() {
         {/* ============================================================ */}
         <section id="WhoIAm" className="px-8 lg:px-12 xl:px-16 py-16 bg-[#f5f3f0] text-[#1e2936]">
           <div className="max-w-7xl mx-auto">
-            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.1em]st mb-8">Who I Am</p>
+            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.15em] mb-8">Who I Am</p>
 
-            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-10">
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Bio */}
-              <div className="text-[13px] leading-relaxed text-[#1e2936]/75 space-y-4">
-                <p className="text-[#1e2936] font-medium text-[15px] leading-snug mb-4">
-                  A love of tech. A feel for rhythm. An instinct for the simpler, better way.
+              <div className="text-[14px] leading-relaxed text-[#1e2936]/80 space-y-5">
+                <p className="text-[#1e2936] font-semibold text-[17px] leading-snug">
+                  Technology, timing, and an instinct for the simpler, better way.
                 </p>
-                <p>Given I'm old enough to have learned to code on a BBC Micro and picked up my first pair of drumsticks at the same time, I can safely say both technology and timing have been with me a while. Neither has let go.</p>
-                <p>From a dyehouse, managing yarn sourcing, dye capacity and a single-machine bottleneck where you only processed what you could actually ship, to the Airbus A350 XWB in Toulouse, from early-2000s training rooms to coaching forty-five agile teams at Capital One, it's been quite a journey. I was working in genuinely complex systems long before anyone handed me an agile framework.</p>
-                <p>And whilst I've had success, I've had failure too. We built a construction tech product that was runner-up at InterBuild 2007. Then the recession hit. The learning was, as they say, brutal. I doff the proverbial to anyone who's built something real and watched the market move. I know exactly how that goes.</p>
-                <p>Now I do what I've always loved: coaching, facilitating and helping people, teams and organisations deliver things that genuinely matter. Lean, agile, flow, DevOps; applied honestly, because I've seen what works and what doesn't. It goes way beyond being a job.</p>
-                <p>Flow of value, systems thinking, the Kanban Method, AI: the sheer possibility of working with people who can genuinely make a dent. That's what keeps me here.</p>
-                <p className="text-[#c2410c] font-bold text-xl pt-4">Jason Jones</p>
+                <p>I learned to code on a BBC Micro and picked up my first pair of drumsticks at the same time. Both have stayed with me. Technology and timing; they're more connected than people think.</p>
+                <p>From a dyehouse where you only processed what you could actually ship, to the Airbus A350 XWB in Toulouse, from early-2000s training rooms to coaching forty-five agile teams at Capital One - I was working in genuinely complex systems long before anyone handed me an agile framework.</p>
+                <p>Now I'm building AI-powered products and helping organisations navigate AI strategy, implementation and execution. Different tools, same instincts: see the system clearly, find the constraint, do the simplest thing that works.</p>
+                <p>What keeps me here? The sheer possibility of working with people who can genuinely make a dent.</p>
+                <p className="text-[#c2410c] font-bold text-xl pt-3">Jason Jones</p>
               </div>
 
-              {/* Philosophy 1-4 */}
-              <div className="space-y-5">
-                <PhilosophyPoint number="#1" title="It's about listening before you play" text="In music I learned that following the beat precisely can put you completely out of time with everyone else. The people in the room usually already know the answer. My job is to step back and help them hear it." />
-                <PhilosophyPoint number="#2" title="It's about asking why, relentlessly" text="A leadership team gave me 85 Post-Its, all mandatory, critical, urgent. We asked why about every one. Fourteen survived. Ten shipped as working digital products." />
-                <PhilosophyPoint number="#3" title="Outcomes follow Practices. Practices follow Culture. Culture follows Values." text="If you don't start with values, you'll end up with busy people fire-fighting and calling it change." />
-                <PhilosophyPoint number="#4" title="It's about simplicity: Occam's Razor, every time" text="Complexity is almost always a symptom, not a feature. The simplest explanation is usually right. The simplest solution usually works." />
+              {/* What I Believe 1-4 */}
+              <div className="space-y-6">
+                <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.15em] font-bold mb-2">What I Believe</p>
+                <BeliefPoint
+                  number="#1"
+                  title="Context always wins"
+                  text="A latin groove in Silent Night is technically impressive. It's also completely wrong. I'm not an agile evangelist. Framework agnostic. The right method for the right moment."
+                />
+                <BeliefPoint
+                  number="#2"
+                  title="Simplicity: Occam's Razor, every time"
+                  text="Complexity is almost always a symptom, not a feature. The simplest explanation is usually right. The simplest solution usually works."
+                />
+                <BeliefPoint
+                  number="#3"
+                  title="Ask why. Relentlessly."
+                  text="A leadership team gave me 85 Post-Its - all mandatory, critical, urgent. We asked why about every one. Fourteen survived. Ten shipped as working digital products."
+                />
+                <BeliefPoint
+                  number="#4"
+                  title="Outcomes follow Practices. Practices follow Culture. Culture follows Values."
+                  text="If you don't start with values, you'll end up with busy people firefighting and calling it change."
+                />
               </div>
 
-              {/* Philosophy 5-8 */}
-              <div className="space-y-5">
-                <PhilosophyPoint number="#5" title="It's about context: the right method for the right moment" text="A latin groove in Silent Night is technically impressive. It's also completely wrong. I'm not an agile evangelist. Framework agnostic. Context always wins." />
-                <PhilosophyPoint number="#6" title="It's about the space between the beats" text="The notes you don't play matter as much as the ones you do. The work you remove is often more valuable than the work you add." />
-                <PhilosophyPoint number="#7" title="It's about building capability, not dependency" text="I'm here to make myself unnecessary. The goal is that the team doesn't need me anymore, because they've got it." />
-                <PhilosophyPoint number="#8" title="It's about delivering real things, not activity" text="Ten working digital products from fourteen Post-Its. Shipped things, in the hands of real users. Nothing builds belief faster than showing people something that actually works." />
+              {/* What I Believe 5-8 */}
+              <div className="space-y-6 lg:pt-[29px]">
+                <BeliefPoint
+                  number="#5"
+                  title="Listening before you play"
+                  text="In music I learned that following the beat precisely can put you completely out of time with everyone else. The people in the room usually already know the answer. My job is to step back and help them hear it."
+                />
+                <BeliefPoint
+                  number="#6"
+                  title="The space between the beats"
+                  text="The notes you don't play matter as much as the ones you do. The work you remove is often more valuable than the work you add."
+                />
+                <BeliefPoint
+                  number="#7"
+                  title="Building capability, not dependency"
+                  text="I'm here to make myself unnecessary. The goal is that the team doesn't need me anymore, because they've got it. That's the win."
+                />
+                <BeliefPoint
+                  number="#8"
+                  title="Delivering real things, not activity"
+                  text="Ten working digital products from fourteen Post-Its. Shipped things, in the hands of real users. Nothing builds belief faster than showing people something that actually works."
+                />
               </div>
             </div>
           </div>
@@ -1033,13 +1065,15 @@ function ServiceCard({ offering, isExpanded, onToggle, index, visible }: Service
 // OTHER COMPONENTS
 // ============================================================================
 
-function PhilosophyPoint({ number, title, text }: { number: string; title: string; text: string }) {
+function BeliefPoint({ number, title, text }: { number: string; title: string; text: string }) {
   return (
-    <div>
-      <h3 className="text-[14px] font-bold text-[#1e2936] leading-snug mb-1">
-        <span className="text-[#c2410c]">{number} //</span> {title}
+    <div className="pb-1">
+      <h3 className="text-[15px] font-bold text-[#1e2936] leading-snug mb-2">
+        <span className="text-[#c2410c] font-semibold">{number}</span>
+        <span className="text-[#c2410c]/40 mx-1.5">//</span>
+        {title}
       </h3>
-      <p className="text-[12px] text-[#3d4d5f] leading-relaxed">{text}</p>
+      <p className="text-[13px] text-[#3d4d5f]/90 leading-relaxed pl-0">{text}</p>
     </div>
   );
 }
