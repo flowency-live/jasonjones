@@ -35,7 +35,7 @@ const navStyles = `
 `;
 
 const currentlyReading = [
-  { title: "Beyond Belief", author: "V.S. Naipaul", cover: "/assets/images/books/beyondbelief.webp", description: "Naipaul's journey through Iran, Pakistan, Indonesia and Malaysia, exploring how Islam has shaped and reshaped these non-Arab societies. Complex, uncomfortable, illuminating." },
+  { title: "Beyond Belief", author: "Nir Eyal", cover: "/assets/images/books/beyondbelief.webp", description: "Currently listening. Will update when finished." },
 ];
 
 const professionalBooks = [
