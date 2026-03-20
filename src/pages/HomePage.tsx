@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink, Plus, Minus } from "lucide-react";
+import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink } from "lucide-react";
 import { PhotoGallery, CaptionedPhotoGallery } from "@/components/PhotoGallery";
 import type { GalleryImage, CaptionedImage } from "@/components/PhotoGallery";
 
@@ -859,205 +859,105 @@ const SERVICE_OFFERINGS: ServiceOffering[] = [
 ];
 
 // ============================================================================
-// WHAT I DO SECTION COMPONENT
+// WHAT I DO SECTION COMPONENT - Full Width Alternating Layout
 // ============================================================================
 
 function WhatIDoSection() {
-  const [expandedCards, setExpandedCards] = useState<Set<string>>(new Set());
-  const [sectionVisible, setSectionVisible] = useState(false);
-  const sectionRef = useRef<HTMLDivElement>(null);
-
-  const toggleCard = (id: string) => {
-    setExpandedCards(prev => {
-      const next = new Set(prev);
-      if (next.has(id)) {
-        next.delete(id);
-      } else {
-        next.add(id);
-      }
-      return next;
-    });
-  };
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      ([entry]) => {
-        if (entry.isIntersecting) {
-          setSectionVisible(true);
-          observer.disconnect();
-        }
-      },
-      { threshold: 0.1 }
-    );
-
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => observer.disconnect();
-  }, []);
-
   return (
-    <section id="WhatIDo" ref={sectionRef} className="py-16 lg:py-20 bg-[#1e2936]">
-      {/* CSS for animations */}
-      <style>{`
-        @keyframes fadeInUp {
-          from {
-            opacity: 0;
-            transform: translateY(24px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-        .service-card {
-          opacity: 0;
-        }
-        .service-card.visible {
-          animation: fadeInUp 0.6s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-        }
-        .expandable-content {
-          display: grid;
-          grid-template-rows: 0fr;
-          transition: grid-template-rows 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .expandable-content.expanded {
-          grid-template-rows: 1fr;
-        }
-        .expandable-content > div {
-          overflow: hidden;
-        }
-        .accent-line {
-          width: 0;
-          transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .service-card.expanded .accent-line {
-          width: 60px;
-        }
-      `}</style>
-
-      {/* Header */}
-      <div className="text-center mb-12 px-6 md:px-8 lg:px-16">
-        <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-4">What I Do</p>
-        <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#f8f7f5] mb-4">
-          Delivery. Flow. Transformation.
-        </h2>
-        <p className="text-[#d0d8e0] text-lg max-w-2xl mx-auto">
-          Twenty years of helping organisations see their systems clearly and deliver what actually matters.
-        </p>
-      </div>
-
-      {/* Card Grid */}
-      <div className="px-6 md:px-8 lg:px-16 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5 lg:gap-6">
-          {SERVICE_OFFERINGS.map((offering, index) => (
-            <ServiceCard
-              key={offering.id}
-              offering={offering}
-              isExpanded={expandedCards.has(offering.id)}
-              onToggle={() => toggleCard(offering.id)}
-              index={index}
-              visible={sectionVisible}
-            />
-          ))}
+    <div id="WhatIDo">
+      {/* Section Header */}
+      <section className="py-16 lg:py-20 bg-[#1e2936]">
+        <div className="text-center px-8 lg:px-16">
+          <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-4">What I Do</p>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#f8f7f5] font-['Poppins',sans-serif] mb-4">
+            Delivery. Flow. Transformation.
+          </h2>
+          <p className="text-[#d0d8e0] text-lg max-w-2xl mx-auto">
+            Twenty years of helping organisations see their systems clearly and deliver what actually matters.
+          </p>
         </div>
-      </div>
-    </section>
+      </section>
+
+      {/* Full-width alternating sections */}
+      {SERVICE_OFFERINGS.map((offering, index) => (
+        <ServiceSection
+          key={offering.id}
+          offering={offering}
+          imageOnRight={index % 2 === 0}
+          isFirst={index === 0}
+        />
+      ))}
+    </div>
   );
 }
 
 // ============================================================================
-// SERVICE CARD COMPONENT
+// SERVICE SECTION COMPONENT - Full Width with Alternating Layout
 // ============================================================================
 
-interface ServiceCardProps {
+interface ServiceSectionProps {
   offering: ServiceOffering;
-  isExpanded: boolean;
-  onToggle: () => void;
-  index: number;
-  visible: boolean;
+  imageOnRight: boolean;
+  isFirst: boolean;
 }
 
-function ServiceCard({ offering, isExpanded, onToggle, index, visible }: ServiceCardProps) {
+function ServiceSection({ offering, imageOnRight, isFirst }: ServiceSectionProps) {
+  const bgColor = imageOnRight ? 'bg-[#f5f3f0]' : 'bg-white';
+  const textColor = 'text-[#1e2936]';
+
   return (
-    <div
-      className={`service-card ${visible ? 'visible' : ''} ${isExpanded ? 'expanded' : ''}
-        bg-[#2d3a4a] rounded-lg border border-[#3d4d5f]/30 overflow-hidden
-        transition-all duration-300 ease-out
-        hover:bg-[#3d4d5f] hover:-translate-y-1 hover:shadow-xl hover:shadow-black/20
-        hover:border-[#ea580c]/30`}
-      style={{ animationDelay: `${index * 100}ms` }}
-    >
-      {/* Coloured Placeholder Image */}
-      <div className="aspect-square bg-gradient-to-br from-[#c2410c]/25 via-[#ea580c]/15 to-[#1e2936]
-                      flex items-center justify-center border-b border-[#3d4d5f]/20
-                      transition-transform duration-500 ease-out group-hover:scale-105">
-        <span className="text-[#ea580c]/50 text-sm font-medium font-['Poppins',sans-serif] tracking-wide">
-          [{offering.title}]
-        </span>
-      </div>
+    <section id={offering.id} className={`${bgColor}`}>
+      <div className={`grid grid-cols-1 lg:grid-cols-2 ${imageOnRight ? '' : 'lg:flex-row-reverse'}`}>
+        {/* Image Side */}
+        <div className={`${imageOnRight ? 'lg:order-2' : 'lg:order-1'}`}>
+          <div className="aspect-[4/3] lg:aspect-auto lg:h-full min-h-[300px] lg:min-h-[500px] bg-gradient-to-br from-[#1e2936] via-[#2d3a4a] to-[#3d4d5f] flex items-center justify-center relative overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute inset-0 opacity-20" style={{
+              backgroundImage: `linear-gradient(45deg, #ea580c 1px, transparent 1px), linear-gradient(-45deg, #ea580c 1px, transparent 1px)`,
+              backgroundSize: '40px 40px'
+            }} />
+            <span className="relative z-10 text-[#ea580c]/60 text-lg font-medium font-['Poppins',sans-serif] tracking-wide">
+              [{offering.title}]
+            </span>
+          </div>
+        </div>
 
-      {/* Card Content */}
-      <div className="p-5 lg:p-6">
-        {/* Title */}
-        <h3 className="text-lg lg:text-xl font-bold text-[#f8f7f5] font-['Poppins',sans-serif] mb-1">
-          {offering.title}
-        </h3>
+        {/* Content Side */}
+        <div className={`${imageOnRight ? 'lg:order-1' : 'lg:order-2'} flex items-center`}>
+          <div className="px-8 lg:px-12 xl:px-16 py-12 lg:py-16 max-w-2xl">
+            {/* Subtitle */}
+            <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-3">
+              {offering.subtitle}
+            </p>
 
-        {/* Subtitle */}
-        <p className="text-[11px] text-[#ea580c] uppercase tracking-[0.1em] font-semibold mb-3">
-          {offering.subtitle}
-        </p>
+            {/* Title */}
+            <h3 className={`text-2xl md:text-3xl lg:text-4xl font-bold ${textColor} font-['Poppins',sans-serif] mb-6`}>
+              {offering.title}
+            </h3>
 
-        {/* Teaser (always visible) */}
-        <p className="text-[13px] text-[#d0d8e0] leading-relaxed mb-4 line-clamp-3">
-          {offering.teaser}
-        </p>
-
-        {/* Expandable Content */}
-        <div className={`expandable-content ${isExpanded ? 'expanded' : ''}`}>
-          <div>
-            {/* Orange accent line */}
-            <div className="accent-line h-[3px] bg-gradient-to-r from-[#c2410c] via-[#ea580c] to-transparent mb-4" />
+            {/* Teaser - highlighted */}
+            <p className={`text-lg ${textColor}/90 font-medium leading-relaxed mb-6`}>
+              {offering.teaser}
+            </p>
 
             {/* Full content */}
-            <div className="space-y-3 mb-4">
+            <div className="space-y-4 mb-8">
               {offering.fullContent.map((paragraph, i) => (
-                <p key={i} className="text-[13px] text-[#d0d8e0] leading-relaxed">
+                <p key={i} className={`text-[15px] ${textColor}/75 leading-relaxed`}>
                   {paragraph}
                 </p>
               ))}
             </div>
 
             {/* Clients */}
-            <div className="pt-4 border-t border-[#3d4d5f]/50">
-              <p className="text-[10px] text-[#a8b5c4] uppercase tracking-[0.1em] font-semibold mb-1">Clients</p>
-              <p className="text-[12px] text-[#d0d8e0]">{offering.clients}</p>
+            <div className="pt-6 border-t border-[#1e2936]/10">
+              <p className="text-[11px] text-[#1e2936]/50 uppercase tracking-[0.15em] font-semibold mb-2">Clients</p>
+              <p className={`text-[14px] ${textColor}/70`}>{offering.clients}</p>
             </div>
           </div>
         </div>
-
-        {/* Expand/Collapse Button */}
-        <button
-          onClick={onToggle}
-          className="flex items-center gap-2 mt-4 min-h-[44px] text-[#ea580c] hover:text-[#c2410c]
-                     transition-all duration-200 group"
-        >
-          {isExpanded ? (
-            <>
-              <Minus size={16} className="transition-transform group-hover:scale-110" />
-              <span className="text-[12px] font-semibold uppercase tracking-[0.05em]">Show less</span>
-            </>
-          ) : (
-            <>
-              <Plus size={16} className="transition-transform group-hover:scale-110 group-hover:rotate-90" />
-              <span className="text-[12px] font-semibold uppercase tracking-[0.05em]">Read more</span>
-            </>
-          )}
-        </button>
       </div>
-    </div>
+    </section>
   );
 }
 
