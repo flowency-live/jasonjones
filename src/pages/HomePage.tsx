@@ -747,28 +747,86 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* SAY HELLO */}
         {/* ============================================================ */}
-        <section id="SayHello" className="px-8 lg:px-16 py-16 bg-[#f5f3f0] text-[#1e2936]">
-          <div className="max-w-4xl mx-auto">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-[#1e2936]">Let's talk</h2>
-            <p className="text-[#5a6a7a] text-center mb-12">Fill in the form or drop me a line. No pitch decks. No jargon. Just a conversation about what you're trying to achieve.</p>
+        <section id="SayHello" className="relative bg-[#0a0a0a] overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="grid grid-cols-1 lg:grid-cols-2 min-h-[700px]">
 
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-              <div>
-                <div className="space-y-3 text-[14px]">
-                  <p><a href="tel:+447758240770" className="text-[#1e2936] hover:text-[#c2410c] transition-colors">+44 7758 240770</a></p>
-                  <p><a href="mailto:jason@flowency.co.uk" className="text-[#1e2936] hover:text-[#c2410c] transition-colors">jason@flowency.co.uk</a></p>
+              {/* Left Side - Book a Call */}
+              <div className="relative px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center">
+                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#ea580c] font-['Poppins',sans-serif] mb-4">
+                  Let's talk
+                </h2>
+                <p className="text-[#a8b5c4] text-lg mb-8 max-w-md">
+                  Book a call or fill in the form. No pitch decks. No jargon. Just a conversation about what you're trying to achieve.
+                </p>
+
+                {/* Cal.com Embed */}
+                <div className="bg-[#1e2936] rounded-lg overflow-hidden" style={{ minHeight: '400px' }}>
+                  <iframe
+                    src="https://cal.com/flowamplified?embed=true&theme=dark"
+                    className="w-full h-[400px] border-0"
+                    title="Book a call"
+                  />
                 </div>
+
+                {/* Contact info */}
+                <div className="mt-8 flex flex-wrap gap-6 text-[14px]">
+                  <a href="tel:+447758240770" className="text-[#d0d8e0] hover:text-[#ea580c] transition-colors">
+                    +44 7758 240770
+                  </a>
+                  <a href="mailto:jason@flowency.co.uk" className="text-[#d0d8e0] hover:text-[#ea580c] transition-colors">
+                    jason@flowency.co.uk
+                  </a>
+                </div>
+
+                {/* Diagonal line */}
+                <div className="hidden lg:block absolute right-0 top-1/2 -translate-y-1/2 w-px h-[80%] bg-gradient-to-b from-transparent via-[#3d4d5f] to-transparent origin-center rotate-12" />
               </div>
 
-              <form className="space-y-4">
-                <input type="text" placeholder="Name" className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-[#1e2936]/40 rounded" />
-                <input type="email" placeholder="Email" className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-[#1e2936]/40 rounded" />
-                <input type="tel" placeholder="Phone" className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors placeholder:text-[#1e2936]/40 rounded" />
-                <textarea placeholder="Message" rows={4} className="w-full bg-white border border-[#1e2936]/15 px-4 py-3 text-[#1e2936] text-[13px] focus:border-[#c2410c] focus:outline-none transition-colors resize-none placeholder:text-[#1e2936]/40 rounded" />
-                <button type="submit" className="px-6 py-3 bg-gradient-to-r from-[#c2410c] to-[#ea580c] text-white text-[13px] font-semibold hover:from-[#9a3409] hover:to-[#c2410c] transition-all rounded shadow-lg shadow-[#c2410c]/20">
-                  Send Message
-                </button>
-              </form>
+              {/* Right Side - Contact Form */}
+              <div className="px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center bg-[#111]">
+                <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-6">Or send a message</p>
+
+                <form className="space-y-5">
+                  <div>
+                    <input
+                      type="text"
+                      placeholder="Full name"
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#5a6a7a]"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="tel"
+                      placeholder="Phone number"
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#5a6a7a]"
+                    />
+                  </div>
+                  <div>
+                    <input
+                      type="email"
+                      placeholder="Email"
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#5a6a7a]"
+                    />
+                  </div>
+                  <div>
+                    <textarea
+                      placeholder="Message"
+                      rows={3}
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors resize-none placeholder:text-[#5a6a7a]"
+                    />
+                  </div>
+                  <div className="pt-4">
+                    <button
+                      type="submit"
+                      className="px-8 py-4 bg-gradient-to-r from-[#ea580c] to-[#c2410c] text-white text-[14px] font-semibold rounded-full hover:from-[#c2410c] hover:to-[#ea580c] transition-all duration-300 shadow-lg shadow-[#ea580c]/20"
+                    >
+                      Send message
+                    </button>
+                  </div>
+                </form>
+              </div>
+
             </div>
           </div>
         </section>
