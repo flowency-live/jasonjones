@@ -1078,13 +1078,6 @@ function BeliefPoint({ number, title, text }: { number: string; title: string; t
   );
 }
 
-function ImagePlaceholder({ label, path, wide = false, light = false }: { label: string; path: string; wide?: boolean; light?: boolean }) {
-  return (
-    <div className={`${wide ? "aspect-[2/1]" : "aspect-square"} ${light ? "bg-[#1e2936]/5" : "bg-[#f8f7f5]/10"} flex items-center justify-center`}>
-      <span className={`text-[10px] ${light ? "text-[#1e2936]/25" : "text-[#f8f7f5]/25"} text-center px-2`}>[{label}]<br /><span className="text-[8px] opacity-50">{path}</span></span>
-    </div>
-  );
-}
 
 function DontDoItem({ title, text }: { title: string; text: string }) {
   return (
