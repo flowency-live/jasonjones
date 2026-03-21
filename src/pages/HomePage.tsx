@@ -529,16 +529,29 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* HERO */}
         {/* ============================================================ */}
-        <section id="home" className="min-h-[60vh] flex items-center px-8 lg:px-16 py-20 relative overflow-hidden bg-gradient-to-br from-[#1e2936] via-[#243242] to-[#2d3a4a]">
-          <div className="absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: "url('/assets/images/about/hero/workshop.jpg')" }} />
+        <section id="home" className="min-h-[70vh] lg:min-h-[60vh] flex items-center relative overflow-hidden">
+          {/* Mobile/Tablet: Portrait as background with overlay */}
+          <div className="lg:hidden absolute inset-0">
+            <div
+              className="absolute inset-0 bg-cover bg-[center_top]"
+              style={{ backgroundImage: "url('/assets/images/about/jason/jason.webp')" }}
+            />
+            {/* Dark gradient overlay for text contrast - WCAG AA compliant */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1e2936] via-[#1e2936]/85 to-[#1e2936]/60" />
+          </div>
+
+          {/* Desktop: Original gradient background */}
+          <div className="hidden lg:block absolute inset-0 bg-gradient-to-br from-[#1e2936] via-[#243242] to-[#2d3a4a]" />
+          <div className="hidden lg:block absolute inset-0 bg-cover bg-center opacity-15" style={{ backgroundImage: "url('/assets/images/about/hero/workshop.jpg')" }} />
+
           {/* Subtle texture overlay */}
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
           }} />
 
-          <div className="relative z-10 max-w-6xl mx-auto w-full grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Text */}
-            <div className="text-center lg:text-left">
+          <div className="relative z-10 max-w-6xl mx-auto w-full px-8 lg:px-16 py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Text - positioned at bottom on mobile for overlay effect */}
+            <div className="text-center lg:text-left mt-auto lg:mt-0">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6 text-[#f8f7f5]">
                 Helping people see what's possible
                 <br />
@@ -547,7 +560,7 @@ export default function HomePage() {
               <p className="text-[#d0d8e0] text-lg font-medium">Tenacity. Radical candour. Getting shit done.</p>
             </div>
 
-            {/* Photo with faded edges */}
+            {/* Photo with faded edges - Desktop only */}
             <div className="relative hidden lg:block">
               <div className="relative w-full max-w-md mx-auto">
                 <img
@@ -1260,44 +1273,44 @@ function FlowOriginContent() {
 }
 
 // ============================================================================
-// BELIEFS SECTION - Mobile-optimized with show more/less
+// BELIEFS SECTION - Bold typography, distinctive style
 // ============================================================================
 
 const BELIEFS = [
-  { number: "#1", title: "Context always wins", text: "A latin groove in Silent Night is technically impressive. It's also completely wrong. I'm not an agile evangelist. Framework agnostic. The right method for the right moment." },
-  { number: "#2", title: "Simplicity: Occam's Razor, every time", text: "Complexity is almost always a symptom, not a feature. The simplest explanation is usually right. The simplest solution usually works." },
-  { number: "#3", title: "Ask why. Relentlessly.", text: "A leadership team gave me 85 Post-Its - all mandatory, critical, urgent. We asked why about every one. Fourteen survived. Ten shipped as working digital products." },
-  { number: "#4", title: "Outcomes follow Practices. Practices follow Culture. Culture follows Values.", text: "If you don't start with values, you'll end up with busy people firefighting and calling it change." },
-  { number: "#5", title: "Listening before you play", text: "In music I learned that following the beat precisely can put you completely out of time with everyone else. The people in the room usually already know the answer. My job is to step back and help them hear it." },
-  { number: "#6", title: "The space between the beats", text: "The notes you don't play matter as much as the ones you do. The work you remove is often more valuable than the work you add." },
-  { number: "#7", title: "Building capability, not dependency", text: "I'm here to make myself unnecessary. The goal is that the team doesn't need me anymore, because they've got it. That's the win." },
-  { number: "#8", title: "Delivering real things, not activity", text: "Ten working digital products from fourteen Post-Its. Shipped things, in the hands of real users. Nothing builds belief faster than showing people something that actually works." },
+  { title: "Context always wins", text: "A latin groove in Silent Night is technically impressive. It's also completely wrong. I'm not an agile evangelist. Framework agnostic. The right method for the right moment." },
+  { title: "Simplicity: Occam's Razor, every time", text: "Complexity is almost always a symptom, not a feature. The simplest explanation is usually right. The simplest solution usually works." },
+  { title: "Ask why. Relentlessly.", text: "A leadership team gave me 85 Post-Its - all mandatory, critical, urgent. We asked why about every one. Fourteen survived. Ten shipped as working digital products." },
+  { title: "Outcomes follow Practices. Practices follow Culture. Culture follows Values.", text: "If you don't start with values, you'll end up with busy people firefighting and calling it change." },
+  { title: "Listening before you play", text: "In music I learned that following the beat precisely can put you completely out of time with everyone else. The people in the room usually already know the answer. My job is to step back and help them hear it." },
+  { title: "The space between the beats", text: "The notes you don't play matter as much as the ones you do. The work you remove is often more valuable than the work you add." },
+  { title: "Building capability, not dependency", text: "I'm here to make myself unnecessary. The goal is that the team doesn't need me anymore, because they've got it. That's the win." },
+  { title: "Delivering real things, not activity", text: "Ten working digital products from fourteen Post-Its. Shipped things, in the hands of real users. Nothing builds belief faster than showing people something that actually works." },
 ];
 
 function BeliefsSection() {
   return (
     <>
-      {/* Desktop: 2-column layout */}
+      {/* Desktop: 2-column layout with bold typography */}
       <div className="hidden lg:contents">
-        <div className="space-y-6">
-          <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.15em] font-bold mb-2">What I Believe</p>
-          {BELIEFS.slice(0, 4).map((belief) => (
-            <BeliefPoint key={belief.number} {...belief} />
+        <div className="space-y-8">
+          <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.2em] font-bold mb-4">What I Believe</p>
+          {BELIEFS.slice(0, 4).map((belief, idx) => (
+            <BeliefPoint key={idx} {...belief} />
           ))}
         </div>
-        <div className="space-y-6 lg:pt-[29px]">
-          {BELIEFS.slice(4).map((belief) => (
-            <BeliefPoint key={belief.number} {...belief} />
+        <div className="space-y-8 lg:pt-[33px]">
+          {BELIEFS.slice(4).map((belief, idx) => (
+            <BeliefPoint key={idx + 4} {...belief} />
           ))}
         </div>
       </div>
 
-      {/* Mobile: Single column, all beliefs shown */}
+      {/* Mobile: Single column with impactful stacked layout */}
       <div className="lg:hidden col-span-full">
-        <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.15em] font-bold mb-4">What I Believe</p>
-        <div className="space-y-3">
-          {BELIEFS.map((belief) => (
-            <BeliefPoint key={belief.number} {...belief} />
+        <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.2em] font-bold mb-6">What I Believe</p>
+        <div className="space-y-4">
+          {BELIEFS.map((belief, idx) => (
+            <BeliefPoint key={idx} {...belief} />
           ))}
         </div>
       </div>
@@ -1305,38 +1318,36 @@ function BeliefsSection() {
   );
 }
 
-function BeliefPoint({ number, title, text }: { number: string; title: string; text: string }) {
+function BeliefPoint({ title, text }: { title: string; text: string }) {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="pb-1">
-      {/* Desktop - always expanded */}
+    <div className="group">
+      {/* Desktop - Bold statement typography */}
       <div className="hidden md:block">
-        <h3 className="text-[15px] font-bold text-[#1e2936] leading-snug mb-2">
-          <span className="text-[#c2410c] font-semibold">{number}</span>
-          <span className="text-[#c2410c]/40 mx-1.5">//</span>
+        <h3 className="text-[18px] lg:text-[20px] font-bold text-[#1e2936] leading-[1.3] mb-2 font-['Poppins',sans-serif]">
           {title}
         </h3>
-        <p className="text-[13px] text-[#3d4d5f]/90 leading-relaxed pl-0">{text}</p>
+        <p className="text-[14px] text-[#5a6a7a] leading-relaxed pl-0 border-l-2 border-[#c2410c]/30 pl-4">{text}</p>
       </div>
 
-      {/* Mobile - collapsible accordion */}
+      {/* Mobile - Collapsible with bold titles */}
       <div className="md:hidden">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="mobile-card-tap w-full text-left flex items-center justify-between gap-3 py-2"
+          className="mobile-card-tap w-full text-left py-3 border-b border-[#1e2936]/10"
         >
-          <h3 className="text-[14px] font-bold text-[#1e2936] leading-snug flex-1">
-            <span className="text-[#c2410c] font-semibold">{number}</span>
-            <span className="text-[#c2410c]/40 mx-1.5">//</span>
-            {title}
-          </h3>
-          <div className={`w-6 h-6 rounded-full flex items-center justify-center bg-[#c2410c]/10 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
-            <ChevronDown size={14} className="text-[#c2410c]" />
+          <div className="flex items-start justify-between gap-4">
+            <h3 className="text-[16px] font-bold text-[#1e2936] leading-[1.3] font-['Poppins',sans-serif] flex-1">
+              {title}
+            </h3>
+            <div className={`flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center bg-[#c2410c] transition-transform duration-300 ${isOpen ? 'rotate-45' : ''}`}>
+              <Plus size={14} className="text-white" />
+            </div>
           </div>
         </button>
         <div className={`mobile-drawer-content ${isOpen ? 'expanded' : 'collapsed'}`}>
-          <p className="text-[13px] text-[#3d4d5f]/90 leading-relaxed pb-3">{text}</p>
+          <p className="text-[14px] text-[#5a6a7a] leading-relaxed py-4 pl-4 border-l-2 border-[#c2410c]/40">{text}</p>
         </div>
       </div>
     </div>
