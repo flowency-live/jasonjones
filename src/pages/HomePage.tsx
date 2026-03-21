@@ -1275,8 +1275,6 @@ const BELIEFS = [
 ];
 
 function BeliefsSection() {
-  const [showAll, setShowAll] = useState(false);
-
   return (
     <>
       {/* Desktop: 2-column layout */}
@@ -1294,42 +1292,13 @@ function BeliefsSection() {
         </div>
       </div>
 
-      {/* Mobile: Single column with show more */}
+      {/* Mobile: Single column, all beliefs shown */}
       <div className="lg:hidden col-span-full">
         <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.15em] font-bold mb-4">What I Believe</p>
-
-        {/* Always show first 4 */}
         <div className="space-y-3">
-          {BELIEFS.slice(0, 4).map((belief) => (
+          {BELIEFS.map((belief) => (
             <BeliefPoint key={belief.number} {...belief} />
           ))}
-        </div>
-
-        {/* Show more toggle */}
-        <button
-          onClick={() => setShowAll(!showAll)}
-          className="mobile-card-tap mt-4 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-[#c2410c]/10 text-[#c2410c] text-sm font-semibold transition-all duration-300"
-        >
-          {showAll ? (
-            <>
-              <span>Show less</span>
-              <Minus size={16} />
-            </>
-          ) : (
-            <>
-              <span>Show 4 more beliefs</span>
-              <Plus size={16} />
-            </>
-          )}
-        </button>
-
-        {/* Additional beliefs - animated */}
-        <div className={`mobile-drawer-content ${showAll ? 'expanded' : 'collapsed'}`}>
-          <div className="space-y-3 pt-4">
-            {BELIEFS.slice(4).map((belief) => (
-              <BeliefPoint key={belief.number} {...belief} />
-            ))}
-          </div>
         </div>
       </div>
     </>
