@@ -529,15 +529,15 @@ export default function HomePage() {
         {/* ============================================================ */}
         {/* HERO */}
         {/* ============================================================ */}
-        <section id="home" className="min-h-[70vh] lg:min-h-[60vh] flex items-center relative overflow-hidden">
+        <section id="home" className="min-h-[85vh] lg:min-h-[60vh] flex items-end lg:items-center relative overflow-hidden">
           {/* Mobile/Tablet: Portrait as background with overlay */}
           <div className="lg:hidden absolute inset-0">
             <div
-              className="absolute inset-0 bg-cover bg-[center_top]"
+              className="absolute inset-0 bg-cover bg-[center_20%]"
               style={{ backgroundImage: "url('/assets/images/about/jason/jason.webp')" }}
             />
-            {/* Dark gradient overlay for text contrast - WCAG AA compliant */}
-            <div className="absolute inset-0 bg-gradient-to-t from-[#1e2936] via-[#1e2936]/85 to-[#1e2936]/60" />
+            {/* Dark gradient overlay - transparent at top to show face, solid at bottom for text */}
+            <div className="absolute inset-0 bg-gradient-to-t from-[#1e2936] from-30% via-[#1e2936]/70 via-60% to-transparent" />
           </div>
 
           {/* Desktop: Original gradient background */}
@@ -549,9 +549,9 @@ export default function HomePage() {
             backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E")`
           }} />
 
-          <div className="relative z-10 max-w-6xl mx-auto w-full px-8 lg:px-16 py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
-            {/* Text - positioned at bottom on mobile for overlay effect */}
-            <div className="text-center lg:text-left mt-auto lg:mt-0">
+          <div className="relative z-10 max-w-6xl mx-auto w-full px-8 lg:px-16 pb-12 pt-48 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
+            {/* Text - pinned to bottom on mobile, leaving room for face at top */}
+            <div className="text-center lg:text-left">
               <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6 text-[#f8f7f5]">
                 Helping people see what's possible
                 <br />
