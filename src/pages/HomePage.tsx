@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
-import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink } from "lucide-react";
+import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink, Plus, Minus } from "lucide-react";
 import { PhotoGallery, CaptionedPhotoGallery } from "@/components/PhotoGallery";
 import type { GalleryImage, CaptionedImage } from "@/components/PhotoGallery";
 
@@ -102,7 +102,7 @@ const highlightImages: CaptionedImage[] = [
   { src: "/assets/images/about/highlights/Hanoi.webp", title: "Offshore Coaching", description: "Vietnam, India, Poland. Some of my most formative work happened furthest from home. Culture isn't a soft variable. It is the system." },
   { src: "/assets/images/about/highlights/Kanban.webp", title: "Kanban University", description: "Being part of the global Kanban community at Learnship is one of the things I'm most proud of professionally. Miami and Bilbao.", url: "https://kanban.university/" },
   { src: "/assets/images/about/highlights/lego.webp", title: "Lego SIM City in FS", description: "I've stood on a desk with a room full of Lego watching senior bank leaders get it in real time. Theory of Constraints, Cost of Delay, all of it landing at once. That's what all of this is for." },
-  { src: "/assets/images/about/highlights/James.jpg", title: "Adaptavis Project Partner", description: "James Enock, CEO of Adaptavis. Peer, colleague, friend and mentor for over ten years. We all have those people who guide and support. A true legend in this space.", url: "https://www.adaptavis.com/" },
+  { src: "/assets/images/about/highlights/James.jpg", title: "Adaptavis Project Partner", description: "I work as a project partner with James Enock, CEO of Adaptavis. We've been peers, mentors, colleagues and friends for over ten years. We all need those people who challenge and support in equal measure.", url: "https://www.adaptavis.com/" },
   { src: "/assets/images/about/highlights/friends.jpg", title: "When a Plan Comes Together", description: "Sometimes the right group of people get together at the right time. This was one of those times." },
 ];
 
@@ -166,8 +166,65 @@ export default function HomePage() {
       {/* Slate blue theme with orange accents */}
       {/* ================================================================ */}
 
-      {/* CSS for sliding underline animation with gradient fade */}
+      {/* CSS for sliding underline animation with gradient fade + mobile drawer animations */}
       <style>{`
+        /* Mobile drawer animations */
+        @keyframes slideDown {
+          from { opacity: 0; max-height: 0; }
+          to { opacity: 1; max-height: 2000px; }
+        }
+        @keyframes slideUp {
+          from { opacity: 1; max-height: 2000px; }
+          to { opacity: 0; max-height: 0; }
+        }
+        .mobile-drawer-content {
+          overflow: hidden;
+          transition: max-height 0.5s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.4s ease;
+        }
+        .mobile-drawer-content.collapsed {
+          max-height: 0;
+          opacity: 0;
+        }
+        .mobile-drawer-content.expanded {
+          max-height: 2000px;
+          opacity: 1;
+        }
+        .mobile-drawer-trigger {
+          transition: all 0.3s ease;
+        }
+        .mobile-drawer-trigger:active {
+          transform: scale(0.98);
+        }
+        .mobile-drawer-icon {
+          transition: transform 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        .mobile-drawer-icon.rotated {
+          transform: rotate(180deg);
+        }
+        /* Staggered animation for list items */
+        @keyframes fadeSlideIn {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .stagger-item {
+          animation: fadeSlideIn 0.4s ease forwards;
+          opacity: 0;
+        }
+        .stagger-item:nth-child(1) { animation-delay: 0.05s; }
+        .stagger-item:nth-child(2) { animation-delay: 0.1s; }
+        .stagger-item:nth-child(3) { animation-delay: 0.15s; }
+        .stagger-item:nth-child(4) { animation-delay: 0.2s; }
+        .stagger-item:nth-child(5) { animation-delay: 0.25s; }
+        .stagger-item:nth-child(6) { animation-delay: 0.3s; }
+        /* Mobile card pulse on tap */
+        @keyframes cardPulse {
+          0% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0.4); }
+          70% { box-shadow: 0 0 0 10px rgba(234, 88, 12, 0); }
+          100% { box-shadow: 0 0 0 0 rgba(234, 88, 12, 0); }
+        }
+        .mobile-card-tap:active {
+          animation: cardPulse 0.4s ease;
+        }
         .nav-link {
           position: relative;
         }
@@ -534,54 +591,8 @@ export default function HomePage() {
                 <p className="text-[#c2410c] font-bold text-xl pt-3">Jason Jones</p>
               </div>
 
-              {/* What I Believe 1-4 */}
-              <div className="space-y-6">
-                <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.15em] font-bold mb-2">What I Believe</p>
-                <BeliefPoint
-                  number="#1"
-                  title="Context always wins"
-                  text="A latin groove in Silent Night is technically impressive. It's also completely wrong. I'm not an agile evangelist. Framework agnostic. The right method for the right moment."
-                />
-                <BeliefPoint
-                  number="#2"
-                  title="Simplicity: Occam's Razor, every time"
-                  text="Complexity is almost always a symptom, not a feature. The simplest explanation is usually right. The simplest solution usually works."
-                />
-                <BeliefPoint
-                  number="#3"
-                  title="Ask why. Relentlessly."
-                  text="A leadership team gave me 85 Post-Its - all mandatory, critical, urgent. We asked why about every one. Fourteen survived. Ten shipped as working digital products."
-                />
-                <BeliefPoint
-                  number="#4"
-                  title="Outcomes follow Practices. Practices follow Culture. Culture follows Values."
-                  text="If you don't start with values, you'll end up with busy people firefighting and calling it change."
-                />
-              </div>
-
-              {/* What I Believe 5-8 */}
-              <div className="space-y-6 lg:pt-[29px]">
-                <BeliefPoint
-                  number="#5"
-                  title="Listening before you play"
-                  text="In music I learned that following the beat precisely can put you completely out of time with everyone else. The people in the room usually already know the answer. My job is to step back and help them hear it."
-                />
-                <BeliefPoint
-                  number="#6"
-                  title="The space between the beats"
-                  text="The notes you don't play matter as much as the ones you do. The work you remove is often more valuable than the work you add."
-                />
-                <BeliefPoint
-                  number="#7"
-                  title="Building capability, not dependency"
-                  text="I'm here to make myself unnecessary. The goal is that the team doesn't need me anymore, because they've got it. That's the win."
-                />
-                <BeliefPoint
-                  number="#8"
-                  title="Delivering real things, not activity"
-                  text="Ten working digital products from fourteen Post-Its. Shipped things, in the hands of real users. Nothing builds belief faster than showing people something that actually works."
-                />
-              </div>
+              {/* What I Believe - Combined for mobile drawer control */}
+              <BeliefsSection />
             </div>
           </div>
         </section>
@@ -596,14 +607,7 @@ export default function HomePage() {
               <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">Origins</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#f8f7f5]">Flow, before anyone called it that</h2>
 
-              <div className="space-y-5 text-[16px] leading-relaxed text-[#d0d8e0]">
-                <p>My first job was in a dyehouse. I was managing production planning for a fabric manufacturer: upstream constraints in yarn sourcing and knitting, finite dye capacity, a single stenter machine as the bottleneck downstream. One batch at a time. You only dyed what you could actually dry. You only processed real orders, never speculative work. If you got the timing wrong, fabric sat wet, went mouldy, became rework.</p>
-                <p>I was visualising work, managing flow, limiting WIP and responding to the constraint, before I had any of those words. I saw Kanban cards on that shop floor before I knew what they were called.</p>
-                <p>My first business trip was to M&S at Baker Street. Ten swatches of navy cotton jersey fabric on the table, all ostensibly the same. Each subtly different. One flatter, one redder, one with a metamerism you couldn't see until you placed it in a light box replicating the exact lighting of the shop floor. Same fabric. Different context. Completely different outcome. That lesson, that the environment in which something is used changes everything, has never left me.</p>
-                <p>When I later encountered the Kanban Method as articulated by David Anderson, building on lean manufacturing and the Toyota Production System - it felt less like learning something new and more like finally having language for what I'd already been doing in that dyehouse.</p>
-                <p>I've attended the global Kanban University Learnship conferences in Miami and Bilbao, where the people who are genuinely serious about this come together. The thought leadership coming out of that community continues to inform how I work. I use the <a href="https://kanban.plus/blogs/blog/what-is-the-kanban-maturity-model" target="_blank" rel="noopener noreferrer" className="text-[#ea580c] hover:underline">Kanban Maturity Model</a> to help organisations understand where they are and plot a realistic path forward.</p>
-                <p className="text-[#a8b5c4]">Most organisations jump to SAFe or Scrum before they can even see their own system clearly. The Kanban Method starts where you are. It doesn't ask you to install a recipe. It asks you to look honestly at how work flows, or doesn't, and improve from there. It is, in my view, the most powerful and most underused tool in the Lean/Agile toolkit.</p>
-              </div>
+              <FlowOriginContent />
             </div>
 
             {/* Image gallery - right side, full bleed to edge */}
@@ -1026,98 +1030,173 @@ interface ServiceSectionProps {
 }
 
 function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
   const sectionNum = String(index + 1).padStart(2, '0');
 
   // Alternating color schemes for visual variety
   const schemes = [
-    { bg: 'bg-[#0a0a0a]', text: 'text-white', muted: 'text-[#8a99a8]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#c2410c] to-[#1e2936]' },
-    { bg: 'bg-[#f5f3f0]', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#1e2936] to-[#3d4d5f]' },
-    { bg: 'bg-[#1e2936]', text: 'text-white', muted: 'text-[#a8b5c4]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#ea580c] to-[#c2410c]' },
-    { bg: 'bg-white', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#2d3a4a] to-[#1e2936]' },
+    { bg: 'bg-[#0a0a0a]', text: 'text-white', muted: 'text-[#8a99a8]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#c2410c] to-[#1e2936]', border: 'border-white/10' },
+    { bg: 'bg-[#f5f3f0]', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#1e2936] to-[#3d4d5f]', border: 'border-[#1e2936]/10' },
+    { bg: 'bg-[#1e2936]', text: 'text-white', muted: 'text-[#a8b5c4]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#ea580c] to-[#c2410c]', border: 'border-white/10' },
+    { bg: 'bg-white', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#2d3a4a] to-[#1e2936]', border: 'border-[#1e2936]/10' },
   ];
   const scheme = schemes[index % schemes.length];
 
   return (
     <section id={offering.id} className={`${scheme.bg} relative overflow-hidden`}>
-      {/* Background number - massive editorial typography */}
-      <div className={`absolute ${imageOnRight ? 'right-8 lg:right-16' : 'left-8 lg:left-16'} top-1/2 -translate-y-1/2 pointer-events-none select-none`}>
-        <span className={`block text-[180px] md:text-[280px] lg:text-[400px] font-bold ${scheme.numberColor} font-['Poppins',sans-serif] leading-none`}>
-          {sectionNum}
-        </span>
-      </div>
-
-      <div className="relative z-10 max-w-7xl mx-auto">
-        <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 min-h-[600px] lg:min-h-[700px]">
-
-          {/* Image Side - dynamic gradient placeholder */}
-          <div className={`lg:col-span-2 ${imageOnRight ? 'lg:order-2' : 'lg:order-1'}`}>
-            <div className={`h-full min-h-[300px] lg:min-h-full bg-gradient-to-br ${scheme.imageBg} flex items-center justify-center relative overflow-hidden group`}>
-              {/* Decorative elements */}
-              <div className="absolute inset-0 opacity-20">
-                <div className="absolute top-8 left-8 w-32 h-32 border border-white/20 rounded-full" />
-                <div className="absolute bottom-12 right-12 w-24 h-24 border border-white/10" />
-                <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-white/10 rotate-45" />
-              </div>
-
-              {/* Large number overlay */}
-              <span className="text-white/10 text-[120px] md:text-[180px] font-bold font-['Poppins',sans-serif] leading-none select-none group-hover:scale-110 transition-transform duration-700">
-                {sectionNum}
-              </span>
-
-              {/* Label */}
-              <div className="absolute bottom-6 left-6 right-6">
-                <span className="text-white/60 text-[11px] font-bold uppercase tracking-[0.2em]">
-                  {offering.subtitle}
-                </span>
-              </div>
+      {/* ========== MOBILE VIEW - Compact Expandable Card ========== */}
+      <div className="lg:hidden">
+        {/* Compact header bar - always visible */}
+        <button
+          onClick={() => setIsExpanded(!isExpanded)}
+          className={`mobile-drawer-trigger mobile-card-tap w-full text-left px-6 py-5 flex items-center justify-between gap-4 ${scheme.border} border-b`}
+        >
+          {/* Left: Number + Title */}
+          <div className="flex items-center gap-4 flex-1 min-w-0">
+            <span className={`${scheme.accent} text-2xl font-bold font-['Poppins',sans-serif] flex-shrink-0`}>
+              {sectionNum}
+            </span>
+            <div className="min-w-0">
+              <h3 className={`text-lg font-bold ${scheme.text} font-['Poppins',sans-serif] truncate`}>
+                {offering.title}
+              </h3>
+              <p className={`text-xs ${scheme.muted} uppercase tracking-wider mt-0.5`}>
+                {offering.subtitle}
+              </p>
             </div>
           </div>
 
-          {/* Content Side */}
-          <div className={`lg:col-span-3 ${imageOnRight ? 'lg:order-1' : 'lg:order-2'} flex items-center`}>
-            <div className="px-8 lg:px-16 xl:px-20 py-16 lg:py-20">
-              {/* Section number + subtitle */}
-              <div className="flex items-center gap-4 mb-6">
-                <span className={`${scheme.accent} text-[13px] font-bold`}>{sectionNum}</span>
-                <div className={`h-px flex-1 max-w-[60px] ${scheme.accent === 'text-[#ea580c]' ? 'bg-[#ea580c]/40' : 'bg-[#c2410c]/40'}`} />
-                <span className={`${scheme.accent} text-[11px] font-bold uppercase tracking-[0.2em]`}>
-                  {offering.subtitle}
-                </span>
-              </div>
+          {/* Right: Expand icon */}
+          <div className={`flex-shrink-0 w-10 h-10 rounded-full flex items-center justify-center ${isExpanded ? 'bg-[#ea580c]' : scheme.bg === 'bg-white' || scheme.bg === 'bg-[#f5f3f0]' ? 'bg-[#1e2936]/10' : 'bg-white/10'} transition-colors duration-300`}>
+            {isExpanded ? (
+              <Minus size={18} className="text-white" />
+            ) : (
+              <Plus size={18} className={scheme.text} />
+            )}
+          </div>
+        </button>
 
-              {/* Title - bigger, bolder */}
-              <h3 className={`text-3xl md:text-4xl lg:text-5xl font-bold ${scheme.text} font-['Poppins',sans-serif] leading-[1.1] mb-8`}>
-                {offering.title}
-              </h3>
+        {/* Expandable content drawer */}
+        <div className={`mobile-drawer-content ${isExpanded ? 'expanded' : 'collapsed'}`}>
+          {/* Gradient visual strip */}
+          <div className={`h-24 bg-gradient-to-br ${scheme.imageBg} relative overflow-hidden`}>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <span className="text-white/20 text-6xl font-bold font-['Poppins',sans-serif]">{sectionNum}</span>
+            </div>
+            {/* Decorative circles */}
+            <div className="absolute top-2 right-4 w-8 h-8 border border-white/20 rounded-full" />
+            <div className="absolute bottom-3 left-6 w-6 h-6 border border-white/10 rotate-45" />
+          </div>
 
-              {/* Teaser - emphasized with left border */}
-              <div className={`pl-6 border-l-4 ${scheme.accent === 'text-[#ea580c]' ? 'border-[#ea580c]' : 'border-[#c2410c]'} mb-8`}>
-                <p className={`text-lg lg:text-xl ${scheme.text} font-medium leading-relaxed`}>
-                  {offering.teaser}
+          {/* Content */}
+          <div className="px-6 py-6">
+            {/* Teaser with accent border */}
+            <div className={`pl-4 border-l-3 ${scheme.accent === 'text-[#ea580c]' ? 'border-[#ea580c]' : 'border-[#c2410c]'} mb-5`}>
+              <p className={`text-[15px] ${scheme.text} font-medium leading-relaxed`}>
+                {offering.teaser}
+              </p>
+            </div>
+
+            {/* Full content - staggered animation */}
+            <div className="space-y-3 mb-6">
+              {offering.fullContent.map((paragraph, i) => (
+                <p key={i} className={`stagger-item text-[14px] ${scheme.muted} leading-relaxed`}>
+                  {paragraph}
                 </p>
-              </div>
+              ))}
+            </div>
 
-              {/* Full content */}
-              <div className="space-y-4 mb-10">
-                {offering.fullContent.map((paragraph, i) => (
-                  <p key={i} className={`text-[15px] ${scheme.muted} leading-relaxed`}>
-                    {paragraph}
-                  </p>
-                ))}
-              </div>
-
-              {/* Clients - subtle treatment */}
-              <div className={`pt-6 border-t ${scheme.accent === 'text-[#ea580c]' ? 'border-white/10' : 'border-[#1e2936]/10'}`}>
-                <p className={`text-[10px] ${scheme.muted} uppercase tracking-[0.2em] font-semibold mb-2`}>Selected Clients</p>
-                <p className={`text-[13px] ${scheme.muted}`}>{offering.clients}</p>
-              </div>
+            {/* Clients pill */}
+            <div className={`inline-flex items-center gap-2 px-4 py-2 rounded-full ${scheme.bg === 'bg-white' || scheme.bg === 'bg-[#f5f3f0]' ? 'bg-[#1e2936]/5' : 'bg-white/5'}`}>
+              <span className={`text-[10px] ${scheme.muted} uppercase tracking-wider font-semibold`}>Clients:</span>
+              <span className={`text-[12px] ${scheme.muted}`}>{offering.clients}</span>
             </div>
           </div>
         </div>
       </div>
 
-      {/* Bottom accent line */}
-      <div className={`h-px ${scheme.accent === 'text-[#ea580c]' ? 'bg-gradient-to-r from-transparent via-[#ea580c]/20 to-transparent' : 'bg-gradient-to-r from-transparent via-[#c2410c]/20 to-transparent'}`} />
+      {/* ========== DESKTOP VIEW - Full Editorial Layout (unchanged) ========== */}
+      <div className="hidden lg:block">
+        {/* Background number - massive editorial typography */}
+        <div className={`absolute ${imageOnRight ? 'right-8 lg:right-16' : 'left-8 lg:left-16'} top-1/2 -translate-y-1/2 pointer-events-none select-none`}>
+          <span className={`block text-[180px] md:text-[280px] lg:text-[400px] font-bold ${scheme.numberColor} font-['Poppins',sans-serif] leading-none`}>
+            {sectionNum}
+          </span>
+        </div>
+
+        <div className="relative z-10 max-w-7xl mx-auto">
+          <div className="grid grid-cols-1 lg:grid-cols-5 gap-0 min-h-[600px] lg:min-h-[700px]">
+
+            {/* Image Side - dynamic gradient placeholder */}
+            <div className={`lg:col-span-2 ${imageOnRight ? 'lg:order-2' : 'lg:order-1'}`}>
+              <div className={`h-full min-h-[300px] lg:min-h-full bg-gradient-to-br ${scheme.imageBg} flex items-center justify-center relative overflow-hidden group`}>
+                {/* Decorative elements */}
+                <div className="absolute inset-0 opacity-20">
+                  <div className="absolute top-8 left-8 w-32 h-32 border border-white/20 rounded-full" />
+                  <div className="absolute bottom-12 right-12 w-24 h-24 border border-white/10" />
+                  <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-48 h-48 border border-white/10 rotate-45" />
+                </div>
+
+                {/* Large number overlay */}
+                <span className="text-white/10 text-[120px] md:text-[180px] font-bold font-['Poppins',sans-serif] leading-none select-none group-hover:scale-110 transition-transform duration-700">
+                  {sectionNum}
+                </span>
+
+                {/* Label */}
+                <div className="absolute bottom-6 left-6 right-6">
+                  <span className="text-white/60 text-[11px] font-bold uppercase tracking-[0.2em]">
+                    {offering.subtitle}
+                  </span>
+                </div>
+              </div>
+            </div>
+
+            {/* Content Side */}
+            <div className={`lg:col-span-3 ${imageOnRight ? 'lg:order-1' : 'lg:order-2'} flex items-center`}>
+              <div className="px-8 lg:px-16 xl:px-20 py-16 lg:py-20">
+                {/* Section number + subtitle */}
+                <div className="flex items-center gap-4 mb-6">
+                  <span className={`${scheme.accent} text-[13px] font-bold`}>{sectionNum}</span>
+                  <div className={`h-px flex-1 max-w-[60px] ${scheme.accent === 'text-[#ea580c]' ? 'bg-[#ea580c]/40' : 'bg-[#c2410c]/40'}`} />
+                  <span className={`${scheme.accent} text-[11px] font-bold uppercase tracking-[0.2em]`}>
+                    {offering.subtitle}
+                  </span>
+                </div>
+
+                {/* Title - bigger, bolder */}
+                <h3 className={`text-3xl md:text-4xl lg:text-5xl font-bold ${scheme.text} font-['Poppins',sans-serif] leading-[1.1] mb-8`}>
+                  {offering.title}
+                </h3>
+
+                {/* Teaser - emphasized with left border */}
+                <div className={`pl-6 border-l-4 ${scheme.accent === 'text-[#ea580c]' ? 'border-[#ea580c]' : 'border-[#c2410c]'} mb-8`}>
+                  <p className={`text-lg lg:text-xl ${scheme.text} font-medium leading-relaxed`}>
+                    {offering.teaser}
+                  </p>
+                </div>
+
+                {/* Full content */}
+                <div className="space-y-4 mb-10">
+                  {offering.fullContent.map((paragraph, i) => (
+                    <p key={i} className={`text-[15px] ${scheme.muted} leading-relaxed`}>
+                      {paragraph}
+                    </p>
+                  ))}
+                </div>
+
+                {/* Clients - subtle treatment */}
+                <div className={`pt-6 border-t ${scheme.accent === 'text-[#ea580c]' ? 'border-white/10' : 'border-[#1e2936]/10'}`}>
+                  <p className={`text-[10px] ${scheme.muted} uppercase tracking-[0.2em] font-semibold mb-2`}>Selected Clients</p>
+                  <p className={`text-[13px] ${scheme.muted}`}>{offering.clients}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        {/* Bottom accent line */}
+        <div className={`h-px ${scheme.accent === 'text-[#ea580c]' ? 'bg-gradient-to-r from-transparent via-[#ea580c]/20 to-transparent' : 'bg-gradient-to-r from-transparent via-[#c2410c]/20 to-transparent'}`} />
+      </div>
     </section>
   );
 }
@@ -1126,15 +1205,171 @@ function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) 
 // OTHER COMPONENTS
 // ============================================================================
 
+// ============================================================================
+// FLOW ORIGIN CONTENT - Mobile-optimized with read more
+// ============================================================================
+
+function FlowOriginContent() {
+  const [expanded, setExpanded] = useState(false);
+
+  return (
+    <div className="space-y-5 text-[16px] leading-relaxed text-[#d0d8e0]">
+      {/* Always visible on both mobile and desktop */}
+      <p>My first job was in a dyehouse. I was managing production planning for a fabric manufacturer: upstream constraints in yarn sourcing and knitting, finite dye capacity, a single stenter machine as the bottleneck downstream. One batch at a time. You only dyed what you could actually dry. You only processed real orders, never speculative work. If you got the timing wrong, fabric sat wet, went mouldy, became rework.</p>
+      <p>I was visualising work, managing flow, limiting WIP and responding to the constraint, before I had any of those words. I saw Kanban cards on that shop floor before I knew what they were called.</p>
+
+      {/* Desktop: always show all */}
+      <div className="hidden lg:block space-y-5">
+        <p>My first business trip was to M&S at Baker Street. Ten swatches of navy cotton jersey fabric on the table, all ostensibly the same. Each subtly different. One flatter, one redder, one with a metamerism you couldn't see until you placed it in a light box replicating the exact lighting of the shop floor. Same fabric. Different context. Completely different outcome. That lesson, that the environment in which something is used changes everything, has never left me.</p>
+        <p>When I later encountered the Kanban Method as articulated by David Anderson, building on lean manufacturing and the Toyota Production System - it felt less like learning something new and more like finally having language for what I'd already been doing in that dyehouse.</p>
+        <p>I've attended the global Kanban University Learnship conferences in Miami and Bilbao, where the people who are genuinely serious about this come together. The thought leadership coming out of that community continues to inform how I work. I use the <a href="https://kanban.plus/blogs/blog/what-is-the-kanban-maturity-model" target="_blank" rel="noopener noreferrer" className="text-[#ea580c] hover:underline">Kanban Maturity Model</a> to help organisations understand where they are and plot a realistic path forward.</p>
+        <p className="text-[#a8b5c4]">Most organisations jump to SAFe or Scrum before they can even see their own system clearly. The Kanban Method starts where you are. It doesn't ask you to install a recipe. It asks you to look honestly at how work flows, or doesn't, and improve from there. It is, in my view, the most powerful and most underused tool in the Lean/Agile toolkit.</p>
+      </div>
+
+      {/* Mobile: collapsible with smooth animation */}
+      <div className="lg:hidden">
+        <div className={`mobile-drawer-content ${expanded ? 'expanded' : 'collapsed'}`}>
+          <div className="space-y-5">
+            <p>My first business trip was to M&S at Baker Street. Ten swatches of navy cotton jersey fabric on the table, all ostensibly the same. Each subtly different. One flatter, one redder, one with a metamerism you couldn't see until you placed it in a light box replicating the exact lighting of the shop floor. Same fabric. Different context. Completely different outcome. That lesson, that the environment in which something is used changes everything, has never left me.</p>
+            <p>When I later encountered the Kanban Method as articulated by David Anderson, building on lean manufacturing and the Toyota Production System - it felt less like learning something new and more like finally having language for what I'd already been doing in that dyehouse.</p>
+            <p>I've attended the global Kanban University Learnship conferences in Miami and Bilbao, where the people who are genuinely serious about this come together. The thought leadership coming out of that community continues to inform how I work. I use the <a href="https://kanban.plus/blogs/blog/what-is-the-kanban-maturity-model" target="_blank" rel="noopener noreferrer" className="text-[#ea580c] hover:underline">Kanban Maturity Model</a> to help organisations understand where they are and plot a realistic path forward.</p>
+            <p className="text-[#a8b5c4]">Most organisations jump to SAFe or Scrum before they can even see their own system clearly. The Kanban Method starts where you are. It doesn't ask you to install a recipe. It asks you to look honestly at how work flows, or doesn't, and improve from there. It is, in my view, the most powerful and most underused tool in the Lean/Agile toolkit.</p>
+          </div>
+        </div>
+
+        {/* Read more/less toggle */}
+        <button
+          onClick={() => setExpanded(!expanded)}
+          className="mobile-card-tap mt-4 flex items-center gap-2 text-[#ea580c] text-sm font-semibold transition-all duration-300"
+        >
+          {expanded ? (
+            <>
+              <span>Read less</span>
+              <ChevronDown size={16} className="rotate-180 transition-transform" />
+            </>
+          ) : (
+            <>
+              <span>Read more</span>
+              <ChevronDown size={16} className="transition-transform" />
+            </>
+          )}
+        </button>
+      </div>
+    </div>
+  );
+}
+
+// ============================================================================
+// BELIEFS SECTION - Mobile-optimized with show more/less
+// ============================================================================
+
+const BELIEFS = [
+  { number: "#1", title: "Context always wins", text: "A latin groove in Silent Night is technically impressive. It's also completely wrong. I'm not an agile evangelist. Framework agnostic. The right method for the right moment." },
+  { number: "#2", title: "Simplicity: Occam's Razor, every time", text: "Complexity is almost always a symptom, not a feature. The simplest explanation is usually right. The simplest solution usually works." },
+  { number: "#3", title: "Ask why. Relentlessly.", text: "A leadership team gave me 85 Post-Its - all mandatory, critical, urgent. We asked why about every one. Fourteen survived. Ten shipped as working digital products." },
+  { number: "#4", title: "Outcomes follow Practices. Practices follow Culture. Culture follows Values.", text: "If you don't start with values, you'll end up with busy people firefighting and calling it change." },
+  { number: "#5", title: "Listening before you play", text: "In music I learned that following the beat precisely can put you completely out of time with everyone else. The people in the room usually already know the answer. My job is to step back and help them hear it." },
+  { number: "#6", title: "The space between the beats", text: "The notes you don't play matter as much as the ones you do. The work you remove is often more valuable than the work you add." },
+  { number: "#7", title: "Building capability, not dependency", text: "I'm here to make myself unnecessary. The goal is that the team doesn't need me anymore, because they've got it. That's the win." },
+  { number: "#8", title: "Delivering real things, not activity", text: "Ten working digital products from fourteen Post-Its. Shipped things, in the hands of real users. Nothing builds belief faster than showing people something that actually works." },
+];
+
+function BeliefsSection() {
+  const [showAll, setShowAll] = useState(false);
+
+  return (
+    <>
+      {/* Desktop: 2-column layout */}
+      <div className="hidden lg:contents">
+        <div className="space-y-6">
+          <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.15em] font-bold mb-2">What I Believe</p>
+          {BELIEFS.slice(0, 4).map((belief) => (
+            <BeliefPoint key={belief.number} {...belief} />
+          ))}
+        </div>
+        <div className="space-y-6 lg:pt-[29px]">
+          {BELIEFS.slice(4).map((belief) => (
+            <BeliefPoint key={belief.number} {...belief} />
+          ))}
+        </div>
+      </div>
+
+      {/* Mobile: Single column with show more */}
+      <div className="lg:hidden col-span-full">
+        <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.15em] font-bold mb-4">What I Believe</p>
+
+        {/* Always show first 4 */}
+        <div className="space-y-3">
+          {BELIEFS.slice(0, 4).map((belief) => (
+            <BeliefPoint key={belief.number} {...belief} />
+          ))}
+        </div>
+
+        {/* Show more toggle */}
+        <button
+          onClick={() => setShowAll(!showAll)}
+          className="mobile-card-tap mt-4 w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg bg-[#c2410c]/10 text-[#c2410c] text-sm font-semibold transition-all duration-300"
+        >
+          {showAll ? (
+            <>
+              <span>Show less</span>
+              <Minus size={16} />
+            </>
+          ) : (
+            <>
+              <span>Show 4 more beliefs</span>
+              <Plus size={16} />
+            </>
+          )}
+        </button>
+
+        {/* Additional beliefs - animated */}
+        <div className={`mobile-drawer-content ${showAll ? 'expanded' : 'collapsed'}`}>
+          <div className="space-y-3 pt-4">
+            {BELIEFS.slice(4).map((belief) => (
+              <BeliefPoint key={belief.number} {...belief} />
+            ))}
+          </div>
+        </div>
+      </div>
+    </>
+  );
+}
+
 function BeliefPoint({ number, title, text }: { number: string; title: string; text: string }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   return (
     <div className="pb-1">
-      <h3 className="text-[15px] font-bold text-[#1e2936] leading-snug mb-2">
-        <span className="text-[#c2410c] font-semibold">{number}</span>
-        <span className="text-[#c2410c]/40 mx-1.5">//</span>
-        {title}
-      </h3>
-      <p className="text-[13px] text-[#3d4d5f]/90 leading-relaxed pl-0">{text}</p>
+      {/* Desktop - always expanded */}
+      <div className="hidden md:block">
+        <h3 className="text-[15px] font-bold text-[#1e2936] leading-snug mb-2">
+          <span className="text-[#c2410c] font-semibold">{number}</span>
+          <span className="text-[#c2410c]/40 mx-1.5">//</span>
+          {title}
+        </h3>
+        <p className="text-[13px] text-[#3d4d5f]/90 leading-relaxed pl-0">{text}</p>
+      </div>
+
+      {/* Mobile - collapsible accordion */}
+      <div className="md:hidden">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="mobile-card-tap w-full text-left flex items-center justify-between gap-3 py-2"
+        >
+          <h3 className="text-[14px] font-bold text-[#1e2936] leading-snug flex-1">
+            <span className="text-[#c2410c] font-semibold">{number}</span>
+            <span className="text-[#c2410c]/40 mx-1.5">//</span>
+            {title}
+          </h3>
+          <div className={`w-6 h-6 rounded-full flex items-center justify-center bg-[#c2410c]/10 transition-transform duration-300 ${isOpen ? 'rotate-180' : ''}`}>
+            <ChevronDown size={14} className="text-[#c2410c]" />
+          </div>
+        </button>
+        <div className={`mobile-drawer-content ${isOpen ? 'expanded' : 'collapsed'}`}>
+          <p className="text-[13px] text-[#3d4d5f]/90 leading-relaxed pb-3">{text}</p>
+        </div>
+      </div>
     </div>
   );
 }
