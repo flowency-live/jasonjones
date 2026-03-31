@@ -50,7 +50,7 @@ const professionalBooks = [
   { title: "Lean Change Management", author: "Jason Little", cover: "/assets/images/books/lean-change-management.jpg", description: "Change that sticks has to be owned by the people living it. Jason Little gets this in a way that most change management approaches completely miss. Practical, human, and genuinely useful." },
   { title: "A Seat at the Table", author: "Mark Schwartz", cover: "/assets/images/books/seat-at-the-table.jpg", description: "IT leadership reframed. The conversation between technology and the business has needed this book for decades. Clarity, confidence, and a strong sense of what good actually looks like." },
   { title: "Getting Naked", author: "Patrick Lencioni", cover: "/assets/images/books/getting-naked.jpg", description: "The most important thing a consultant can do is be vulnerable enough to tell the truth before they've won the trust. Lencioni's fable captures something I try to live by, especially when it's uncomfortable." },
-  { title: "Commitment", author: "Maassen & Geary", cover: "/assets/images/books/commitment.jpg", description: "A genuinely novel format, fiction used to explain real options thinking and economic decision-making. I've recommended this to more CTOs than any other book on this list." },
+  { title: "Commitment", author: "Chris Matts, Maassen & Geary", cover: "/assets/images/books/commitment.jpg", description: "A genuinely novel format, fiction used to explain real options thinking and economic decision-making. I've recommended this to more CTOs than any other book on this list." },
   { title: "Flow", author: "Fin Goulding & Haydn Shaughnessy", cover: "/assets/images/books/flow-goulding.jpg", description: "A rare book that bridges the human and systemic sides of flow, not just the engineering metrics, but what it actually takes to build organisations that can move." },
   { title: "Agile Software Development Ecosystems", author: "Jim Highsmith", cover: "/assets/images/books/agile-ecosystems.jpg", description: "One of the original texts. Before SAFe, before the Spotify model, before every consultancy had an agile brand, Highsmith was writing the foundations. Reminds you where all of this came from." },
   { title: "Turtles All the Way Down", author: "DeLozier & Grinder", cover: "/assets/images/books/turtles-all-the-way-down.jpg", description: "NLP modelling strategies for personal genius. The meta-level thinking about how people learn and how patterns form has informed how I coach more than most agile books." },
@@ -356,7 +356,7 @@ const fadeCardStyles = `
     inset: 0;
     width: 100%;
     height: 100%;
-    transition: opacity 0.4s ease;
+    transition: opacity 1s ease;
   }
   .fade-card-front {
     opacity: 1;
