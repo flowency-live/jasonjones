@@ -344,31 +344,31 @@ export default function WhatShapesMePage() {
 // ============================================================================
 
 // Flip card styles injected via style tag for 3D transform support
-const flipCardStyles = `
-  .flip-card {
-    perspective: 1000px;
-    height: 320px;
-  }
-  .flip-card-inner {
+const fadeCardStyles = `
+  .fade-card {
     position: relative;
-    width: 100%;
-    height: 100%;
-    transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
-    transform-style: preserve-3d;
+    height: 320px;
+    overflow: hidden;
   }
-  .flip-card:hover .flip-card-inner {
-    transform: rotateY(180deg);
-  }
-  .flip-card-front,
-  .flip-card-back {
+  .fade-card-front,
+  .fade-card-back {
     position: absolute;
+    inset: 0;
     width: 100%;
     height: 100%;
-    backface-visibility: hidden;
-    -webkit-backface-visibility: hidden;
+    transition: opacity 0.4s ease;
   }
-  .flip-card-back {
-    transform: rotateY(180deg);
+  .fade-card-front {
+    opacity: 1;
+  }
+  .fade-card-back {
+    opacity: 0;
+  }
+  .fade-card:hover .fade-card-front {
+    opacity: 0;
+  }
+  .fade-card:hover .fade-card-back {
+    opacity: 1;
   }
 `;
 
@@ -389,56 +389,28 @@ function FlipBookCard({
 }) {
   return (
     <>
-      <style>{flipCardStyles}</style>
-      <div className="flip-card">
-        <div className="flip-card-inner">
-          {/* Front - Book Cover */}
-          <div className="flip-card-front">
-            <div
-              className={`h-full flex flex-col items-center justify-center p-4 ${
-                dark ? "bg-[#1a1a1a] border border-white/10" : "bg-[#f5f5f5]"
-              }`}
-            >
-              <img
-                src={cover}
-                alt={`${title} by ${author}`}
-                className="max-h-[260px] w-auto object-contain drop-shadow-lg"
-                onError={(e) => {
-                  // Fallback if image doesn't load - show title card
-                  const target = e.target as HTMLImageElement;
-                  target.style.display = 'none';
-                  const fallback = target.nextElementSibling as HTMLElement;
-                  if (fallback) fallback.style.display = 'flex';
-                }}
-              />
-              {/* Fallback when image fails to load */}
-              <div
-                className={`hidden flex-col items-center justify-center text-center h-[260px] w-full px-4 ${
-                  dark ? "bg-gradient-to-br from-[#c2410c]/20 to-[#1a1a1a]" : "bg-gradient-to-br from-[#c2410c]/10 to-white"
-                }`}
-              >
-                <span className="text-[#c2410c] text-[10px] font-bold mb-2">#{number}</span>
-                <h3 className={`text-lg font-bold leading-tight mb-2 ${dark ? "text-white" : "text-black"}`}>{title}</h3>
-                <p className={`text-sm ${dark ? "text-white/70" : "text-black/50"}`}>{author}</p>
-              </div>
-              <p className={`text-[10px] mt-3 ${dark ? "text-white/40" : "text-black/40"}`}>Hover to read</p>
-            </div>
-          </div>
+      <style>{fadeCardStyles}</style>
+      <div className="fade-card">
+        {/* Front - Book Cover */}
+        <div className="fade-card-front">
+          <img
+            src={cover}
+            alt={`${title} by ${author}`}
+            className="w-full h-full object-cover"
+          />
+        </div>
 
-          {/* Back - Description */}
-          <div className="flip-card-back">
-            <div
-              className={`h-full p-5 flex flex-col overflow-hidden ${
-                dark
-                  ? "bg-gradient-to-br from-[#c2410c] to-[#9a350a] text-white"
-                  : "bg-gradient-to-br from-[#c2410c] to-[#7c320a] text-white"
-              }`}
-            >
-              <span className="text-[10px] font-bold text-white/60">#{number}</span>
-              <h3 className="text-[15px] font-bold mt-1 mb-0.5 text-white">{title}</h3>
-              <p className="text-[12px] mb-3 text-white/85">{author}</p>
-              <p className="text-[13px] leading-relaxed text-white/90 overflow-y-auto flex-1">{description}</p>
-            </div>
+        {/* Back - Description overlay */}
+        <div className="fade-card-back">
+          <div
+            className={`h-full p-5 flex flex-col ${
+              dark
+                ? "bg-[#16a34a] text-white"
+                : "bg-[#eab308] text-black"
+            }`}
+          >
+            <h3 className={`text-[15px] font-bold mb-1 ${dark ? "text-white" : "text-black"}`}>{title} // {author}</h3>
+            <p className={`text-[13px] leading-relaxed flex-1 overflow-y-auto ${dark ? "text-white/90" : "text-black/80"}`}>{description}</p>
           </div>
         </div>
       </div>
