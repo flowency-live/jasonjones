@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import { Link } from "wouter";
 import { Mail, Linkedin, Instagram, MessageCircle, ArrowLeft } from "lucide-react";
 
@@ -76,6 +77,10 @@ const albums = [
 ];
 
 export default function WhatShapesMePage() {
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
   return (
     <div className="min-h-screen bg-[#0a0a0a] text-white font-['Montserrat',sans-serif]">
 
@@ -180,21 +185,13 @@ export default function WhatShapesMePage() {
         {/* ============================================================ */}
         {/* HERO */}
         {/* ============================================================ */}
-        <section id="hero" className="min-h-[50vh] flex items-center px-8 lg:px-16 py-20 relative overflow-hidden">
-          <div className="absolute inset-0 bg-gradient-to-br from-[#c2410c]/10 to-transparent" />
-
+        <section id="hero" className="px-8 lg:px-16 py-16 relative overflow-hidden">
           <div className="relative z-10 max-w-4xl">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6">
-              Standing on the shoulders of
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-light leading-tight">
+              What Shapes
               <br />
-              <span className="text-[#c2410c] font-normal">giants</span>
+              <span className="text-[#ea580c] font-normal">Me</span>
             </h1>
-            <div className="space-y-4 text-white/85 text-[16px] leading-relaxed max-w-3xl">
-              <p>The first time I played with one of the UK's top brass bands, I followed the conductor's downbeat precisely and was completely out of time with everyone else. The ensemble were connected to each other. The conductor was shaping the music, not driving it. I had to step back, listen to everything happening around me, and adapt. That lesson about reading a room and observing a whole system before you act in it has never left me.</p>
-              <p>BBC Micro at age 12. SCC training rooms in the early 2000s. Dassault Systemes in Toulouse. Teams in Vietnam, India and Poland. Every one of those environments taught something different about systems, about people, about context, about what it means to do work that actually matters.</p>
-              <p>I co-founded a construction tech startup. We built ClearBuild, a centralised construction site management application that was voted runner-up for most innovative new product at InterBuild 2007. Then the UK construction recession hit. Nobody wanted it. Everybody was protecting costs. We hadn't seen it coming. The product was right. The timing was brutal. I have a deep respect for anyone who has built something real and watched the market move. Timing is everything.</p>
-              <p className="text-white/70">These are the things that shaped how I think, how I work, and occasionally how I play. Always open to more suggestions.</p>
-            </div>
           </div>
         </section>
 
