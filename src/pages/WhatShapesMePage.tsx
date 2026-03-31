@@ -205,7 +205,7 @@ export default function WhatShapesMePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {currentlyReading.map((book, index) => (
-                <FlipBookCard key={index} number={index + 1} {...book} dark />
+                <FlipBookCard key={index} {...book} dark />
               ))}
             </div>
           </div>
@@ -221,7 +221,7 @@ export default function WhatShapesMePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4">
               {professionalBooks.map((book, index) => (
-                <FlipBookCard key={index} number={index + 1} {...book} />
+                <FlipBookCard key={index} {...book} />
               ))}
             </div>
           </div>
@@ -277,7 +277,7 @@ export default function WhatShapesMePage() {
 
             <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               {personalBooks.map((book, index) => (
-                <FlipBookCard key={index} number={professionalBooks.length + index + 1} {...book} dark />
+                <FlipBookCard key={index} {...book} dark />
               ))}
             </div>
           </div>
@@ -373,14 +373,12 @@ const fadeCardStyles = `
 `;
 
 function FlipBookCard({
-  number,
   title,
   author,
   cover,
   description,
   dark = false
 }: {
-  number: number;
   title: string;
   author: string;
   cover: string;
