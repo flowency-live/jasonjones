@@ -103,7 +103,7 @@ const highlightImages: CaptionedImage[] = [
   { src: "/assets/images/about/highlights/Kanban.webp", title: "Kanban University", description: "Being part of the global Kanban community at Learnship is one of the things I'm most proud of professionally. Miami and Bilbao.", url: "https://kanban.university/" },
   { src: "/assets/images/about/highlights/lego.webp", title: "Lego SIM City in FS", description: "I've stood on a desk with a room full of Lego watching senior bank leaders get it in real time. Theory of Constraints, Cost of Delay, all of it landing at once. That's what all of this is for." },
   { src: "/assets/images/about/highlights/James.jpg", title: "Adaptavis Project Partner", description: "I work as a project partner with James Enock, CEO of Adaptavis. We've been peers, mentors, colleagues and friends for over ten years. We all need those people who challenge and support in equal measure.", url: "https://www.adaptavis.com/" },
-  { src: "/assets/images/about/highlights/friends.jpg", title: "When a Plan Comes Together", description: "Sometimes the right group of people get together at the right time. This was one of those times." },
+  { src: "/assets/images/about/highlights/friends.jpg", title: "When a Plan Comes Together", description: "Sometimes the right group of people get together at the right time, with the right challenge. This was one of those times." },
 ];
 
 export default function HomePage() {
@@ -632,11 +632,6 @@ export default function HomePage() {
         </section>
 
         {/* ============================================================ */}
-        {/* WHAT I DO - Compact Card Grid */}
-        {/* ============================================================ */}
-        <WhatIDoSection />
-
-        {/* ============================================================ */}
         {/* WHAT I DON'T DO - Editorial Swiss Grid */}
         {/* ============================================================ */}
         <section id="WhatIDontDo" className="relative bg-[#0a0a0a] text-white overflow-hidden">
@@ -706,7 +701,7 @@ export default function HomePage() {
                   Make myself indispensable
                 </h3>
                 <p className="text-[#8a99a8] text-[15px] lg:text-base leading-relaxed relative mb-4">
-                  I'm not here to become a permanent fixture. I build capability, not dependency — mentoring your people, embedding good habits, configuring your tools so your teams can see and improve things for themselves.
+                  I'm not here to become a permanent fixture. I build capability, not dependency - mentoring your people, embedding good habits, configuring your tools so your teams can see and improve things for themselves.
                 </p>
                 <p className="text-[#ea580c] text-[14px] font-medium relative">
                   The goal is that you don't need me anymore. That's how I know it worked.
@@ -718,6 +713,11 @@ export default function HomePage() {
             <div className="h-px bg-gradient-to-r from-transparent via-[#ea580c]/30 to-transparent" />
           </div>
         </section>
+
+        {/* ============================================================ */}
+        {/* WHAT I DO - Compact Card Grid */}
+        {/* ============================================================ */}
+        <WhatIDoSection />
 
         {/* ============================================================ */}
         {/* HIGHLIGHTS */}
@@ -833,10 +833,10 @@ export default function HomePage() {
               {/* Left Side - Book a Call */}
               <div className="relative px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center">
                 <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#ea580c] font-['Poppins',sans-serif] mb-4">
-                  Let's talk
+                  Bring me your hardest delivery problem
                 </h2>
                 <p className="text-[#a8b5c4] text-lg mb-8 max-w-md">
-                  Book a call or fill in the form. No pitch decks. No jargon. Just a conversation about what you're trying to achieve.
+                  Book a call or drop me a message. No pitch decks. No jargon. Just a conversation about what's actually stuck.
                 </p>
 
                 {/* Cal.com Embed */}
@@ -942,13 +942,12 @@ interface ServiceOffering {
 const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "LetItFlow",
-    title: "Let it FLOW",
-    subtitle: "Delivery Leadership & Flow Metrics",
-    teaser: "Making flow of value visible and predictable. Start where you are, bring clarity, then optimise for flow.",
+    title: "See what's blocking you",
+    subtitle: "Flow Metrics & Delivery Leadership",
+    teaser: "Most teams can't see their own system. I make the invisible visible - bottlenecks, wait times, the work that's really stuck.",
     fullContent: [
-      "I've spent the best part of 20 years helping organisations stop firefighting and start delivering with real, predictable flow. My approach? Framework-agnostic. I'll draw from Agile, Waterfall, Kanban, systems thinking, JFDI - whatever actually fits the problem, not the textbook.",
-      "What I really care about is making the work visible - seeing the actual system, finding the bottlenecks, and improving things with evidence, not opinions. Lead time, cycle time, the metrics that matter. Not vanity dashboards that make everyone feel busy. I configure the tooling and instrument the workflow so teams can see how their delivery system is actually performing - and improve it themselves.",
-      "When flow works, value follows. That bit never gets old."
+      "Framework-agnostic. Method-diverse. I'll draw from Agile, Waterfall, Lean, Kanban, systems thinking, JFDI - whatever actually fits the problem, not the textbook.",
+      "I make the work visible - finding the bottlenecks, improving with evidence not opinions. Lead time, cycle time, the metrics that matter. I configure the tooling so teams can see how their system is actually performing - and improve it themselves."
     ],
     clients: "HSBC · Capital One UK · CDL · Manchester Airports Group"
   },
@@ -958,10 +957,9 @@ const SERVICE_OFFERINGS: ServiceOffering[] = [
     subtitle: "Boardroom to Delivery Alignment",
     teaser: "Closing the gap between what the boardroom decides and what teams actually deliver.",
     fullContent: [
-      "Here's the thing - ambitious strategic goals have a habit of dying somewhere between the boardroom and the delivery layer. I specialise in making sure they don't.",
-      "My journey includes partnering with C-suite leaders to structure organisations around outcome-led value streams, translating big commercial commitments into delivery plans that are realistic, risk-aware and actually executable. OKRs, lean portfolio leadership, making trade-offs visible - connecting the why to the what to the how.",
-      "Not another layer of process. A clearer line of sight - so the conversation in the boardroom and the work on the board are finally telling the same story.",
-      "I've done this greenfield - starting with a plan and building global delivery capability from scratch - and across live operational portfolios of 40+ teams. Messy, complex, rewarding."
+      "Ambitious strategic goals have a habit of dying somewhere between the boardroom and the delivery layer. I specialise in making sure they don't.",
+      "Partnering with C-suite leaders to translate big commitments into delivery plans that are realistic and actually executable. OKRs, portfolio leadership, making trade-offs visible - connecting the why to the what to the how.",
+      "Not another layer of process. A clearer line of sight - so the boardroom and the teams are finally telling the same story."
     ],
     clients: "HSBC Investment Bank · Capital One UK · Co-operative Bank"
   },
@@ -971,25 +969,22 @@ const SERVICE_OFFERINGS: ServiceOffering[] = [
     subtitle: "Building Teams & Capability",
     teaser: "Experienced practitioners give your teams the skills to own and evolve their practices.",
     fullContent: [
-      "The fundamentals of great delivery haven't changed - curious people, learning together, building trust, improving as they go. That predates any framework. Agile didn't invent good human behaviour, it just gave it some structure.",
-      "My journey includes coaching at every level - from individual squads through to Release Train Engineers and Divisional CTOs. I'm a big believer in showing, not telling, which means working alongside teams as a servant-leader, modelling the practices, not just presenting slides about them.",
-      "The bit I'm most proud of? Building Communities of Practice and mentoring internal champions so that the change outlasts my engagement. Good habits, shared learning, continuous improvement - baked into the DNA, not bolted on. That's the goal.",
-      "Done this across transformations spanning 45 teams and three continents. Challenging. And brilliant."
+      "The fundamentals haven't changed - curious people, learning together, building trust. Agile didn't invent good human behaviour, it just gave it some structure.",
+      "Coaching at every level - from squads to Divisional CTOs. Showing, not telling. Working alongside teams, modelling the practices, not presenting slides.",
+      "The bit I'm most proud of? Building Communities of Practice so the change outlasts my engagement. Good habits baked into the DNA, not bolted on."
     ],
     clients: "British Airways · Capital One UK (45 teams) · Barclaycard UK"
   },
   {
     id: "CoachingTransformation",
-    title: "Coaching & Transformation",
-    subtitle: "Culture & Values Work",
-    teaser: "Outcomes follow Practices. Practices follow Culture. Culture follows Values.",
+    title: "Culture that actually shifts",
+    subtitle: "Values & Transformation",
+    teaser: "Outcomes follow Practices. Practices follow Culture. Culture follows Values. Most transformations start in the wrong place.",
     fullContent: [
-      "You know the saying - culture eats strategy for breakfast. It's a cliché because it's true.",
-      "But here's what I've learned: culture doesn't change because someone puts new posters on the wall or renames the weekly status meeting a \"stand-up.\" Culture follows practices. And practices follow values. That's the chain.",
-      "If people still fundamentally value a plan and certainty over the discomfort of exploring the unknown - if the real belief is \"just tell me what to do and when it'll be done\" - then no amount of ceremonies or transformation programmes will shift the culture. The values show through in what people actually do, every single day.",
-      "My journey includes helping organisations get honest about this. Not with blame, but with curiosity. What do we really value here? What are the practices telling us? And are we genuinely willing to sit with a bit of uncertainty in exchange for learning, adapting and building something better?",
-      "That's where the real transformation happens. Not in the framework. Not in the tooling. In the conversations people have when things get uncomfortable.",
-      "It's hard work. It's also the most rewarding work there is."
+      "Culture eats strategy for breakfast. It's a cliché because it's true.",
+      "Culture doesn't change because someone puts big pictures on the wall. Culture follows practices. Practices follow values. If people fundamentally value certainty over exploration, no amount of ceremonies will shift things.",
+      "I help organisations get honest about this. Not with blame, but with curiosity. What do we really value here? Are we willing to sit with uncertainty in exchange for learning and building something better?",
+      "That's where the real transformation happens. Not in the framework. In the conversations when things get uncomfortable."
     ],
     clients: "Co-operative Bank · Shaw Trust · SSE"
   }
@@ -1010,8 +1005,8 @@ function WhatIDoSection() {
         <div className="relative z-10 px-8 lg:px-16 max-w-5xl mx-auto">
           <p className="text-[#ea580c] text-[11px] font-bold uppercase tracking-[0.3em] mb-6">What I Do</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#f8f7f5] font-['Poppins',sans-serif] leading-[1.1] mb-6">
-            Delivery. Flow.<br />
-            <span className="text-[#ea580c]">Transformation.</span>
+            From stuck<br />
+            <span className="text-[#ea580c]">to shipped.</span>
           </h2>
           <p className="text-[#a8b5c4] text-lg lg:text-xl max-w-2xl leading-relaxed">
             Twenty years of helping organisations see their systems clearly and deliver what actually matters.
