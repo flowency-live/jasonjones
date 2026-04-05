@@ -41,18 +41,18 @@ const capabilities = [
   },
   {
     icon: Zap,
-    title: "Implementation",
-    description: "Building AI-powered tools using LLMs including Claude, Gemini and Grok. Prompt engineering, context orchestration, agentic workflows."
+    title: "From Prototype to Production",
+    description: "You've vibe-coded something that works. Now what? I help teams productionise AI prototypes, adding the governance, reliability and structure that makes them enterprise-ready."
   },
   {
     icon: Sparkles,
-    title: "Vibe Coding",
-    description: "Right-sized, right-timed solutions that actually get used. Build what's needed, nothing more, ship it, learn, iterate."
+    title: "Data & Cognitive Sovereignty",
+    description: "Your AI decisions should belong to you. I help organisations regain control of their data, their prompts, and their AI strategy before they're locked into someone else's platform."
   },
   {
     icon: Cpu,
     title: "Decision Intelligence",
-    description: "Contributor to British Airways Operational Decision Intelligence. Bridging strategy, delivery and technical implementation."
+    description: "Bridging strategy, delivery and technical implementation. Making AI-augmented decisions visible, auditable and improvable."
   }
 ];
 
@@ -229,29 +229,26 @@ export default function AIPage() {
                 Practical experience in prompt engineering, context orchestration and agentic workflow design.
               </p>
               <p>
-                Vibe coding done properly: right-sized, right-timed solutions that actually get used.
-                Build what's needed, nothing more, ship it, learn, iterate.
+                Everyone's vibe-coding now. That's the easy part. The harder work is taking what you've built and making it production-ready: governance, reliability, maintainability. I help teams bridge that gap.
               </p>
               <p>
-                The same instinct that strips 85 initiatives down to 14 applies here: focus on value,
-                not capability theatre. Speed without recklessness. Simplicity without corners cut.
+                The same instinct that strips 85 initiatives down to 14 applies here: focus on value, not capability theatre. Speed without recklessness. Simplicity without corners cut.
               </p>
             </div>
 
             {/* Highlight box */}
             <div className="mt-12 p-8 bg-gradient-to-br from-[#c2410c]/15 to-[#ea580c]/5 border-l-4 border-[#ea580c] rounded-r-lg">
-              <p className="text-white text-lg font-medium mb-2">Recent Work</p>
+              <p className="text-white text-lg font-medium mb-2">The Paradigm Shift</p>
               <p className="text-[#d0d8e0]">
-                Contributor to British Airways Operational Decision Intelligence.
-                Bridges strategy, delivery and technical implementation credibly.
+                Human-readable code is a transitional state. Tools like Replit, Lovable and Bolt still generate traditional file structures because existing infrastructure expects it. But there's no inherent reason AI needs to build this way. Soon, humans will be the prompt engine for AI products, and "reading the code" won't be an option. I help organisations prepare for that world: governance without line-by-line review, sovereignty without source control.
               </p>
             </div>
 
             {/* Clients */}
             <div className="mt-12 pt-8 border-t border-[#3d4d5f]/30">
-              <p className="text-[11px] text-[#a8b5c4] uppercase tracking-[0.15em] font-semibold mb-3">Clients</p>
+              <p className="text-[11px] text-[#a8b5c4] uppercase tracking-[0.15em] font-semibold mb-3">Recent AI Work</p>
               <p className="text-[#d0d8e0] text-lg">
-                British Airways / IAG · Cheshire Data Systems · Intrapay / Sappaya
+                Operational decision intelligence · AI-powered SaaS products · Enterprise prototype productionisation
               </p>
             </div>
           </div>

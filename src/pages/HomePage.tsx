@@ -1,5 +1,31 @@
 import { useState, useEffect, useRef } from "react";
 import { Link } from "wouter";
+
+// Custom hook for section header fade-in on scroll
+function useSectionFadeIn() {
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.disconnect();
+        }
+      },
+      { threshold: 0.2 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => observer.disconnect();
+  }, []);
+
+  return { ref, isVisible };
+}
 import { Mail, Linkedin, Instagram, MessageCircle, Menu, X, ChevronDown, ExternalLink, Plus, Minus } from "lucide-react";
 import { PhotoGallery, CaptionedPhotoGallery } from "@/components/PhotoGallery";
 import type { GalleryImage, CaptionedImage } from "@/components/PhotoGallery";
@@ -113,6 +139,12 @@ export default function HomePage() {
   const [openDropdowns, setOpenDropdowns] = useState<Record<string, boolean>>({});
   const gigListRef = useRef<HTMLDivElement>(null);
 
+  // Section header fade-in animations
+  const whatIDontDoFade = useSectionFadeIn();
+  const highlightsFade = useSectionFadeIn();
+  const gigListFade = useSectionFadeIn();
+  const sayHelloFade = useSectionFadeIn();
+
   const toggleDropdown = (id: string) => {
     setOpenDropdowns(prev => ({ ...prev, [id]: !prev[id] }));
   };
@@ -201,6 +233,19 @@ export default function HomePage() {
         .mobile-drawer-icon.rotated {
           transform: rotate(180deg);
         }
+        /* Hero fade-in animation */
+        @keyframes heroFadeIn {
+          from { opacity: 0; transform: translateY(20px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .hero-animate {
+          animation: heroFadeIn 0.8s ease-out forwards;
+          opacity: 0;
+        }
+        .hero-animate-delay-1 { animation-delay: 0.1s; }
+        .hero-animate-delay-2 { animation-delay: 0.3s; }
+        .hero-animate-delay-3 { animation-delay: 0.5s; }
+
         /* Staggered animation for list items */
         @keyframes fadeSlideIn {
           from { opacity: 0; transform: translateY(12px); }
@@ -224,6 +269,17 @@ export default function HomePage() {
         }
         .mobile-card-tap:active {
           animation: cardPulse 0.4s ease;
+        }
+        /* Section header scroll-triggered fade-in */
+        @keyframes sectionFadeIn {
+          from { opacity: 0; transform: translateY(12px); }
+          to { opacity: 1; transform: translateY(0); }
+        }
+        .section-header-animate {
+          opacity: 0;
+        }
+        .section-header-animate.visible {
+          animation: sectionFadeIn 0.4s ease-out forwards;
         }
         .nav-link {
           position: relative;
@@ -552,12 +608,12 @@ export default function HomePage() {
           <div className="relative z-10 max-w-6xl mx-auto w-full px-8 lg:px-16 pb-12 pt-48 lg:py-20 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-16 items-center">
             {/* Text - pinned to bottom on mobile, leaving room for face at top */}
             <div className="text-center lg:text-left">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-light leading-tight mb-6 text-[#f8f7f5]">
+              <h1 className="hero-animate hero-animate-delay-1 text-4xl md:text-5xl lg:text-6xl font-light leading-tight mb-6 text-[#f8f7f5]">
                 Helping people see what's possible
                 <br />
                 <span className="text-[#ea580c] font-normal">then delivering it with them</span>
               </h1>
-              <p className="text-[#d0d8e0] text-lg font-medium">Tenacity. Radical candour. Getting shit done.</p>
+              <p className="hero-animate hero-animate-delay-2 text-[#d0d8e0] text-lg font-medium">Tenacity. Radical candour. Getting shit done.</p>
             </div>
 
             {/* Photo with faded edges - Desktop only */}
@@ -579,7 +635,7 @@ export default function HomePage() {
 
         {/* TAGLINE BAR */}
         <section className="py-8 bg-gradient-to-r from-[#c2410c] to-[#ea580c]">
-          <p className="text-center text-white font-semibold text-lg md:text-xl px-8">
+          <p className="text-center text-white font-bold text-xl md:text-2xl tracking-tight px-8">
             See it clearly. Say it plainly. Deliver what actually matters.
           </p>
         </section>
@@ -589,7 +645,7 @@ export default function HomePage() {
         {/* ============================================================ */}
         <section id="WhoIAm" className="px-8 lg:px-12 xl:px-16 py-16 bg-[#f5f3f0] text-[#1e2936]">
           <div className="max-w-7xl mx-auto">
-            <p className="text-[#c2410c] text-xs font-bold uppercase tracking-[0.15em] mb-8">Who I Am</p>
+            <p className="text-[#c2410c] text-[11px] font-bold uppercase tracking-[0.3em] mb-8">Who I Am</p>
 
             <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-12">
               {/* Bio */}
@@ -617,7 +673,7 @@ export default function HomePage() {
           <div className="grid grid-cols-1 lg:grid-cols-2">
             {/* Text - left side with padding */}
             <div className="px-8 lg:pl-16 lg:pr-12">
-              <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.1em]st mb-4">Origins</p>
+              <p className="text-[#ea580c] text-[11px] font-bold uppercase tracking-[0.3em] mb-4">Origins</p>
               <h2 className="text-3xl md:text-4xl font-bold mb-8 text-[#f8f7f5]">Flow, before anyone called it that</h2>
 
               <FlowOriginContent />
@@ -641,7 +697,7 @@ export default function HomePage() {
           <div className="max-w-7xl mx-auto relative">
             {/* Header */}
             <div className="px-8 lg:px-16 pt-20 pb-12 lg:pt-28 lg:pb-16">
-              <div className="max-w-3xl">
+              <div ref={whatIDontDoFade.ref} className={`max-w-3xl section-header-animate ${whatIDontDoFade.isVisible ? 'visible' : ''}`}>
                 <p className="text-[#ea580c] text-[11px] font-bold uppercase tracking-[0.3em] mb-4">Boundaries</p>
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-['Poppins',sans-serif] leading-[1.1] mb-6">
                   What I don't do
@@ -723,7 +779,7 @@ export default function HomePage() {
         {/* HIGHLIGHTS */}
         {/* ============================================================ */}
         <section id="Highlights" className="py-16 bg-[#1e2936]">
-          <div className="px-8 lg:px-16 mb-12">
+          <div ref={highlightsFade.ref} className={`px-8 lg:px-16 mb-12 section-header-animate ${highlightsFade.isVisible ? 'visible' : ''}`}>
             <h2 className="text-3xl md:text-4xl font-bold mb-4 text-center text-[#f8f7f5]">Highlights</h2>
             <p className="text-[#d0d8e0] text-center">Everyone has their favourites. Places I've enjoyed. Friends made. Peers learned from. Outcomes realised.</p>
           </div>
@@ -764,7 +820,7 @@ export default function HomePage() {
           {/* Content */}
           <div className="relative z-10">
             {/* Header */}
-            <div className="text-center mb-12 px-8">
+            <div ref={gigListFade.ref} className={`text-center mb-12 px-8 section-header-animate ${gigListFade.isVisible ? 'visible' : ''}`}>
               <h2 className="text-4xl md:text-5xl font-bold text-[#1e2936] mb-4">
                 The Gig List
               </h2>
@@ -832,12 +888,14 @@ export default function HomePage() {
 
               {/* Left Side - Book a Call */}
               <div className="relative px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center">
-                <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#ea580c] font-['Poppins',sans-serif] mb-4">
-                  Bring me your hardest delivery problem
-                </h2>
-                <p className="text-[#a8b5c4] text-lg mb-8 max-w-md">
-                  Book a call or drop me a message. No pitch decks. No jargon. Just a conversation about what's actually stuck.
-                </p>
+                <div ref={sayHelloFade.ref} className={`section-header-animate ${sayHelloFade.isVisible ? 'visible' : ''}`}>
+                  <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#ea580c] font-['Poppins',sans-serif] mb-4">
+                    Bring me your hardest delivery problem
+                  </h2>
+                  <p className="text-[#a8b5c4] text-lg mb-8 max-w-md">
+                    Book a call or drop me a message. No pitch decks. No jargon. Just a conversation about what's actually stuck.
+                  </p>
+                </div>
 
                 {/* Cal.com Embed */}
                 <div className="bg-[#1e2936] rounded-lg overflow-hidden" style={{ minHeight: '400px' }}>
@@ -864,7 +922,7 @@ export default function HomePage() {
 
               {/* Right Side - Contact Form */}
               <div className="px-8 lg:px-16 py-16 lg:py-20 flex flex-col justify-center bg-[#111]">
-                <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-6">Or send a message</p>
+                <p className="text-[#ea580c] text-[11px] font-bold uppercase tracking-[0.3em] mb-6">Or send a message</p>
 
                 <form className="space-y-5">
                   <div>
@@ -898,7 +956,7 @@ export default function HomePage() {
                   <div className="pt-4">
                     <button
                       type="submit"
-                      className="px-8 py-4 bg-gradient-to-r from-[#ea580c] to-[#c2410c] text-white text-[14px] font-semibold rounded-full hover:from-[#c2410c] hover:to-[#ea580c] transition-all duration-300 shadow-lg shadow-[#ea580c]/20"
+                      className="px-8 py-4 bg-[#ea580c] text-white text-[14px] font-semibold uppercase tracking-wider hover:bg-[#c2410c] transition-all duration-300"
                     >
                       Send message
                     </button>
@@ -995,6 +1053,8 @@ const SERVICE_OFFERINGS: ServiceOffering[] = [
 // ============================================================================
 
 function WhatIDoSection() {
+  const whatIDoFade = useSectionFadeIn();
+
   return (
     <div id="WhatIDo">
       {/* Section Header - Bold editorial style */}
@@ -1002,7 +1062,7 @@ function WhatIDoSection() {
         {/* Subtle diagonal accent */}
         <div className="absolute top-0 right-1/4 w-px h-full bg-gradient-to-b from-[#ea580c]/0 via-[#ea580c]/15 to-[#ea580c]/0 transform rotate-12 origin-top" />
 
-        <div className="relative z-10 px-8 lg:px-16 max-w-5xl mx-auto">
+        <div ref={whatIDoFade.ref} className={`relative z-10 px-8 lg:px-16 max-w-5xl mx-auto section-header-animate ${whatIDoFade.isVisible ? 'visible' : ''}`}>
           <p className="text-[#ea580c] text-[11px] font-bold uppercase tracking-[0.3em] mb-6">What I Do</p>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-[#f8f7f5] font-['Poppins',sans-serif] leading-[1.1] mb-6">
             From stuck<br />
@@ -1286,7 +1346,7 @@ function BeliefsSection() {
       {/* Desktop: 2-column layout with bold typography */}
       <div className="hidden lg:contents">
         <div className="space-y-8">
-          <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.2em] font-bold mb-4">What I Believe</p>
+          <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.3em] font-bold mb-4">What I Believe</p>
           {BELIEFS.slice(0, 4).map((belief, idx) => (
             <BeliefPoint key={idx} {...belief} />
           ))}
@@ -1300,7 +1360,7 @@ function BeliefsSection() {
 
       {/* Mobile: Single column with impactful stacked layout */}
       <div className="lg:hidden col-span-full">
-        <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.2em] font-bold mb-6">What I Believe</p>
+        <p className="text-[11px] text-[#c2410c] uppercase tracking-[0.3em] font-bold mb-6">What I Believe</p>
         <div className="space-y-4">
           {BELIEFS.map((belief, idx) => (
             <BeliefPoint key={idx} {...belief} />
