@@ -1,58 +1,31 @@
 import { Link } from "wouter";
-import { Mail, Linkedin, Instagram, MessageCircle, ArrowLeft, Cpu, Sparkles, Zap, Target } from "lucide-react";
+import { ArrowLeft, Target, Zap, Sparkles, Cpu } from "lucide-react";
 
 // ============================================================================
 // AI WITH CONTROL PAGE
-// AI strategy, implementation and execution
+// Personal brand style - no sidebar nav, full-width content
 // ============================================================================
-
-const navStyles = `
-  .nav-link-ai {
-    position: relative;
-  }
-  .nav-link-ai::after {
-    content: '';
-    position: absolute;
-    left: 24px;
-    bottom: 6px;
-    height: 2px;
-    width: 0;
-    background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
-    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  }
-  .nav-link-ai:hover::after {
-    width: calc(100% - 48px);
-  }
-  .nav-link-ai.active::after {
-    width: 20px;
-    background: linear-gradient(90deg, #c2410c 0%, #1e2936 100%);
-  }
-  .nav-link-ai.active:hover::after {
-    width: calc(100% - 48px);
-    background: linear-gradient(90deg, #c2410c 0%, #ea580c 30%, #1e2936 100%);
-  }
-`;
 
 const capabilities = [
   {
     icon: Target,
-    title: "AI Strategy",
-    description: "Helping organisations cut through the AI hype and identify where it actually makes sense. Not chasing trends. Finding value."
+    title: "Seeing where it actually matters",
+    description: "There's a lot of noise right now. Most of it doesn't matter. The question isn't 'where can we use AI?' It's 'where does this genuinely change the outcome?' That's usually a much smaller, more interesting answer."
   },
   {
     icon: Zap,
-    title: "From Prototype to Production",
-    description: "You've vibe-coded something that works. Now what? I help teams productionise AI prototypes, adding the governance, reliability and structure that makes them enterprise-ready."
+    title: "Taking things from prototype to real",
+    description: "It's never been easier to build something that looks impressive. It's still hard to make it yours. Data, logic, ownership, reliability. That's the difference between a demo and something you can stand behind. That's the work."
   },
   {
     icon: Sparkles,
-    title: "Data & Cognitive Sovereignty",
-    description: "Your AI decisions should belong to you. I help organisations regain control of their data, their prompts, and their AI strategy before they're locked into someone else's platform."
+    title: "Keeping control of what matters",
+    description: "Your data. Your prompts. Your decisions. Not trapped inside someone else's tool. AI moves fast, but lock-in happens even faster if you're not paying attention."
   },
   {
     icon: Cpu,
-    title: "Decision Intelligence",
-    description: "Bridging strategy, delivery and technical implementation. Making AI-augmented decisions visible, auditable and improvable."
+    title: "Making decisions visible",
+    description: "AI changes how decisions get made. That's useful. It's also risky if no one can see or understand what's happening. I tend to pull that into the open, so decisions can be understood, challenged, and improved."
   }
 ];
 
@@ -61,106 +34,14 @@ export default function AIPage() {
     <div className="min-h-screen bg-[#0a0a0a] text-white font-['Montserrat',sans-serif]">
 
       {/* ================================================================ */}
-      {/* LEFT SIDEBAR NAV - Desktop */}
+      {/* MAIN CONTENT - Full Width */}
       {/* ================================================================ */}
-      <style>{navStyles}</style>
-
-      <aside className="fixed left-0 top-0 h-full z-50 hidden lg:flex flex-col"
-        style={{
-          width: 'clamp(280px, 20vw, 360px)',
-          background: 'linear-gradient(180deg, #0a0a0a 0%, #111 50%, #0a0a0a 100%)',
-          boxShadow: '4px 0 30px rgba(0,0,0,0.5)',
-        }}
-      >
-        {/* Logo / Name */}
-        <Link to="/" className="px-10 pt-10 pb-6">
-          <h1 className="text-[44px] tracking-tight font-['Poppins',sans-serif] text-white">
-            <span className="font-normal">Jason</span>
-            <span className="font-bold ml-1">Jones</span>
-            <span className="text-white/30 font-normal ml-2">:</span>
-            <span className="text-white/30 font-normal ml-1">:</span>
-          </h1>
-        </Link>
-
-        {/* Navigation */}
-        <nav className="flex-1 px-6 py-4 overflow-y-auto font-['Poppins',sans-serif]">
-          <Link to="/" className="nav-link-ai flex items-center gap-2 px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
-            <ArrowLeft size={14} /> back to home
-          </Link>
-
-          <div className="my-4 mx-4 border-t border-[#3d4d5f]/40" />
-
-          <a href="#hero" className="nav-link-ai active block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-[#ea580c] transition-all duration-200">
-            AI with Control
-          </a>
-          <a href="#capabilities" className="nav-link-ai block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
-            capabilities
-          </a>
-          <a href="#approach" className="nav-link-ai block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
-            approach
-          </a>
-          <a href="#contact" className="nav-link-ai block px-4 py-2 text-[17px] font-normal lowercase tracking-[0.1em] text-white hover:text-[#ea580c] transition-all duration-200">
-            get in touch
-          </a>
-        </nav>
-
-        {/* Social Links */}
-        <div className="px-6 py-8">
-          <div className="flex flex-wrap gap-3">
-            <a
-              href="mailto:jason@flowency.co.uk"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#ea580c] text-white hover:opacity-60 transition-all duration-200"
-            >
-              <Mail size={16} />
-            </a>
-            <a
-              href="https://www.linkedin.com/in/jjonesuk"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#0077b5] text-white hover:opacity-60 transition-all duration-200"
-            >
-              <Linkedin size={16} />
-            </a>
-            <a
-              href="https://www.instagram.com/jayjonesy73"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#E4405F] text-white hover:opacity-60 transition-all duration-200"
-            >
-              <Instagram size={16} />
-            </a>
-            <a
-              href="https://wa.me/447758240770"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="w-9 h-9 flex items-center justify-center rounded-full bg-[#25D366] text-white hover:opacity-60 transition-all duration-200"
-            >
-              <MessageCircle size={16} />
-            </a>
-          </div>
-        </div>
-      </aside>
-
-      {/* Mobile header */}
-      <div className="lg:hidden fixed top-0 left-0 right-0 z-50 bg-[#0a0a0a]/95 backdrop-blur-sm border-b border-[#3d4d5f]/30">
-        <div className="flex items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center gap-2 text-[#ea580c]">
-            <ArrowLeft size={18} />
-            <span className="text-sm font-medium">Home</span>
-          </Link>
-          <span className="text-white font-['Poppins',sans-serif] font-bold">AI with Control</span>
-        </div>
-      </div>
-
-      {/* ================================================================ */}
-      {/* MAIN CONTENT */}
-      {/* ================================================================ */}
-      <main className="lg:ml-[clamp(280px,20vw,360px)] pt-16 lg:pt-0">
+      <main>
 
         {/* ============================================================ */}
         {/* HERO */}
         {/* ============================================================ */}
-        <section id="hero" className="min-h-[70vh] flex items-center px-8 lg:px-16 py-20 relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#111] to-[#1e2936]">
+        <section id="hero" className="min-h-[70vh] flex flex-col justify-center px-8 lg:px-16 py-20 relative overflow-hidden bg-gradient-to-br from-[#0a0a0a] via-[#111] to-[#1e2936]">
           {/* Subtle grid pattern */}
           <div className="absolute inset-0 opacity-[0.03]" style={{
             backgroundImage: `linear-gradient(#ea580c 1px, transparent 1px), linear-gradient(90deg, #ea580c 1px, transparent 1px)`,
@@ -168,18 +49,31 @@ export default function AIPage() {
           }} />
 
           <div className="relative z-10 max-w-4xl">
-            <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.2em] mb-6">What I Do</p>
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-8 text-white font-['Poppins',sans-serif]">
-              AI with Control
+            {/* Back link */}
+            <Link to="/" className="inline-flex items-center gap-2 text-[#c0cad4] hover:text-[#ea580c] transition-colors duration-200 mb-12">
+              <ArrowLeft size={16} />
+              <span className="text-sm">Home</span>
+            </Link>
+
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold leading-tight mb-6 text-white font-['Poppins',sans-serif]">
+              AI with control
             </h1>
-            <p className="text-xl md:text-2xl text-[#d0d8e0] leading-relaxed mb-8">
-              From strategy to implementation to execution.<br />
-              Not theory. Working systems.
+            <p className="text-xl md:text-2xl text-[#d0d8e0] leading-relaxed mb-10">
+              Helping people build things that actually work, and actually belong to them.
             </p>
-            <p className="text-[#a8b5c4] text-lg leading-relaxed max-w-2xl">
-              Actively building AI products and helping clients navigate AI strategy, implementation and execution.
-              Practical experience in prompt engineering, context orchestration and agentic workflow design.
-            </p>
+
+            <div className="space-y-6 text-[#c0cad4] text-lg leading-relaxed max-w-2xl">
+              <p className="text-[#ea580c] font-medium">Same instincts. New tools.</p>
+              <p>
+                I'm not coming at AI as a theorist or a strategist. I'm building with it. Real systems. Real constraints. Real trade-offs.
+              </p>
+              <p>
+                Some of it starts as rough prototypes in tools like Replit, Lovable or Bolt. Some of it ends up as production systems running properly. Owned, controlled, and relied on.
+              </p>
+              <p>
+                That gap between something that works and something that's real. That's where I spend most of my time.
+              </p>
+            </div>
           </div>
         </section>
 
@@ -188,10 +82,13 @@ export default function AIPage() {
         {/* ============================================================ */}
         <section id="capabilities" className="px-8 lg:px-16 py-20 bg-[#1e2936]">
           <div className="max-w-6xl mx-auto">
-            <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-4">Capabilities</p>
-            <h2 className="text-3xl md:text-4xl font-bold text-white font-['Poppins',sans-serif] mb-12">
-              What I bring to AI work
+            <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-4">What I bring into AI work</p>
+            <h2 className="text-3xl md:text-4xl font-bold text-white font-['Poppins',sans-serif] mb-4">
+              Not services. Just how I tend to operate.
             </h2>
+            <p className="text-[#c0cad4] text-lg mb-12 max-w-2xl">
+              These aren't offerings. They're instincts I've developed from doing this work.
+            </p>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6 lg:gap-8">
               {capabilities.map((cap, index) => (
@@ -220,36 +117,50 @@ export default function AIPage() {
           <div className="max-w-4xl mx-auto">
             <p className="text-[#ea580c] text-xs font-bold uppercase tracking-[0.15em] mb-4">Approach</p>
             <h2 className="text-3xl md:text-4xl font-bold text-white font-['Poppins',sans-serif] mb-8">
-              Grounded in delivery, not hype
+              How I approach it
             </h2>
 
             <div className="space-y-6 text-[#d0d8e0] text-lg leading-relaxed">
+              <p className="text-white font-medium">Grounded in delivery. Always.</p>
               <p>
-                Building AI-powered SaaS tools using LLMs including Claude, Gemini and Grok.
-                Practical experience in prompt engineering, context orchestration and agentic workflow design.
+                I'm working hands-on with LLMs, building systems, wiring things together. Not experimenting for the sake of it. Not chasing whatever's trending this week. Just figuring out what works, what breaks, and what actually holds up when people start relying on it.
               </p>
               <p>
-                Everyone's vibe-coding now. That's the easy part. The harder work is taking what you've built and making it production-ready: governance, reliability, maintainability. I help teams bridge that gap.
+                Right now, a lot of people are vibe coding. And to be fair, it's impressive. You can get something working in hours that used to take weeks. But most of it isn't really yours. It's running somewhere else. It depends on things you don't control. It breaks in ways you can't see.
               </p>
               <p>
-                The same instinct that strips 85 initiatives down to 14 applies here: focus on value, not capability theatre. Speed without recklessness. Simplicity without corners cut.
+                I tend to step in at that point. Take what's been built. Strip it back. Rebuild it properly. So it runs. So it's owned. So it lasts.
               </p>
             </div>
 
             {/* Highlight box */}
             <div className="mt-12 p-8 bg-gradient-to-br from-[#c2410c]/15 to-[#ea580c]/5 border-l-4 border-[#ea580c] rounded-r-lg">
-              <p className="text-white text-lg font-medium mb-2">The Paradigm Shift</p>
-              <p className="text-[#d0d8e0]">
-                Human-readable code is a transitional state. Tools like Replit, Lovable and Bolt still generate traditional file structures because existing infrastructure expects it. But there's no inherent reason AI needs to build this way. Soon, humans will be the prompt engine for AI products, and "reading the code" won't be an option. I help organisations prepare for that world: governance without line-by-line review, sovereignty without source control.
-              </p>
+              <p className="text-white text-lg font-medium mb-4">What's changing</p>
+              <div className="space-y-4 text-[#d0d8e0]">
+                <p>
+                  The way we build software is shifting. Right now, AI still produces things we recognise: files, repos, structures. That's not because it has to. It's because we do. That constraint is already starting to loosen.
+                </p>
+                <p>
+                  The role of the human is moving: from writing code to shaping intent. From building systems to controlling them.
+                </p>
+                <p>
+                  Which means the problem changes. It's no longer "can we build this?" It's "do we understand and control what we've built?"
+                </p>
+                <p className="text-white font-medium">
+                  That's the shift I'm interested in.
+                </p>
+              </div>
             </div>
 
-            {/* Clients */}
+            {/* Work list */}
             <div className="mt-12 pt-8 border-t border-[#3d4d5f]/30">
-              <p className="text-[11px] text-[#a8b5c4] uppercase tracking-[0.15em] font-semibold mb-3">Recent AI Work</p>
-              <p className="text-[#d0d8e0] text-lg">
-                Operational decision intelligence · AI-powered SaaS products · Enterprise prototype productionisation
-              </p>
+              <p className="text-[11px] text-[#c0cad4] uppercase tracking-[0.15em] font-semibold mb-4">Where I've been applying this</p>
+              <ul className="space-y-2 text-[#d0d8e0] text-lg">
+                <li>Taking AI prototypes into production</li>
+                <li>Building AI-powered SaaS tools</li>
+                <li>Helping teams avoid accidental lock-in</li>
+                <li>Making AI-driven decisions visible and usable</li>
+              </ul>
             </div>
           </div>
         </section>
@@ -260,11 +171,10 @@ export default function AIPage() {
         <section id="contact" className="px-8 lg:px-16 py-20 bg-gradient-to-r from-[#c2410c] to-[#ea580c]">
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl md:text-4xl font-bold text-white font-['Poppins',sans-serif] mb-6">
-              Let's talk AI
+              If you're in the middle of this
             </h2>
-            <p className="text-white/80 text-lg mb-8 max-w-2xl mx-auto">
-              Whether you're exploring AI strategy, need hands-on implementation help,
-              or want to build something specific - I'd be happy to chat.
+            <p className="text-white/90 text-lg mb-8 max-w-2xl mx-auto">
+              Half-built things. Ideas that kind of work. Systems that don't quite hold together. That's usually where the interesting work starts.
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <a
@@ -290,8 +200,8 @@ export default function AIPage() {
         {/* Footer */}
         <footer className="px-8 lg:px-16 py-8 bg-[#0a0a0a] border-t border-[#3d4d5f]/30">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[#a8b5c4] text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
-            <div className="flex items-center gap-6 text-[#a8b5c4] text-[11px]">
+            <p className="text-[#c0cad4] text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
+            <div className="flex items-center gap-6 text-[#c0cad4] text-[11px]">
               <Link to="/" className="hover:text-white transition-colors">Home</Link>
               <Link to="/what-shapes-me" className="hover:text-white transition-colors">What Shapes Me</Link>
               <a href="https://flowency.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-white transition-colors">Flowency</a>

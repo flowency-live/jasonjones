@@ -1,0 +1,10 @@
+# robots.txt for jasonjones.uk
+
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://jasonjones.uk/sitemap.xml
+
+# Crawl-delay for polite bots
+Crawl-delay: 1

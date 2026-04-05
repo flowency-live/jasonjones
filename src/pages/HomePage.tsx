@@ -68,6 +68,8 @@ const NAV_STRUCTURE: NavItem[] = [
     children: [
       { id: "flowency-link", label: "Flowency", type: "page", href: "https://www.flowency.co.uk", external: true },
       { id: "opstack-link", label: "OpStack", type: "page", href: "https://www.opstack.uk", external: true },
+      { id: "killin-scarlet-link", label: "Killin Scarlet", type: "page", href: "https://www.facebook.com/KillinScarlet", external: true },
+      { id: "torrists-link", label: "The Torrists", type: "page", href: "https://www.facebook.com/thetorrists", external: true },
     ]
   },
   { id: "what-inspires", label: "What Inspires Me", type: "page", href: "/what-shapes-me" },
@@ -702,7 +704,7 @@ export default function HomePage() {
                 <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white font-['Poppins',sans-serif] leading-[1.1] mb-6">
                   What I don't do
                 </h2>
-                <p className="text-[#8a99a8] text-lg lg:text-xl leading-relaxed">
+                <p className="text-[#b0bcc8] text-lg lg:text-xl leading-relaxed">
                   I've seen enough to know what works, and what doesn't.
                 </p>
               </div>
@@ -729,7 +731,7 @@ export default function HomePage() {
                 <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 -mt-8 lg:-mt-12 relative">
                   Solve the wrong problem
                 </h3>
-                <p className="text-[#8a99a8] text-[15px] lg:text-base leading-relaxed relative">
+                <p className="text-[#b0bcc8] text-[15px] lg:text-base leading-relaxed relative">
                   Sometimes the most valuable thing I do is ask "why are you doing this at all?" The room didn't need a transformation programme. It needed someone to ask the right question.
                 </p>
               </div>
@@ -741,7 +743,7 @@ export default function HomePage() {
                 <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 -mt-8 lg:-mt-12 relative">
                   Install a recipe and call it transformation
                 </h3>
-                <p className="text-[#8a99a8] text-[15px] lg:text-base leading-relaxed relative">
+                <p className="text-[#b0bcc8] text-[15px] lg:text-base leading-relaxed relative">
                   Outcomes follow Practices. Practices follow Culture. Culture follows Values. If you start anywhere other than values, you'll end up with a load of busy people fire-fighting and calling it change.
                 </p>
               </div>
@@ -756,7 +758,7 @@ export default function HomePage() {
                 <h3 className="text-xl lg:text-2xl font-bold text-white mb-4 -mt-8 lg:-mt-12 relative">
                   Make myself indispensable
                 </h3>
-                <p className="text-[#8a99a8] text-[15px] lg:text-base leading-relaxed relative mb-4">
+                <p className="text-[#b0bcc8] text-[15px] lg:text-base leading-relaxed relative mb-4">
                   I'm not here to become a permanent fixture. I build capability, not dependency - mentoring your people, embedding good habits, configuring your tools so your teams can see and improve things for themselves.
                 </p>
                 <p className="text-[#ea580c] text-[14px] font-medium relative">
@@ -824,7 +826,7 @@ export default function HomePage() {
               <h2 className="text-4xl md:text-5xl font-bold text-[#1e2936] mb-4">
                 The Gig List
               </h2>
-              <p className="text-[#5a6a7a] text-lg">
+              <p className="text-[#6b7c8d] text-lg">
                 Just some of the great organisations I've worked with over the years.
               </p>
             </div>
@@ -892,7 +894,7 @@ export default function HomePage() {
                   <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-[#ea580c] font-['Poppins',sans-serif] mb-4">
                     Bring me your hardest delivery problem
                   </h2>
-                  <p className="text-[#a8b5c4] text-lg mb-8 max-w-md">
+                  <p className="text-[#c0cad4] text-lg mb-8 max-w-md">
                     Book a call or drop me a message. No pitch decks. No jargon. Just a conversation about what's actually stuck.
                   </p>
                 </div>
@@ -929,28 +931,28 @@ export default function HomePage() {
                     <input
                       type="text"
                       placeholder="Full name"
-                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#5a6a7a]"
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#8595a5]"
                     />
                   </div>
                   <div>
                     <input
                       type="tel"
                       placeholder="Phone number"
-                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#5a6a7a]"
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#8595a5]"
                     />
                   </div>
                   <div>
                     <input
                       type="email"
                       placeholder="Email"
-                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#5a6a7a]"
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors placeholder:text-[#8595a5]"
                     />
                   </div>
                   <div>
                     <textarea
                       placeholder="Message"
                       rows={3}
-                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors resize-none placeholder:text-[#5a6a7a]"
+                      className="w-full bg-transparent border-b border-[#3d4d5f] px-0 py-3 text-white text-[15px] focus:border-[#ea580c] focus:outline-none transition-colors resize-none placeholder:text-[#8595a5]"
                     />
                   </div>
                   <div className="pt-4">
@@ -971,8 +973,8 @@ export default function HomePage() {
         {/* Footer */}
         <footer className="px-8 lg:px-16 py-8 bg-[#1e2936] border-t border-[#3d4d5f]/30">
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-[#a8b5c4] text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
-            <div className="flex items-center gap-6 text-[#a8b5c4] text-[11px]">
+            <p className="text-[#c0cad4] text-[11px]">&copy; {new Date().getFullYear()} Jason Jones</p>
+            <div className="flex items-center gap-6 text-[#c0cad4] text-[11px]">
               <Link to="/what-shapes-me" className="hover:text-[#f8f7f5] transition-colors">What Shapes Me</Link>
               <a href="https://flowency.co.uk" target="_blank" rel="noopener noreferrer" className="hover:text-[#f8f7f5] transition-colors">Flowency</a>
             </div>
@@ -1000,49 +1002,45 @@ interface ServiceOffering {
 const SERVICE_OFFERINGS: ServiceOffering[] = [
   {
     id: "LetItFlow",
-    title: "See what's blocking you",
-    subtitle: "Flow Metrics & Delivery Leadership",
-    teaser: "Most teams can't see their own system. I make the invisible visible - bottlenecks, wait times, the work that's really stuck.",
+    title: "Making work visible",
+    subtitle: "Flow, Metrics & Delivery",
+    teaser: "I learned about flow constraints in a dyehouse, years before I had the words for it. A single stenter machine. Batches that only moved when the bottleneck cleared. Get the timing wrong, fabric goes mouldy. That was my first job.",
     fullContent: [
-      "Framework-agnostic. Method-diverse. I'll draw from Agile, Waterfall, Lean, Kanban, systems thinking, JFDI - whatever actually fits the problem, not the textbook.",
-      "I make the work visible - finding the bottlenecks, improving with evidence not opinions. Lead time, cycle time, the metrics that matter. I configure the tooling so teams can see how their system is actually performing - and improve it themselves."
+      "Now I configure Jira, Azure DevOps, build Monte Carlo simulations. Lead time, cycle time, throughput. The metrics that actually tell you something. I've set up flow dashboards at HSBC, Capital One, CDL, Manchester Airports Group. Different industries, same underlying patterns.",
+      "Being part of the global Kanban community, attending conferences in Miami and Bilbao, shaped how I think about this work. Big belief in the Kanban Maturity Model for plotting a realistic path forward. Not because it's a framework. Because it works."
     ],
     clients: "HSBC · Capital One UK · CDL · Manchester Airports Group"
   },
   {
     id: "StrategyToDone",
-    title: "From Strategy to Done",
-    subtitle: "Boardroom to Delivery Alignment",
-    teaser: "Closing the gap between what the boardroom decides and what teams actually deliver.",
+    title: "When everything's a priority",
+    subtitle: "Strategy, Portfolios & Trade-offs",
+    teaser: "85 initiatives on the wall. All mandatory, critical, and urgent. I asked why about every one of them. Fourteen survived. Ten shipped as working digital products.",
     fullContent: [
-      "Ambitious strategic goals have a habit of dying somewhere between the boardroom and the delivery layer. I specialise in making sure they don't.",
-      "Partnering with C-suite leaders to translate big commitments into delivery plans that are realistic and actually executable. OKRs, portfolio leadership, making trade-offs visible - connecting the why to the what to the how.",
-      "Not another layer of process. A clearer line of sight - so the boardroom and the teams are finally telling the same story."
+      "I've stood in front of programme boards, divisional CTOs, C-suites, with walls of Post-Its, asking uncomfortable questions. What are we actually trying to achieve? What happens if we don't do this? Who's waiting for it?",
+      "At CDL, two years transforming the delivery function. Challenging perceptions of priority. When COVID hit, that groundwork meant service continuity and team stability. At HSBC Investment Bank, connecting OKRs to delivery plans people could actually execute. At Co-op Bank, making trade-offs visible so leadership could make real choices instead of pretending everything would get done."
     ],
-    clients: "HSBC Investment Bank · Capital One UK · Co-operative Bank"
+    clients: "HSBC Investment Bank · Capital One UK · Co-operative Bank · CDL"
   },
   {
     id: "ChangeThatSticks",
-    title: "Change that STICKS",
-    subtitle: "Building Teams & Capability",
-    teaser: "Experienced practitioners give your teams the skills to own and evolve their practices.",
+    title: "In the thick of teams",
+    subtitle: "Coaching, Capability & Ways of Working",
+    teaser: "Design sprints. Hackdays. Mobbing sessions. Lean Inceptions. Discovery workshops. Forty-five teams at Capital One. An MVP deployed to fifteen thousand cabin crew at British Airways. Offshore work in Vietnam, India, Poland.",
     fullContent: [
-      "The fundamentals haven't changed - curious people, learning together, building trust. Agile didn't invent good human behaviour, it just gave it some structure.",
-      "Coaching at every level - from squads to Divisional CTOs. Showing, not telling. Working alongside teams, modelling the practices, not presenting slides.",
-      "The bit I'm most proud of? Building Communities of Practice so the change outlasts my engagement. Good habits baked into the DNA, not bolted on."
+      "I've coached individual squads, release train engineers, divisional CTOs. Working alongside teams, modelling the practices, not presenting slides. At Capital One, scaling agile across forty-five teams and four SAFe release trains. At BA, one small team shipped an MVP, stopped at 95% of the value, and knew when to call it done.",
+      "Some of my most formative work happened offshore. Culture isn't a soft variable. It is the system. The fundamentals haven't changed: curious people, learning together, building trust. The Communities of Practice I've built kept running long after I'd gone. That's how you know it worked."
     ],
     clients: "British Airways · Capital One UK (45 teams) · Barclaycard UK"
   },
   {
     id: "CoachingTransformation",
-    title: "Culture that actually shifts",
-    subtitle: "Values & Transformation",
-    teaser: "Outcomes follow Practices. Practices follow Culture. Culture follows Values. Most transformations start in the wrong place.",
+    title: "The uncomfortable conversations",
+    subtitle: "Culture, Values & Transformation",
+    teaser: "Three product-focused teams at Co-op Bank. We called it the Radical Company. An island of freedom from traditional process. Recruited A-players. Delivered digital product, fast. Some of my best memories in this work.",
     fullContent: [
-      "Culture eats strategy for breakfast. It's a cliché because it's true.",
-      "Culture doesn't change because someone puts big pictures on the wall. Culture follows practices. Practices follow values. If people fundamentally value certainty over exploration, no amount of ceremonies will shift things.",
-      "I help organisations get honest about this. Not with blame, but with curiosity. What do we really value here? Are we willing to sit with uncertainty in exchange for learning and building something better?",
-      "That's where the real transformation happens. Not in the framework. In the conversations when things get uncomfortable."
+      "I've stood on a desk with a room full of Lego, watching senior bank leaders finally get it. Theory of Constraints, Cost of Delay, all landing at once. That's what all of this is for. Not the framework. The moment when it clicks.",
+      "Culture doesn't shift because someone puts big pictures on the wall. It shifts in the uncomfortable conversations. What do we really value here? Are we willing to sit with uncertainty? At Shaw Trust, at SSE, at Co-op Bank, that's where the real work happened. Not in the ceremonies. In the honest moments."
     ],
     clients: "Co-operative Bank · Shaw Trust · SSE"
   }
@@ -1068,7 +1066,7 @@ function WhatIDoSection() {
             From stuck<br />
             <span className="text-[#ea580c]">to shipped.</span>
           </h2>
-          <p className="text-[#a8b5c4] text-lg lg:text-xl max-w-2xl leading-relaxed">
+          <p className="text-[#c0cad4] text-lg lg:text-xl max-w-2xl leading-relaxed">
             Twenty years of helping organisations see their systems clearly and deliver what actually matters.
           </p>
         </div>
@@ -1103,10 +1101,10 @@ function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) 
 
   // Alternating color schemes for visual variety
   const schemes = [
-    { bg: 'bg-[#0a0a0a]', text: 'text-white', muted: 'text-[#8a99a8]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#c2410c] to-[#1e2936]', border: 'border-white/10' },
-    { bg: 'bg-[#f5f3f0]', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#1e2936] to-[#3d4d5f]', border: 'border-[#1e2936]/10' },
-    { bg: 'bg-[#1e2936]', text: 'text-white', muted: 'text-[#a8b5c4]', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#ea580c] to-[#c2410c]', border: 'border-white/10' },
-    { bg: 'bg-white', text: 'text-[#1e2936]', muted: 'text-[#5a6a7a]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#2d3a4a] to-[#1e2936]', border: 'border-[#1e2936]/10' },
+    { bg: 'bg-[#0a0a0a]', text: 'text-white', muted: 'text-white', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#c2410c] to-[#1e2936]', border: 'border-white/10' },
+    { bg: 'bg-[#f5f3f0]', text: 'text-[#1e2936]', muted: 'text-[#1e2936]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#1e2936] to-[#3d4d5f]', border: 'border-[#1e2936]/10' },
+    { bg: 'bg-[#1e2936]', text: 'text-white', muted: 'text-white', accent: 'text-[#ea580c]', numberColor: 'text-white/[0.04]', imageBg: 'from-[#ea580c] to-[#c2410c]', border: 'border-white/10' },
+    { bg: 'bg-white', text: 'text-[#1e2936]', muted: 'text-[#1e2936]', accent: 'text-[#c2410c]', numberColor: 'text-[#1e2936]/[0.04]', imageBg: 'from-[#2d3a4a] to-[#1e2936]', border: 'border-[#1e2936]/10' },
   ];
   const scheme = schemes[index % schemes.length];
 
@@ -1160,7 +1158,7 @@ function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) 
           <div className="px-6 py-6">
             {/* Teaser with accent border */}
             <div className={`pl-4 border-l-3 ${scheme.accent === 'text-[#ea580c]' ? 'border-[#ea580c]' : 'border-[#c2410c]'} mb-5`}>
-              <p className={`text-[15px] ${scheme.text} font-medium leading-relaxed`}>
+              <p className={`text-[15px] ${scheme.text} font-medium leading-relaxed tracking-normal`}>
                 {offering.teaser}
               </p>
             </div>
@@ -1168,7 +1166,7 @@ function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) 
             {/* Full content - staggered animation */}
             <div className="space-y-3 mb-6">
               {offering.fullContent.map((paragraph, i) => (
-                <p key={i} className={`stagger-item text-[14px] ${scheme.muted} leading-relaxed`}>
+                <p key={i} className={`stagger-item text-[14px] ${scheme.muted} leading-relaxed tracking-normal`}>
                   {paragraph}
                 </p>
               ))}
@@ -1238,7 +1236,7 @@ function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) 
 
                 {/* Teaser - emphasized with left border */}
                 <div className={`pl-6 border-l-4 ${scheme.accent === 'text-[#ea580c]' ? 'border-[#ea580c]' : 'border-[#c2410c]'} mb-8`}>
-                  <p className={`text-lg lg:text-xl ${scheme.text} font-medium leading-relaxed`}>
+                  <p className={`text-lg lg:text-xl ${scheme.text} font-medium leading-relaxed tracking-normal`}>
                     {offering.teaser}
                   </p>
                 </div>
@@ -1246,7 +1244,7 @@ function ServiceSection({ offering, index, imageOnRight }: ServiceSectionProps) 
                 {/* Full content */}
                 <div className="space-y-4 mb-10">
                   {offering.fullContent.map((paragraph, i) => (
-                    <p key={i} className={`text-[15px] ${scheme.muted} leading-relaxed`}>
+                    <p key={i} className={`text-base ${scheme.muted} leading-relaxed tracking-normal`}>
                       {paragraph}
                     </p>
                   ))}
@@ -1381,7 +1379,7 @@ function BeliefPoint({ title, text }: { title: string; text: string }) {
         <h3 className="text-[18px] lg:text-[20px] font-bold text-[#1e2936] leading-[1.3] mb-2 font-['Poppins',sans-serif]">
           {title}
         </h3>
-        <p className="text-[14px] text-[#5a6a7a] leading-relaxed pl-0 border-l-2 border-[#c2410c]/30 pl-4">{text}</p>
+        <p className="text-[14px] text-[#6b7c8d] leading-relaxed pl-0 border-l-2 border-[#c2410c]/30 pl-4">{text}</p>
       </div>
 
       {/* Mobile - Collapsible with bold titles */}
@@ -1400,7 +1398,7 @@ function BeliefPoint({ title, text }: { title: string; text: string }) {
           </div>
         </button>
         <div className={`mobile-drawer-content ${isOpen ? 'expanded' : 'collapsed'}`}>
-          <p className="text-[14px] text-[#5a6a7a] leading-relaxed py-4 pl-4 border-l-2 border-[#c2410c]/40">{text}</p>
+          <p className="text-[14px] text-[#6b7c8d] leading-relaxed py-4 pl-4 border-l-2 border-[#c2410c]/40">{text}</p>
         </div>
       </div>
     </div>
